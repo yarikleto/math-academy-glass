@@ -1,6 +1,6 @@
-![Math Academy Glass — A calmer space to study. Light and dark themes, drawing and geometry. Open source under MIT; unofficial study companion.](https://raw.githubusercontent.com/yarikleto/math-academy-glass/main/docs/assets/readme-banner.png)
-
 # Math Academy Glass
+
+![Math Academy Glass — A calmer space to study. Light and dark themes, drawing and geometry. Open source under MIT; unofficial study companion.](https://raw.githubusercontent.com/yarikleto/math-academy-glass/main/docs/assets/readme-banner.png)
 
 Math Academy Glass is a free, open-source Chrome Manifest V3 extension that restyles Math
 Academy with a calm, macOS-inspired glass interface and adds focused study
