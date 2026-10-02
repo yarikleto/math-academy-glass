@@ -145,7 +145,7 @@ unzip -t "math-academy-glass-extension-$(node -p 'require(\"./manifest.json\").v
 
 The packaging script uses sorted entries, fixed timestamps and file modes, and
 an explicit directory allowlist. The ZIP filename includes the manifest version,
-for example `math-academy-glass-extension-2.0.22.zip`.
+for example `math-academy-glass-extension-2.0.25.zip`.
 It writes `release-metadata.json` with the
 version, size, and SHA-256 checksum. CI generates a fresh package, verifies it
 against the source, and attaches the release files as workflow artifacts.

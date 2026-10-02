@@ -1,0 +1,326 @@
+/* Public pages share the marketing shell. Do not apply these layout rules to
+   the authenticated app, whose similarly named wrappers behave differently. */
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) body {
+  margin: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"]:has(#topNavFrame) {
+  --mag-page-background:
+    radial-gradient(ellipse at 50% 0%, rgba(117, 200, 255, 0.065), transparent 42rem) fixed,
+    linear-gradient(145deg, #0b1420, #101b29) fixed;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #wrap {
+  left: 0;
+  width: 100% !important;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+html[data-ma-glass-enabled="true"] #topNavFrame .topNav {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  width: min(100%, 1160px);
+  max-width: 1160px !important;
+  height: 64px !important;
+  padding: 0 20px !important;
+  overflow: visible !important;
+}
+
+html[data-ma-glass-enabled="true"] #topNavFrame #logo,
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #mobileMenuHeader img {
+  float: none !important;
+  width: 46px !important;
+  height: 42px !important;
+  object-fit: contain;
+  content: var(--mag-site-logo-icon) !important;
+  filter: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #topNavFrame .topNav > .topNavLink {
+  float: none !important;
+  display: grid !important;
+  place-items: center;
+  height: 64px !important;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 2px 10px 0 !important;
+  border-bottom-width: 2px !important;
+  border-bottom-color: transparent !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+}
+
+html[data-ma-glass-enabled="true"] #topNavFrame #howItWorksLink {
+  margin-left: auto !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(link[href="/css/how-it-works.css"]) #topNavFrame #howItWorksLink,
+html[data-ma-glass-enabled="true"]:has(link[href="/css/courses2.css"], link[href="/css/course.css"]) #topNavFrame #coursesLink,
+html[data-ma-glass-enabled="true"]:has(link[href="/css/pedagogy.css"]) #topNavFrame #pedagogyLink,
+html[data-ma-glass-enabled="true"]:has(link[href="/css/faq.css"]) #topNavFrame #faqLink,
+html[data-ma-glass-enabled="true"]:has(link[href="/css/about-us.css"]) #topNavFrame #aboutUsLink {
+  border-bottom-color: var(--mag-accent) !important;
+}
+
+html[data-ma-glass-enabled="true"] #topNavFrame .topNav > .topNavLink:hover {
+  border-bottom-color: var(--mag-accent) !important;
+}
+
+html[data-ma-glass-enabled="true"] #topNavFrame #topNavRight {
+  display: flex;
+  float: none !important;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+html[data-ma-glass-enabled="true"] #topNavFrame #topNavRight .topNavLink {
+  height: auto;
+  padding: 9px 8px;
+  border: 0;
+  line-height: 1;
+}
+
+html[data-ma-glass-enabled="true"] #topNavFrame #signUpButton {
+  float: none !important;
+  margin: 0 !important;
+  padding: 10px 15px !important;
+  font-size: 12px !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame):not([data-ma-glass-page="how-it-works"]) .sectionFrame:where(:not(#courseNameHeader):not(#overviewFrame):not(#outcomesFrame):not(#contentFrame)) {
+  box-sizing: border-box;
+  width: min(calc(100% - 40px), 1040px) !important;
+  margin: 44px auto !important;
+  padding: clamp(24px, 4vw, 44px) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  background: var(--mag-glass) !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame):not([data-ma-glass-page="how-it-works"]) section {
+  max-width: 100%;
+  padding-bottom: 0;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) .sectionFrame:has(#title, > section > h1:first-child) {
+  margin-top: 100px !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) a {
+  overflow-wrap: anywhere;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #title {
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1.14;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame):not([data-ma-glass-page="how-it-works"]):where(:not(:has(#courseNameHeader))) h1 {
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1.14;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(p, li, .sectionContent, .boxContent, .boxContent2, .screenshotDescription, #subtitle, #description) {
+  font-size: var(--mag-reading-size) !important;
+  line-height: var(--mag-reading-leading) !important;
+  text-wrap: pretty;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(.screenshotHeader, .founderHeader, .courseCategoryHeader, .itemTitle, .itemSubheader, .prerequisitesHeader) {
+  color: var(--mag-text) !important;
+  font-weight: 650;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(.screenshotHeader, .founderHeader) {
+  font-family: var(--mag-display-font);
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.25;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(.founderFrame, .screenshotFrame):has(> .founderBio) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  align-items: start;
+  gap: 32px;
+  margin: 0;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(#jasonBio, #sandyBio) {
+  float: none;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(#jasonHeadshot, #sandyHeadshot) {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  aspect-ratio: 293 / 400;
+  background-size: contain;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #sandyHeadshot { aspect-ratio: 300 / 450; }
+
+/* Replace fixed-position marketing columns with content-sized tracks. */
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(.boxFrame, #testimonialBoxFrame) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100% !important;
+  height: auto !important;
+  margin: 28px auto 0 !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(.boxFrame, #testimonialBoxFrame) > div {
+  position: static !important;
+  box-sizing: border-box;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.68;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #coursesTable {
+  width: 100%;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #coursesTableCol1 {
+  padding-right: 36px;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) .comingSoon {
+  color: var(--mag-text-muted) !important;
+  background: var(--mag-segment-track) !important;
+}
+
+/* Background-based instructional images retain their artwork and proportions. */
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(#tinyKnowledgeGraph, #courseKnowledgeGraph, #largeKnowledgeGraph, #calculusKnowledgeGraph, #spacedRepetition, #knowledgeFrontier, #taskSelection, #explicitReview, #implicitReviews, #spacedReviewPacing, #highSchoolPathwayDiagram, #foundationsPathwayDiagram, #completeCourseDiagram) {
+  width: min(100%, var(--mag-public-media-width, 730px)) !important;
+  height: auto !important;
+  aspect-ratio: var(--mag-public-media-ratio, 1216 / 582);
+  background-size: contain;
+}
+
+html[data-ma-glass-enabled="true"] #tinyKnowledgeGraph { --mag-public-media-width: 500px; --mag-public-media-ratio: 1250 / 750; }
+html[data-ma-glass-enabled="true"] #spacedRepetition { --mag-public-media-width: 580px; --mag-public-media-ratio: 1450 / 850; }
+html[data-ma-glass-enabled="true"] :is(#knowledgeFrontier, #taskSelection) { --mag-public-media-width: 500px; --mag-public-media-ratio: 1; }
+html[data-ma-glass-enabled="true"] :is(#explicitReview, #implicitReviews) { --mag-public-media-width: 400px; --mag-public-media-ratio: 1; }
+html[data-ma-glass-enabled="true"] #spacedReviewPacing { --mag-public-media-width: 800px; --mag-public-media-ratio: 1; }
+html[data-ma-glass-enabled="true"] #highSchoolPathwayDiagram { --mag-public-media-width: 915px; --mag-public-media-ratio: 915 / 960; }
+html[data-ma-glass-enabled="true"] #foundationsPathwayDiagram { --mag-public-media-width: 700px; --mag-public-media-ratio: 700 / 650; }
+html[data-ma-glass-enabled="true"] #completeCourseDiagram { --mag-public-media-width: 837px; --mag-public-media-ratio: 837 / 1140; }
+
+/* Legal documents do not contain the course template's nested section. */
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #contentFrame:has(> #content) {
+  width: min(calc(100% - 40px), 920px) !important;
+  margin: 100px auto 0 !important;
+  padding: 24px clamp(16px, 4vw, 40px) !important;
+}
+
+html[data-ma-glass-enabled="true"] #contentFrame > #content {
+  margin: 28px auto 0 !important;
+  padding: 0 !important;
+  overflow-wrap: anywhere;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) footer {
+  box-sizing: border-box;
+  width: min(calc(100% - 40px), 1040px);
+  margin: 44px auto 0 !important;
+  padding: 36px 12px !important;
+  color: var(--mag-text-muted) !important;
+  border-top: 1px solid var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) footer :is(#support, #copyright) {
+  color: var(--mag-text-muted) !important;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) .footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) .footerLinks a {
+  margin: 0;
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(.founderFrame, .screenshotFrame):has(> .founderBio) { grid-template-columns: 1fr; }
+  html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(#jasonHeadshot, #sandyHeadshot) { max-width: 300px; margin: 0 auto !important; }
+  html[data-ma-glass-enabled="true"] #topNavFrame .topNav > .topNavLink,
+  html[data-ma-glass-enabled="true"] #topNavFrame #topNavRight > :not(#mobileMenuIcon) { display: none !important; }
+  html[data-ma-glass-enabled="true"] #topNavFrame #mobileMenuIcon {
+    display: grid !important;
+    float: none;
+    place-items: center;
+    width: 38px !important;
+    height: 38px !important;
+    margin: 0;
+    background: none !important;
+    border-radius: 10px;
+  }
+  html[data-ma-glass-enabled="true"] #topNavFrame #mobileMenuIcon::before {
+    width: 19px;
+    height: 12px;
+    color: var(--mag-text-soft);
+    background:
+      linear-gradient(currentColor, currentColor) top / 100% 1.5px no-repeat,
+      linear-gradient(currentColor, currentColor) center / 100% 1.5px no-repeat,
+      linear-gradient(currentColor, currentColor) bottom / 100% 1.5px no-repeat;
+    content: "";
+  }
+  html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(.boxFrame, #testimonialBoxFrame) { grid-template-columns: 1fr; }
+  html[data-ma-glass-enabled="true"]:has(#topNavFrame) :is(p, li, .sectionContent, .boxContent, .boxContent2, .screenshotDescription, #subtitle, #description) { font-size: 16px !important; line-height: 1.64 !important; }
+  html[data-ma-glass-enabled="true"]:has(#topNavFrame) #coursesTable :is(tbody, tr, td) { display: block; width: 100%; box-sizing: border-box; }
+  html[data-ma-glass-enabled="true"]:has(#topNavFrame) #coursesTable :is(#coursesTableCol1, #coursesTableCol2) { padding: 0 !important; }
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #mobileMenu {
+  z-index: 1100;
+  box-sizing: border-box;
+  max-width: 100%;
+  background: var(--mag-glass-solid) !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #mobileMenuCloseButton {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  background: none !important;
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #mobileMenuCloseButton::before,
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #mobileMenuCloseButton::after {
+  position: absolute;
+  top: 18px;
+  left: 9px;
+  width: 20px;
+  height: 2px;
+  background: var(--mag-text-soft);
+  content: "";
+  transform: rotate(45deg);
+}
+
+html[data-ma-glass-enabled="true"]:has(#topNavFrame) #mobileMenuCloseButton::after { transform: rotate(-45deg); }

@@ -117,7 +117,7 @@ part of the contract: manifest order preserves the original cascade exactly.
 | --- | --- |
 | `00` | Theme tokens, page foundation, typography, and site chrome |
 | `10`–`11` | Task flow, navigation, and legacy menus |
-| `20` | Public marketing routes |
+| `20`–`23` | Public marketing routes, navigation, login, recovery, and registration |
 | `30` | Shared application components and math-renderer protection |
 | `40`–`45` | Authenticated topic/reference and help routes |
 | `50` | Settings route |
