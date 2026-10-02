@@ -69,20 +69,34 @@ def page(title, description, filename, body):
 
 
 HOME = f'''
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero product-hero" aria-labelledby="hero-title">
  <p class="eyebrow"><span class="status-dot"></span> Free &amp; open source · Chrome extension</p>
- <h1 id="hero-title">A calmer space<br>to study.</h1>
- <p class="hero-copy">Give Math Academy a clear glass appearance and a set of thoughtful tools for working through your next idea.</p>
+ <h1 id="hero-title">Clear your space.<br><span>Explore your ideas.</span></h1>
+ <p class="hero-copy">A calmer Math Academy, with drawing, geometry, and study tools right where you need them.</p>
  <div class="actions"><a class="button primary" href="#install">Get the extension <span aria-hidden="true">↗</span></a><a class="button secondary" href="{REPO}">Explore the source</a></div>
- <p class="small">Light, dark, or your system appearance. Always your choice.</p>
+ <p class="small">Free to use. Open source. Made for Chrome.</p>
 </section>
-<figure class="banner"><img src="assets/readme-banner.png" width="2172" height="724" alt="Math Academy Glass: clear glass geometry instruments against light and dark backgrounds."><figcaption>Clear thinking. Clear tools.</figcaption></figure>
+<section class="showcase" aria-label="Explore extension previews">
+ <fieldset class="preview-switch"><legend>Take a closer look</legend>
+ <input type="radio" name="preview" id="preview-tools" checked><label for="preview-tools">Study tools</label>
+ <input type="radio" name="preview" id="preview-light"><label for="preview-light">Light</label>
+ <input type="radio" name="preview" id="preview-dark"><label for="preview-dark">Dark</label>
+ <div class="preview-window"><div class="window-bar" aria-hidden="true"><span class="window-dots"><i></i><i></i><i></i></span><span>Math Academy Glass · Feature preview</span><span>↗</span></div>
+ <img class="preview-image tools-image" src="assets/preview-tools.png" width="1280" height="800" alt="Study tools open beside a sample circle lesson, showing pen controls and a transparent protractor.">
+ <img class="preview-image light-image" src="assets/preview-light.png" width="1280" height="800" alt="Light appearance with a readable sample lesson and circle diagram.">
+ <img class="preview-image dark-image" src="assets/preview-dark.png" width="1280" height="800" alt="Dark appearance with navy surfaces and preserved diagram colors.">
+ </div></fieldset>
+ <p class="preview-note">The extension in action on an original sample lesson. Select a preview above.</p>
+</section>
+<nav class="feature-nav" aria-label="Explore features"><a href="#appearance">Appearance</a><a href="#drawing">Drawing</a><a href="#geometry">Geometry</a><a href="#printing">PDF export</a><a href="#local-title">Privacy</a></nav>
 <section class="features section" aria-labelledby="features-title">
- <div class="section-heading"><p class="eyebrow">Made for the way you learn</p><h2 id="features-title">Less friction.<br>More room to think.</h2></div>
- <div class="feature-grid">
-  <article class="card"><span class="feature-symbol" aria-hidden="true">◐</span><h3>Find your light</h3><p>Comfortable light and dark themes, readable lessons, and quiet glass surfaces. Follow your system appearance or switch whenever you like.</p></article>
-  <article class="card"><span class="feature-symbol" aria-hidden="true">∠</span><h3>Work it out here</h3><p>Draw, erase, and undo right on the page. Combine a ruler, a 180° or 360° protractor, and a compass to explore lengths and angles.</p></article>
-  <article class="card"><span class="feature-symbol" aria-hidden="true">↗</span><h3>Keep your flow</h3><p>See local task timers and course counters. Send a selected instructional card to Chrome’s print preview to save it as a PDF.</p></article>
+ <div class="section-heading"><p class="eyebrow">A little more clarity. A lot more possibility.</p><h2 id="features-title">Everything you need.<br>Right on the page.</h2></div>
+ <div class="product-grid">
+  <article id="appearance" class="feature-tile wide appearance-tile"><div class="tile-copy"><span class="tile-category">01 / Appearance</span><h3>Find your kind of calm.</h3><p>Near-white glass by day. Deep navy by night. Choose Light, Dark, or System, with comfortable typography made for longer study sessions.</p><span class="detail">Switch with ⌘ / Ctrl + Shift + L</span></div><div class="theme-pair" aria-label="Illustrated light and dark reading surfaces"><div class="reading-sample"><span>Light</span><strong>Room to think.</strong><p>Clear type. Quiet surfaces.</p><div class="sample-equation">A = πr²</div></div><div class="reading-sample night"><span>Dark</span><strong>Stay in your flow.</strong><p>The same clarity, after dark.</p><div class="sample-equation">C = 2πr</div></div></div></article>
+  <article id="drawing" class="feature-tile"><div class="tile-copy"><span class="tile-category">02 / Drawing</span><h3>Think with your pen.</h3><p>Sketch an idea over the page. Five colors, three widths, a stroke eraser, and undo when you change your mind.</p></div><div class="ink-preview" aria-hidden="true"><svg viewBox="0 0 440 130" fill="none"><path d="M30 93 C90 95 80 26 147 37 S197 117 252 76 S304 25 342 48 S367 77 413 29" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M61 110 Q196 119 331 99" stroke="#078368" stroke-width="2.5" stroke-linecap="round"/></svg><div class="pen-swatches"><i></i><i></i><i></i><i></i><i></i><span>⌘ Z</span></div></div></article>
+  <article id="geometry" class="feature-tile"><div class="tile-copy"><span class="tile-category">03 / Geometry</span><h3>A whole geometry set.<br>Zero desk space.</h3><p>Trace a ruler’s edge. Measure with a 180° or 360° protractor. Move a compass and keep its span.</p></div><div class="geometry-preview" aria-hidden="true"><svg viewBox="0 0 440 190" fill="none"><circle cx="222" cy="102" r="72" stroke="currentColor" stroke-dasharray="4 5"/><path d="M57 156 L222 29 L353 156 Z" stroke="currentColor" stroke-width="2"/><path d="M177 156 A45 45 0 0 1 188 126" stroke="#078368" stroke-width="3"/><circle cx="222" cy="102" r="4" fill="currentColor"/><path d="M222 102 H294" stroke="currentColor" stroke-width="2"/></svg><span>Measure. Trace. Construct.</span></div></article>
+  <article id="printing" class="feature-tile print-tile"><div class="tile-copy"><span class="tile-category">04 / Lesson-card PDF</span><h3>Take an idea with you.</h3><p>Save an eligible tutorial, worked example, or topic-reference card through Chrome’s print preview. Keep the title, math, and diagrams together.</p><span class="detail">You choose Save as PDF or a printer.</span></div><div class="paper-preview" aria-hidden="true"><span>Lesson notes <b>↓ PDF</b></span><strong>Explore a circle</strong><div class="sample-equation">A = πr²</div><div class="paper-lines"></div></div></article>
+  <article class="feature-tile"><div class="tile-copy"><span class="tile-category">05 / Study rhythm</span><h3>Keep your bearings.</h3><p>Local task timers and course-topic counters help you see where you are. Pause the extension from its popup whenever you like.</p></div><div class="rhythm-preview" aria-hidden="true"><span>Time on task</span><strong>04<span>:</span>32</strong><div class="quiet-track"><i></i></div><span>One step at a time.</span></div></article>
  </div>
 </section>
 <section class="privacy-callout section" aria-labelledby="local-title"><div><p class="eyebrow">Your work stays yours</p><h2 id="local-title">Local by design.</h2></div><div><p>Lesson content, drawings, and study counters stay in your browser. Only your two appearance preferences use Chrome sync. No ads, analytics, or extension-operated servers.</p><a class="text-link" href="privacy.html">Read the privacy policy <span aria-hidden="true">→</span></a></div></section>
