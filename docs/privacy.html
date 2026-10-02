@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-ma-glass-enabled="true">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How Math Academy Glass handles data, appearance preferences, and local study tools.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Privacy Policy — Math Academy Glass">
+<meta property="og:description" content="How Math Academy Glass handles data, appearance preferences, and local study tools.">
+<meta property="og:image" content="https://yarikleto.github.io/math-academy-glass/assets/readme-banner.png">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://yarikleto.github.io/math-academy-glass/privacy.html">
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+<link rel="stylesheet" href="site.css">
+<title>Privacy Policy — Math Academy Glass</title>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header wrap">
+ <a class="brand" href="index.html"><img src="assets/icon.svg" width="36" height="36" alt=""><span>Math Academy <strong>Glass</strong></span></a>
+ <nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="support.html">Support</a><a href="privacy.html" aria-current="page">Privacy</a><a href="https://github.com/yarikleto/math-academy-glass">GitHub ↗</a></nav>
+</header>
+<main id="main" class="wrap"><article class="policy"><h1>Privacy Policy for Math Academy Glass</h1>
+<p>Effective date: October 2, 2026</p>
+<p>Math Academy Glass changes the appearance of Math Academy and provides in-page study tools. Its functionality runs locally in the browser.</p>
+<p>Math Academy Glass is an independent, unofficial project. It is not affiliated with, endorsed by, or sponsored by Math Academy.</p>
+<h2>Data processed locally</h2>
+<p>The extension reads Math Academy page structure, styles, visible course progress, and task identifiers to render the theme, study tools, course counters, and task timers. It records task start and finish times locally for the timer. When the user chooses <strong>Save card as PDF</strong>, it prepares the selected instructional card for Chrome&#x27;s native print preview. It does not transmit lesson text, answers, course progress, activity history, drawings, exported cards, or browsing history.</p>
+<p>The extension stores only:</p>
+<ul><li>the enabled/paused setting and light/dark/system preference in Chrome synced   storage;</li><li>page-local drawings and tool state for the current document; and</li><li>short-lived course counters and task timers in temporary extension storage,   kept separately for each tab.</li></ul>
+<p>Drawings and tool positions are discarded when the page is reloaded or replaced. Math Academy page scripts cannot access the extension-owned session values. Tab state is scheduled for removal when its tab closes. A task timer older than 12 hours or course-counter state older than 36 hours is rejected and purged on the next access to that tab state. Session values are also cleared by Chrome when the browser session ends or the extension is reloaded, updated, or disabled in Chrome. Chrome controls the retention and synchronization of appearance settings; when Chrome sync is enabled, Chrome may transmit those two preferences through Google&#x27;s sync service. The developer does not receive them. Lesson content, drawings, task timers, and course counters are never placed in synced storage.</p>
+<p>Card export happens only when you request it. The extension prepares the selected card for printing and clears its temporary print state when the preview closes or the operation is cancelled, interrupted, or fails. It does not save the card or print state in browser storage.</p>
+<h2>Network and sharing</h2>
+<p>The extension has access only to <code>mathacademy.com</code> and its subdomains. It does not include analytics, advertising, tracking, or a remote backend, and it does not make network requests of its own. It does not sell or share personal data.</p>
+<p>The card-export action uses Chrome&#x27;s native print preview and requires no new extension permission. If the user selects <strong>Save as PDF</strong>, Chrome handles the filename, destination, and saved file. The extension does not receive the saved PDF, its path, or a copy of its contents.</p>
+<p>The <strong>Open site</strong> link in the popup opens Math Academy, and the optional <strong>LinkedIn</strong> creator link opens LinkedIn. Both are explicit user-initiated actions in a normal browser tab. Those sites and Chrome operate under their own privacy terms.</p>
+<p>The extension&#x27;s use of information received from Chrome APIs is limited to providing its disclosed, user-facing theme and study-tool features. It does not use or transfer user data for advertising, creditworthiness, lending, or any unrelated purpose, and no developer or third party can read locally processed lesson data through an extension backend because no such backend exists.</p>
+<h2>Project website</h2>
+<p>The project website is hosted on GitHub Pages. Visits to the website are handled by GitHub under its <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">privacy statement</a>. The website contains no analytics, advertising, or account forms.</p>
+<h2>User choices</h2>
+<p>Users can pause the extension from its popup, clear extension storage through Chrome, or remove the extension at any time. Privacy questions can be sent to <a href="https://github.com/yarikleto/math-academy-glass/issues">the project&#x27;s GitHub support page</a>. GitHub issues are public; do not include personal account details, lesson content, or credentials. GitHub handles information you submit there under its own privacy terms.</p></article></main>
+<footer class="site-footer wrap">
+ <div><strong>Math Academy Glass</strong><p>An independent, unofficial study companion.<br>Not affiliated with, endorsed by, or sponsored by Math Academy.</p></div>
+ <div class="footer-links"><a href="https://github.com/yarikleto/math-academy-glass/blob/main/LICENSE">MIT licensed</a><a href="support.html">Get help</a><a href="privacy.html">Privacy policy</a><span>© 2026 Yarik Leto</span></div>
+</footer>
+</body></html>

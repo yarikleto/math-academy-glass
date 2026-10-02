@@ -11,6 +11,7 @@ Math Academy Glass is an independent, unofficial project. It is not affiliated
 with, endorsed by, or sponsored by Math Academy.
 
 [Source code](https://github.com/yarikleto/math-academy-glass) ·
+[Website](https://yarikleto.github.io/math-academy-glass/) ·
 [Report an issue](https://github.com/yarikleto/math-academy-glass/issues) ·
 [Privacy policy](PRIVACY.md) · [MIT license](LICENSE)
 
@@ -121,6 +122,7 @@ Its physical size can vary with display scaling and browser zoom.
 - `LICENSE` — MIT license for the extension.
 - `scripts/package-release.py` — reproducible extension packaging.
 - `.github/workflows/validate.yml` — automated tests and release artifacts.
+- `docs/` — the public homepage, support page, and privacy policy on GitHub Pages.
 
 There is no build step. Chrome loads the checked-in source directly. After
 changing source files, use the refresh button on the extension card in
@@ -151,6 +153,14 @@ the source and tools needed to build and test the extension.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development and bug reports and
 [SECURITY.md](SECURITY.md) for private security reports.
+
+## Website publishing
+
+The website is served by GitHub Pages from `main` → `/docs`. Run
+`python3 scripts/build-website.py` after changing its content or `PRIVACY.md`,
+then commit the generated HTML with the source changes. The website uses local
+assets and contains no analytics or third-party scripts. Its files stay outside
+the extension package.
 
 ## License
 

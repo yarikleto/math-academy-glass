@@ -65,6 +65,12 @@ use or transfer user data for advertising, creditworthiness, lending, or any
 unrelated purpose, and no developer or third party can read locally processed
 lesson data through an extension backend because no such backend exists.
 
+## Project website
+
+The project website is hosted on GitHub Pages. Visits to the website are handled
+by GitHub under its [privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+The website contains no analytics, advertising, or account forms.
+
 ## User choices
 
 Users can pause the extension from its popup, clear extension storage through
