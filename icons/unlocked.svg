@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <linearGradient id="tile" x1="4" y1="2" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67C2FF"/>
+      <stop offset=".52" stop-color="#168DF5"/>
+      <stop offset="1" stop-color="#0868D8"/>
+    </linearGradient>
+    <linearGradient id="lock" x1="12" y1="7" x2="12" y2="19" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF"/>
+      <stop offset="1" stop-color="#E7F3FF"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="1" y="1" width="22" height="22" rx="6" fill="url(#tile)"/>
+  <path d="M4.2 8.2A5.6 5.6 0 0 1 9.4 3.7" fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="1.15" opacity=".5"/>
+  <rect x="1.6" y="1.6" width="20.8" height="20.8" rx="5.4" fill="none" stroke="#FFF" stroke-opacity=".28"/>
+
+  <path d="M8 10V8.2a4 4 0 0 1 7.45-2.05" fill="none" stroke="url(#lock)" stroke-linecap="round" stroke-width="2.15"/>
+  <path d="M6.5 10.1h11a1.5 1.5 0 0 1 1.5 1.5v6.2a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 17.8v-6.2a1.5 1.5 0 0 1 1.5-1.5Z" fill="url(#lock)"/>
+  <circle cx="12" cy="14.35" r="1.45" fill="#0878E5"/>
+  <path d="M12 15.6v1.15" stroke="#0878E5" stroke-linecap="round" stroke-width="1.25"/>
+</svg>

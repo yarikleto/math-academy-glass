@@ -1,0 +1,322 @@
+/* Lesson card PDF export ----------------------------------------------- */
+/* Tutorial, worked-example, and noninteractive topic-reference cards own a
+   quiet secondary save action. It opens Chrome's native print preview so text,
+   MathJax, and diagrams stay selectable/vector wherever the print engine
+   supports them. */
+html[data-ma-glass-enabled="true"]:is(
+  [data-ma-glass-page="learn"],
+  [data-ma-glass-page="topic"]
+) :is(#steps, #lessonContent) > .step:has(.stepHeader > .ma-glass-card-export-link) .stepHeader {
+  position: relative !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: auto !important;
+  padding-right: 116px !important;
+}
+
+html[data-ma-glass-enabled="true"]:is(
+  [data-ma-glass-page="learn"],
+  [data-ma-glass-page="topic"]
+) :is(#steps, #lessonContent) > .step:has(.stepHeader > .ma-glass-card-export-link) .stepHeader > .helpButton {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  float: none !important;
+  margin: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="topic"] #lessonContent > .step:has(
+  .stepHeader > .ma-glass-card-export-link
+) .stepHeader .stepName {
+  max-width: 100% !important;
+}
+
+html[data-ma-glass-enabled="true"]:is(
+  [data-ma-glass-page="learn"],
+  [data-ma-glass-page="topic"]
+) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link {
+  position: absolute !important;
+  z-index: 2;
+  top: -1px !important;
+  right: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  box-sizing: border-box !important;
+  width: auto !important;
+  min-width: 58px !important;
+  height: 28px !important;
+  margin: 0 !important;
+  padding: 0 9px !important;
+  color: var(--mag-text-muted) !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 9px !important;
+  outline: 0 !important;
+  background: var(--mag-input) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.16) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 11px !important;
+  font-weight: 720 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.025em !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition:
+    color 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"]:is(
+  [data-ma-glass-page="learn"],
+  [data-ma-glass-page="topic"]
+) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link > svg {
+  flex: 0 0 auto;
+  width: 14px !important;
+  height: 14px !important;
+  overflow: visible !important;
+}
+
+html[data-ma-glass-enabled="true"]:is(
+  [data-ma-glass-page="learn"],
+  [data-ma-glass-page="topic"]
+) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link:hover {
+  color: var(--mag-accent-strong) !important;
+  border-color: color-mix(in srgb, var(--mag-accent) 34%, var(--mag-line)) !important;
+  background: var(--mag-input-hover) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.18),
+    0 4px 12px rgba(45, 63, 83, 0.07) !important;
+  transform: translateY(-1px);
+}
+
+html[data-ma-glass-enabled="true"]:is(
+  [data-ma-glass-page="learn"],
+  [data-ma-glass-page="topic"]
+) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link:focus-visible {
+  color: var(--mag-accent-strong) !important;
+  border-color: var(--mag-focus-ring) !important;
+  box-shadow:
+    0 0 0 3px var(--mag-accent-soft),
+    inset 0 1px rgba(255, 255, 255, 0.18) !important;
+}
+
+html[data-ma-glass-enabled="true"]:is(
+  [data-ma-glass-page="learn"],
+  [data-ma-glass-page="topic"]
+) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link:active {
+  transform: translateY(0) scale(0.98);
+}
+
+html[data-ma-glass-enabled="true"]:is(
+  [data-ma-glass-page="learn"],
+  [data-ma-glass-page="topic"]
+) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link[aria-disabled="true"] {
+  pointer-events: none !important;
+  cursor: wait !important;
+  opacity: 0.62 !important;
+  transform: none !important;
+}
+
+html[data-ma-glass-enabled="true"]:is(
+  [data-ma-glass-page="learn"],
+  [data-ma-glass-page="topic"]
+) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link[data-ma-glass-card-export-active] > svg {
+  animation: ma-glass-card-export-pulse 760ms ease-in-out infinite alternate;
+}
+
+html[data-ma-glass-enabled="true"]:is(
+  [data-ma-glass-page="learn"],
+  [data-ma-glass-page="topic"]
+) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link[data-ma-glass-card-export-error] {
+  color: var(--mag-danger) !important;
+  border-color: var(--mag-danger-line) !important;
+  background: var(--mag-danger-soft) !important;
+}
+
+@keyframes ma-glass-card-export-pulse {
+  from { transform: translateY(0); }
+  to { transform: translateY(1.5px); }
+}
+
+@media (max-width: 520px) {
+  html[data-ma-glass-enabled="true"]:is(
+    [data-ma-glass-page="learn"],
+    [data-ma-glass-page="topic"]
+  ) :is(#steps, #lessonContent) > .step:has(.stepHeader > .ma-glass-card-export-link) .stepHeader {
+    padding-right: 82px !important;
+  }
+
+  html[data-ma-glass-enabled="true"]:is(
+    [data-ma-glass-page="learn"],
+    [data-ma-glass-page="topic"]
+  ) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link {
+    min-width: 28px !important;
+    width: 28px !important;
+    padding: 0 !important;
+  }
+
+  html[data-ma-glass-enabled="true"]:is(
+    [data-ma-glass-page="learn"],
+    [data-ma-glass-page="topic"]
+  ) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link > span {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-ma-glass-enabled="true"]:is(
+    [data-ma-glass-page="learn"],
+    [data-ma-glass-page="topic"]
+  ) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link,
+  html[data-ma-glass-enabled="true"]:is(
+    [data-ma-glass-page="learn"],
+    [data-ma-glass-page="topic"]
+  ) :is(#steps, #lessonContent) > .step .stepHeader > .ma-glass-card-export-link > svg {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@page ma-glass-card-export {
+  size: A4 portrait;
+  margin: 12mm;
+}
+
+@media print {
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]),
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) body {
+    box-sizing: border-box !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--mag-text-soft) !important;
+    background: var(--mag-bg) !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) body {
+    page: ma-glass-card-export;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) body::before,
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(
+    #ma-glass-card-print-specificity,
+    [data-ma-glass-print-excluded="true"]
+  ) {
+    display: none !important;
+  }
+
+  /* The unused ID intentionally raises this generic ancestor rule above the
+     legacy ID-scoped lesson layout while the attribute remains the matcher. */
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(
+    #ma-glass-card-print-specificity,
+    [data-ma-glass-print-ancestor="true"]
+  ) {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    float: none !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    contain: none !important;
+    isolation: auto !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(#steps, #lessonContent) > .step[data-ma-glass-print-target="true"] {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    float: none !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    color: var(--mag-text-soft) !important;
+    border: 1px solid var(--mag-line) !important;
+    border-radius: 14px !important;
+    background: var(--mag-glass-solid) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(#steps, #lessonContent) > .step[data-ma-glass-print-target="true"] *,
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(#steps, #lessonContent) > .step[data-ma-glass-print-target="true"] *::before,
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(#steps, #lessonContent) > .step[data-ma-glass-print-target="true"] *::after {
+    animation: none !important;
+    transition: none !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(#steps, #lessonContent) > .step[data-ma-glass-print-target="true"] .stepHeader {
+    padding-right: 0 !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(#steps, #lessonContent) > .step[data-ma-glass-print-target="true"] :is(
+    [data-ma-glass-card-export-control="true"],
+    .helpButton
+  ) {
+    display: none !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(#steps, #lessonContent) > .step[data-ma-glass-print-target="true"] :is(
+    .MathJax_Display,
+    mjx-container[display="true"],
+    .katex-display,
+    figure,
+    img,
+    svg,
+    table,
+    pre,
+    blockquote
+  ) {
+    break-inside: avoid-page !important;
+    page-break-inside: avoid !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(#steps, #lessonContent) > .step[data-ma-glass-print-target="true"] :is(
+    img,
+    figure,
+    table,
+    pre
+  ) {
+    max-width: 100% !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(#steps, #lessonContent) > .step[data-ma-glass-print-target="true"] :is(p, li) {
+    orphans: 3;
+    widows: 3;
+  }
+}

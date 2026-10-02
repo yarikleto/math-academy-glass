@@ -1,0 +1,326 @@
+/* Lesson content still includes HTML data tables built with rules, cellpadding,
+   inline black borders, and bgcolor cells. Keep these semantic tables inside
+   the question and replace the legacy presentation attributes as one unit.
+   Equation builders can use the same attributes, so an embedded math editor is
+   the structural signal that the table is layout rather than tabular data. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionText table[rules="all"][cellpadding]:not(:has(.matheditor-wrapper-answer)) {
+  width: min(100%, 760px) !important;
+  max-width: 100% !important;
+  margin: 18px auto !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  table-layout: fixed !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 14px !important;
+  color: var(--mag-text) !important;
+  background: var(--mag-input) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.055),
+    0 8px 24px rgba(5, 10, 20, 0.1) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionText table[rules="all"][cellpadding]:not(:has(.matheditor-wrapper-answer)) :is(
+  tbody,
+  tr
+) {
+  border: 0 !important;
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionText table[rules="all"][cellpadding]:not(:has(.matheditor-wrapper-answer)) td {
+  height: 48px !important;
+  padding: 8px clamp(6px, 1.5vw, 14px) !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  color: var(--mag-text) !important;
+  background: transparent !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionText table[rules="all"][cellpadding]:not(:has(.matheditor-wrapper-answer)) tr:not(:last-child) > td {
+  border-bottom: 1px solid var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionText table[rules="all"][cellpadding]:not(:has(.matheditor-wrapper-answer)) td:not(:last-child) {
+  border-right: 1px solid var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionText table[rules="all"][cellpadding]:not(:has(.matheditor-wrapper-answer)) td[bgcolor] {
+  width: clamp(58px, 10vw, 86px) !important;
+  color: var(--mag-accent-strong) !important;
+  background: var(--mag-accent-soft) !important;
+  font-weight: 650 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionText table[rules="all"][cellpadding]:not(:has(.matheditor-wrapper-answer)) td[bgcolor] :is(
+  .MathJax,
+  mjx-container,
+  .mq-math-mode,
+  .katex
+) {
+  color: var(--mag-accent-strong) !important;
+}
+
+/* Free-response equations also arrive as two-row HTML tables. Preserve the
+   compact fraction geometry and its authored top/bottom rules instead of
+   expanding the table into a data-card grid. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer .questionText table[rules="all"][cellpadding]:has(.matheditor-wrapper-answer) {
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 16px auto 10mm !important;
+  overflow: visible !important;
+  box-sizing: content-box !important;
+  table-layout: auto !important;
+  border: 0 !important;
+  border-collapse: separate !important;
+  border-spacing: 2px !important;
+  border-radius: 0 !important;
+  color: var(--mag-text) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-variant-numeric: normal;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer .questionText table[rules="all"][cellpadding]:has(.matheditor-wrapper-answer) :is(
+  tbody,
+  tr
+) {
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer .questionText table[rules="all"][cellpadding]:has(.matheditor-wrapper-answer) td {
+  height: auto !important;
+  padding: 1px !important;
+  overflow: visible !important;
+  box-sizing: content-box !important;
+  color: var(--mag-text) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  line-height: 1.35 !important;
+}
+
+/* `rules="all"` supplies a full grid before the inline hidden-edge hints are
+   applied. Reconstruct only the fraction strokes so no vertical dividers are
+   left around the equals column. Requiring both hidden side edges avoids the
+   narrow operator cell, whose underscores form the equals sign. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer .questionText table[rules="all"][cellpadding]:has(.matheditor-wrapper-answer) td[
+  style*="border-top:hidden"
+][style*="border-right:hidden"][style*="border-left:hidden"]:not([style*="border-bottom:hidden"]) {
+  border-bottom: 1px solid var(--mag-text) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer .questionText table[rules="all"][cellpadding]:has(.matheditor-wrapper-answer) td[
+  style*="border-bottom:hidden"
+][style*="border-right:hidden"][style*="border-left:hidden"]:not([style*="border-top:hidden"]) {
+  border-top: 1px solid var(--mag-text) !important;
+}
+
+/* Some multiple-choice answers are themselves semantic data tables. They are
+   direct children of the outer choice cell, so keep their own grid instead of
+   flattening them with the choice table used only for layout. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-choiceText > table[rules="all"][cellpadding] {
+  width: max-content !important;
+  max-width: 100% !important;
+  margin: 10px 0 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  table-layout: auto !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 12px !important;
+  color: var(--mag-text) !important;
+  background: var(--mag-input) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.055),
+    0 6px 18px rgba(5, 10, 20, 0.08) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-choiceText > table[rules="all"][cellpadding] :is(
+  tbody,
+  tr
+) {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-choiceText > table[rules="all"][cellpadding] td {
+  box-sizing: border-box !important;
+  min-width: 42px !important;
+  height: 44px !important;
+  padding: 7px 9px !important;
+  color: var(--mag-text) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  line-height: 1.3 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-choiceText > table[rules="all"][cellpadding] tr:not(:last-child) > td {
+  border-bottom: 1px solid var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-choiceText > table[rules="all"][cellpadding] td:not(:last-child) {
+  border-right: 1px solid var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-choiceText > table[rules="all"][cellpadding] td[bgcolor] {
+  min-width: 58px !important;
+  color: var(--mag-accent-strong) !important;
+  background: var(--mag-accent-soft) !important;
+  font-weight: 650 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-choiceText > table[rules="all"][cellpadding] td[bgcolor] :is(
+  .MathJax,
+  mjx-container,
+  .mq-math-mode,
+  .katex
+) {
+  color: var(--mag-accent-strong) !important;
+}
+
+/* Explanation tables are read-only result surfaces, so give their existing
+   grid a little depth against the surrounding explanation panel. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-explanation > table[rules="all"][cellpadding] {
+  box-shadow:
+    inset 0 1px var(--mag-line-bright),
+    var(--mag-shadow-small) !important;
+}
+
+@media (max-width: 760px) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionText table[rules="all"][cellpadding]:not(:has(.matheditor-wrapper-answer)) td {
+    height: 42px !important;
+    padding: 6px 4px !important;
+    font-size: 13px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-choiceText > table[rules="all"][cellpadding] td {
+    min-width: 32px !important;
+    height: 40px !important;
+    padding: 6px 4px !important;
+    font-size: 13px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-choiceText > table[rules="all"][cellpadding] td[bgcolor] {
+    min-width: 44px !important;
+  }
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionFreeResponseTextbox {
+  color: var(--mag-text) !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 9px !important;
+  background: var(--mag-input) !important;
+}
+
+/* Task actions are legacy divs rather than native buttons. Multistep tasks use
+   .submitButton, while question widgets and review panels use their own names. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .question :is(.button, .buttonDisabled),
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-submitButton,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #steps > .step > .question .submitButton {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  min-width: 108px !important;
+  min-height: 38px !important;
+  padding: 9px 18px !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+  border-radius: 12px !important;
+  color: #fff !important;
+  background: var(--mag-primary-gradient) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.25),
+    0 6px 16px var(--mag-primary-shadow) !important;
+  font-weight: 650 !important;
+  line-height: 1.2 !important;
+  cursor: pointer !important;
+  transition:
+    color 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .question .button:hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-submitButton:not(.disabledButton):hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #steps > .step > .question .submitButton:not(.disabledButton):hover {
+  border-color: rgba(255, 255, 255, 0.34) !important;
+  background: var(--mag-primary-gradient-hover) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.3),
+    0 8px 20px var(--mag-primary-shadow-hover) !important;
+  text-decoration: none !important;
+  transform: translateY(-1px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.questionWidget-submitButton:not(.disabledButton),
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.questionWidget-submitButton.enabledButton,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #steps > .step > .question div.submitButton:not(.disabledButton),
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #steps > .step > .question div.submitButton.enabledButton {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  opacity: 1 !important;
+  text-shadow: 0 1px 1px rgba(0, 45, 110, 0.2) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .question .buttonDisabled,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .question .buttonDisabled:hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-submitButton.disabledButton,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-submitButton.disabledButton:hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #steps > .step > .question .submitButton.disabledButton,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #steps > .step > .question .submitButton.disabledButton:hover {
+  color: var(--mag-text-muted) !important;
+  -webkit-text-fill-color: var(--mag-text-muted) !important;
+  border-color: var(--mag-line) !important;
+  background: rgba(9, 14, 24, 0.32) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.055) !important;
+  cursor: default !important;
+  filter: none !important;
+  opacity: 0.82 !important;
+  transform: none !important;
+}
+
+/* A dark translucent fill reads as a heavy gray slab over the light task
+   canvas. Keep the disabled action visible, but let it recede into the glass. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="light"] .question .buttonDisabled,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="light"] .question .buttonDisabled:hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="light"] .questionWidget-submitButton.disabledButton,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="light"] .questionWidget-submitButton.disabledButton:hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="light"] #steps > .step > .question .submitButton.disabledButton,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="light"] #steps > .step > .question .submitButton.disabledButton:hover {
+  color: #98a3b6 !important;
+  -webkit-text-fill-color: #98a3b6 !important;
+  border-color: rgba(63, 79, 111, 0.1) !important;
+  background: rgba(100, 116, 148, 0.075) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.48) !important;
+  opacity: 1 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .answerDetails {
+  min-height: 28px;
+  margin-top: 8px !important;
+  padding: 14px 20px !important;
+  color: var(--mag-text-muted) !important;
+  border-top: 1px solid var(--mag-line) !important;
+  background: rgba(100, 116, 148, 0.04) !important;
+  line-height: 28px !important;
+}

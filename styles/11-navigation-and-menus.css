@@ -1,0 +1,528 @@
+/* Math Academy sometimes uses a table only to align the toolbar controls. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header :is(table, tbody, tr, td) {
+  color: inherit !important;
+  border-color: transparent !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Lessons and reviews use #progressBar while timed tests use
+   #questionNavigator. Flatten the legacy lesson header and give both routes
+   the same open navigator composition, control size, and readable measure. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header:has(#progressBar) {
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 30px 0 38px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  box-sizing: border-box !important;
+  width: min(880px, calc(100vw - 108px)) !important;
+  max-width: 100% !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  line-height: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Keep elapsed time in its own quiet corner of the lesson toolbar so the
+   sequence of progress steps remains visually uninterrupted. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header > #ma-task-live-timer:not([hidden]) {
+  position: absolute !important;
+  z-index: 2 !important;
+  top: 50% !important;
+  left: max(16px, env(safe-area-inset-left)) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  box-sizing: border-box !important;
+  min-width: 66px !important;
+  height: 28px !important;
+  margin: 0 !important;
+  padding: 0 10px !important;
+  color: var(--mag-text-muted) !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 999px !important;
+  background: rgba(253, 254, 255, 0.76) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.78),
+    0 4px 14px rgba(45, 63, 83, 0.07) !important;
+  backdrop-filter: blur(18px) saturate(125%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(125%) !important;
+  transform: translateY(-50%) !important;
+  -webkit-text-fill-color: var(--mag-text-muted) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  font-variant-numeric: tabular-nums;
+  line-height: 1 !important;
+  letter-spacing: 0.02em !important;
+  white-space: nowrap !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #header > #ma-task-live-timer:not([hidden]) {
+  color: var(--mag-text-soft) !important;
+  border-color: rgba(155, 216, 255, 0.18) !important;
+  background: rgba(19, 28, 43, 0.7) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.09),
+    0 5px 16px rgba(0, 0, 0, 0.18) !important;
+  -webkit-text-fill-color: var(--mag-text-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header > #ma-task-live-timer .ma-task-live-timer-icon {
+  position: relative !important;
+  display: inline-block !important;
+  box-sizing: border-box !important;
+  width: 12px !important;
+  height: 12px !important;
+  border: 1.35px solid currentColor !important;
+  border-radius: 50% !important;
+  opacity: 0.78;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header > #ma-task-live-timer .ma-task-live-timer-icon::before,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header > #ma-task-live-timer .ma-task-live-timer-icon::after {
+  position: absolute;
+  left: 50%;
+  display: block;
+  border-radius: 999px;
+  content: "";
+  background: currentColor;
+  transform-origin: 0 50%;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header > #ma-task-live-timer .ma-task-live-timer-icon::before {
+  top: 2px;
+  width: 1.25px;
+  height: 3.5px;
+  transform: translateX(-0.625px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header > #ma-task-live-timer .ma-task-live-timer-icon::after {
+  top: 5.25px;
+  width: 3px;
+  height: 1.25px;
+  transform: translateY(-0.625px) rotate(28deg);
+}
+
+@media (min-width: 701px) and (max-width: 1096px) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar {
+    width: calc(100% - 216px) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header:has(#progressBar) {
+    box-sizing: border-box !important;
+    padding: 16px 14px 24px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar {
+    width: 100% !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header > #ma-task-live-timer:not([hidden]) {
+    top: 16px !important;
+    left: max(14px, env(safe-area-inset-left)) !important;
+    min-width: 68px !important;
+    padding-inline: 8px !important;
+    transform: none !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header:has(> #ma-task-live-timer:not([hidden])) #progressBar {
+    margin-top: 40px !important;
+  }
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar .stepButton {
+  position: relative !important;
+  flex: 1 1 0 !important;
+  box-sizing: border-box !important;
+  min-width: 15px !important;
+  max-width: 100px !important;
+  height: 6px !important;
+  margin: 0 2px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 999px !important;
+  background: var(--mag-input) !important;
+  box-shadow: inset 0 1px 2px rgba(8, 14, 25, 0.08) !important;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease,
+    opacity 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar .stepButton:not(.current):hover {
+  border-color: rgba(10, 116, 217, 0.32) !important;
+  background: var(--mag-input-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar .stepButton.visited {
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  background: var(--mag-primary-gradient) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar .stepButton.visited:not(.current):hover {
+  border-color: rgba(255, 255, 255, 0.34) !important;
+  background: var(--mag-primary-gradient-hover) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.24), 0 0 0 2px var(--mag-accent-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar .stepButton.current {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  background: var(--mag-primary-gradient) !important;
+  box-shadow: 0 0 0 2px var(--mag-accent-soft), 0 3px 8px var(--mag-primary-shadow) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #progressBar {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #progressBar .stepButton {
+  background: var(--mag-input) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #progressBar .stepButton.visited {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  background: var(--mag-primary-gradient) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #progressBar .stepButton.current {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  background: var(--mag-primary-gradient) !important;
+}
+
+/* Legacy task navigation uses image-backed click targets. Give their hit areas
+   a restrained toolbar treatment instead of opaque white square buttons. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header :is(
+  button,
+  [role="button"],
+  a:has(img),
+  [onclick]:has(img),
+  [id*="previous" i],
+  [id*="next" i],
+  [id*="arrow" i],
+  [class*="previous" i],
+  [class*="next" i],
+  [class*="arrow" i]
+) {
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.12) !important;
+  filter: none !important;
+  transition:
+    color 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header :is(
+  button,
+  [role="button"],
+  a:has(img),
+  [onclick]:has(img),
+  [id*="previous" i],
+  [id*="next" i],
+  [id*="arrow" i],
+  [class*="previous" i],
+  [class*="next" i],
+  [class*="arrow" i]
+):hover {
+  color: var(--mag-text) !important;
+  border-color: rgba(116, 199, 255, 0.3) !important;
+  background: var(--mag-accent-soft) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.12),
+    0 6px 16px rgba(0, 0, 0, 0.16) !important;
+  transform: translateY(-1px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header img {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: brightness(0) invert(1) opacity(0.78) !important;
+  mix-blend-mode: normal;
+}
+
+/* Replace the legacy raster close glyph with a theme-colored SVG mask. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header #exitButton {
+  display: grid !important;
+  place-items: center !important;
+  box-sizing: border-box !important;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  color: var(--mag-text-muted) !important;
+  border: 1px solid transparent !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  filter: none !important;
+  cursor: pointer !important;
+  transition:
+    color 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease !important;
+}
+
+/* On task pages the exit control is itself a replaced <img>, so pseudo-elements
+   cannot render. Replace its source content directly with the extension SVG. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header img#exitButton {
+  display: block !important;
+  padding: 9px !important;
+  content: var(--mag-exit-icon) !important;
+  object-fit: contain !important;
+  filter: opacity(0.62) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #header img#exitButton {
+  filter: invert(1) opacity(0.74) !important;
+}
+
+/* Progress navigation is rendered as empty legacy divs. Supply crisp SVG
+   chevrons while preserving the site's enabled/disabled class switching. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar :is(
+  #progressBarPreviousButton,
+  #progressBarNextButton
+) {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 38px !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  width: 38px !important;
+  height: 38px !important;
+  padding: 0 !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 11px !important;
+  background: var(--mag-input) !important;
+  background-image: none !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.11), var(--mag-shadow-small) !important;
+  transition:
+    color 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar #progressBarPreviousButton {
+  margin-right: 14px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar #progressBarNextButton {
+  margin-left: 14px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar :is(
+  #progressBarPreviousButton,
+  #progressBarNextButton
+)::before {
+  display: block;
+  width: 10px;
+  height: 17px;
+  background: var(--mag-progress-chevron-icon) center / contain no-repeat;
+  content: "";
+  filter: opacity(0.68);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #progressBar :is(
+  #progressBarPreviousButton,
+  #progressBarNextButton
+)::before {
+  filter: invert(1) opacity(0.78);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar #progressBarPreviousButton::before {
+  transform: rotate(180deg);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar :is(
+  #progressBarPreviousButton.progressBarPreviousButtonEnabled,
+  #progressBarNextButton.progressBarNextButtonEnabled
+) {
+  cursor: pointer !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar :is(
+  #progressBarPreviousButton.progressBarPreviousButtonEnabled,
+  #progressBarNextButton.progressBarNextButtonEnabled
+):hover {
+  color: var(--mag-text) !important;
+  border-color: rgba(32, 142, 235, 0.3) !important;
+  background: var(--mag-input-hover) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.11), var(--mag-shadow-small) !important;
+  transform: translateY(-1px) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressBar :is(
+  #progressBarPreviousButton.progressBarPreviousButtonDisabled,
+  #progressBarNextButton.progressBarNextButtonDisabled
+) {
+  color: var(--mag-text-muted) !important;
+  border-color: var(--mag-line) !important;
+  background: var(--mag-input) !important;
+  box-shadow: none !important;
+  cursor: default !important;
+  opacity: 0.38 !important;
+  transform: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header #exitButton > * {
+  visibility: hidden !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header #exitButton::before {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  content: "";
+  -webkit-mask: var(--mag-exit-icon) center / contain no-repeat;
+  mask: var(--mag-exit-icon) center / contain no-repeat;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header #exitButton:hover {
+  color: var(--mag-text) !important;
+  border-color: var(--mag-line-bright) !important;
+  background: rgba(255, 255, 255, 0.075) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.09),
+    0 5px 14px rgba(0, 0, 0, 0.14) !important;
+  transform: none !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(.topNavLink, a.headerLink, a.headerLink:visited) {
+  color: var(--mag-text-soft) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.015em;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+html[data-ma-glass-enabled="true"] :is(.topNavLink, a.headerLink):hover {
+  color: var(--mag-accent) !important;
+  text-decoration: none !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(#mobileMenu, #coursesMenu, #contentMenu, #userMenu, #adminMenu) {
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: var(--mag-radius) !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow: var(--mag-shadow) !important;
+  backdrop-filter: var(--mag-material-raised) !important;
+  -webkit-backdrop-filter: var(--mag-material-raised) !important;
+}
+
+html[data-ma-glass-enabled="true"] #userHeader {
+  color: var(--mag-accent-strong) !important;
+  background: var(--mag-accent-soft) !important;
+  box-shadow: inset 0 0 0 1px var(--mag-line-bright);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="topic"] #userHeader {
+  display: grid !important;
+  place-items: center !important;
+  margin-top: 0 !important;
+  margin-right: 0 !important;
+  line-height: normal !important;
+}
+
+html[data-ma-glass-enabled="true"] #userMenu {
+  overflow: hidden;
+  padding-top: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"] #userMenu-info {
+  border-bottom: 1px solid var(--mag-line) !important;
+  background: linear-gradient(135deg, var(--mag-accent-soft), transparent 72%) !important;
+}
+
+html[data-ma-glass-enabled="true"] #userMenu-name {
+  color: var(--mag-text) !important;
+}
+
+html[data-ma-glass-enabled="true"] #userMenu-username {
+  color: var(--mag-text-muted) !important;
+}
+
+html[data-ma-glass-enabled="true"] #userMenu .headerMenuItem {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  color: var(--mag-text-soft) !important;
+  background: transparent !important;
+  transition: color 150ms ease;
+}
+
+html[data-ma-glass-enabled="true"] #userMenu .headerMenuItem::before {
+  position: absolute;
+  z-index: -1;
+  inset: 3px 7px;
+  border-radius: 10px;
+  background: var(--mag-menu-item-hover);
+  box-shadow: inset 0 0 0 1px var(--mag-menu-item-hover-edge);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.985);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+html[data-ma-glass-enabled="true"] #userMenu .headerMenuItem:hover {
+  color: var(--mag-accent-ink) !important;
+}
+
+html[data-ma-glass-enabled="true"] #userMenu .headerMenuItem:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+html[data-ma-glass-enabled="true"] #userMenu .headerMenuItem:active::before {
+  background: var(--mag-accent-soft);
+  transform: scale(0.99);
+}
+
+html[data-ma-glass-enabled="true"] #userMenu .headerMenuSeparator {
+  border-color: var(--mag-line) !important;
+}
+

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="rim" x1="10" y1="5" x2="51" y2="58" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB1B9"/><stop offset=".45" stop-color="#FF214B"/><stop offset="1" stop-color="#7E082B"/></linearGradient>
+    <linearGradient id="gem" x1="20" y1="12" x2="44" y2="54" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5268"/><stop offset=".48" stop-color="#E00035"/><stop offset="1" stop-color="#8A062B"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="2" stdDeviation="2.3" flood-color="#28000C" flood-opacity=".6"/></filter>
+  </defs>
+  <path d="M18 5h28l13 16-6 26-21 13L11 47 5 21 18 5Z" fill="#54051C" stroke="url(#rim)" stroke-width="2" filter="url(#shadow)"/>
+  <path d="m20 10 22 1 11 13-5 20-16 10-16-10-5-20 9-14Z" fill="url(#gem)"/>
+  <path d="m11 24 14 4-9 16m37-20-14 4 9 16M20 10l5 18 7-12 7 12 3-17M16 44l16-16 16 16-16 10-16-10Z" fill="#FF7182" opacity=".38"/>
+  <path d="M15 22c4-6 10-9 17-9" fill="none" stroke="#FFD4D9" stroke-width="2" stroke-linecap="round" opacity=".78"/>
+  <path d="m32 16 7 12-7 19-7-19 7-12Z" fill="#F20D41" opacity=".75"/>
+</svg>

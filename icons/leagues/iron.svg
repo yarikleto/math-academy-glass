@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="rim" x1="9" y1="7" x2="55" y2="57" gradientUnits="userSpaceOnUse"><stop stop-color="#DCE4E8"/><stop offset=".42" stop-color="#78858E"/><stop offset=".75" stop-color="#323C43"/><stop offset="1" stop-color="#AAB5BA"/></linearGradient>
+    <linearGradient id="metal" x1="18" y1="12" x2="46" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#AAB6BB"/><stop offset=".5" stop-color="#647178"/><stop offset="1" stop-color="#303A40"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="2" stdDeviation="2.3" flood-color="#06090A" flood-opacity=".62"/></filter>
+  </defs>
+  <path d="m19 4 26 2 15 21-7 25-23 8L8 47 5 21 19 4Z" fill="#252E33" stroke="url(#rim)" stroke-width="2.5" filter="url(#shadow)"/>
+  <path d="m21 10 20 1 12 17-5 19-18 7-17-10-2-21 10-13Z" fill="url(#metal)"/>
+  <path d="m24 18 17 2 7 14-9 14-17-2-7-14 9-14Z" fill="#313B41" stroke="#BAC3C7" stroke-width="1.4"/>
+  <path d="m27 24 10 1 5 9-6 8-10-1-5-8 6-9Z" fill="#7D898F"/>
+  <circle cx="21" cy="15" r="2" fill="#D5DDE0"/><circle cx="48" cy="23" r="2" fill="#D5DDE0"/><circle cx="45" cy="46" r="2" fill="#D5DDE0"/><circle cx="17" cy="43" r="2" fill="#D5DDE0"/>
+  <path d="M15 20c5-6 12-8 19-8" fill="none" stroke="#EFF3F4" stroke-width="2" stroke-linecap="round" opacity=".58"/>
+</svg>

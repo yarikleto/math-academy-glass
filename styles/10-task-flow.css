@@ -1,0 +1,890 @@
+/* Task/review navigation toolbar. Keep the site's geometry and controls while
+   replacing its opaque white strip with a full-width macOS glass material. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #header {
+  color: var(--mag-text-soft) !important;
+  border-top: 1px solid var(--mag-line-bright) !important;
+  border-bottom: 1px solid var(--mag-line) !important;
+  background:
+    linear-gradient(180deg, var(--mag-glass-hover), var(--mag-glass)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.12),
+    0 12px 34px rgba(12, 20, 38, 0.16) !important;
+  backdrop-filter: var(--mag-material-surface) !important;
+  -webkit-backdrop-filter: var(--mag-material-surface) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #header {
+  background:
+    radial-gradient(circle at 50% -180%, rgba(116, 199, 255, 0.25), transparent 62%),
+    linear-gradient(180deg, rgba(37, 46, 64, 0.84), rgba(21, 28, 42, 0.74)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.1),
+    0 14px 38px rgba(0, 0, 0, 0.28) !important;
+}
+
+/* A test's introduction uses the same `#header` ID as the in-task toolbar,
+   but it is simply the quiz title. Keep the typography clean and unboxed. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"]:has(#startButton) #header {
+  color: var(--mag-text) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif !important;
+  font-size: clamp(40px, 3.5vw, 52px) !important;
+  font-weight: 720 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.045em !important;
+  text-indent: 0 !important;
+}
+
+/* The test launch control is an anchor, not a native button. Give it the
+   same primary action treatment and explicitly preserve its white label. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] a#startButton,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] a#startButton:visited {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  width: 152px !important;
+  height: 50px !important;
+  min-width: 152px !important;
+  min-height: 50px !important;
+  padding: 0 24px !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 14px !important;
+  background: var(--mag-primary-gradient) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.25),
+    0 6px 16px var(--mag-primary-shadow) !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 680 !important;
+  letter-spacing: 0.035em !important;
+  text-decoration: none !important;
+  transition:
+    border-color 140ms ease,
+    background 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] a#startButton:hover {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.42) !important;
+  background: var(--mag-primary-gradient-hover) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.3),
+    0 8px 20px var(--mag-primary-shadow-hover) !important;
+  text-decoration: none !important;
+  transform: translateY(-1px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] a#startButton:focus-visible {
+  outline: 3px solid var(--mag-focus-ring) !important;
+  outline-offset: 3px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] a#startButton:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Review steps use a legacy div for their final Continue action. Keep it
+   prominent, but express the accent through a translucent glass material
+   rather than the site's flat blue pill. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .continueButton {
+  box-sizing: border-box !important;
+  width: 118px !important;
+  min-width: 118px !important;
+  min-height: 42px !important;
+  margin-top: 38px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding: 10px 22px !important;
+  color: var(--mag-accent-strong) !important;
+  border: 1px solid rgba(32, 142, 235, 0.34) !important;
+  border-radius: 14px !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.32), transparent 68%),
+    var(--mag-accent-soft) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.5),
+    0 8px 22px var(--mag-primary-shadow) !important;
+  backdrop-filter: var(--mag-material-control) !important;
+  -webkit-backdrop-filter: var(--mag-material-control) !important;
+  font-size: 14px !important;
+  font-weight: 680 !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  text-shadow: none !important;
+  transition:
+    color 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .continueButton:hover {
+  color: var(--mag-accent-strong) !important;
+  border-color: rgba(32, 142, 235, 0.5) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 68%),
+    rgba(101, 187, 255, 0.2) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.58),
+    0 10px 26px var(--mag-primary-shadow-hover) !important;
+  transform: translateY(-1px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .continueButton:active {
+  box-shadow:
+    inset 0 1px 3px rgba(7, 72, 150, 0.12),
+    0 4px 12px var(--mag-primary-shadow) !important;
+  transform: translateY(0) scale(0.985);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .continueButton:focus-visible {
+  outline: 3px solid var(--mag-focus-ring) !important;
+  outline-offset: 3px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] .continueButton {
+  border-color: rgba(155, 220, 255, 0.32) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 70%),
+    var(--mag-accent-soft) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.12),
+    0 9px 24px rgba(0, 0, 0, 0.24),
+    0 0 18px rgba(101, 187, 255, 0.07) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] .continueButton:hover {
+  border-color: rgba(155, 220, 255, 0.48) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 70%),
+    rgba(101, 187, 255, 0.23) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.16),
+    0 11px 28px rgba(0, 0, 0, 0.28),
+    0 0 22px rgba(101, 187, 255, 0.1) !important;
+}
+
+/* A completed task is a milestone, not another form state. The controller
+   identifies Math Academy's completion and scored-result copy so these rules
+   remain independent of opaque, route-specific class names. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion="frame"] {
+  position: relative !important;
+  inset: auto !important;
+  isolation: isolate;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: min(calc(100% - 40px), 780px) !important;
+  max-width: 780px !important;
+  min-height: 0 !important;
+  margin: clamp(38px, 8vh, 82px) auto 40px !important;
+  padding: clamp(42px, 6vw, 64px) clamp(28px, 6vw, 72px) 48px !important;
+  overflow: hidden !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid rgba(255, 255, 255, 0.92) !important;
+  border-radius: 30px !important;
+  background:
+    radial-gradient(circle at 10% 19%, rgba(255, 196, 0, 0.78) 0 2px, transparent 3px),
+    radial-gradient(circle at 89% 22%, rgba(10, 116, 217, 0.55) 0 2px, transparent 3px),
+    radial-gradient(circle at 17% 74%, rgba(24, 121, 78, 0.48) 0 2px, transparent 3px),
+    radial-gradient(circle at 84% 78%, rgba(255, 196, 0, 0.54) 0 2px, transparent 3px),
+    radial-gradient(circle at 50% -16%, rgba(255, 204, 49, 0.23), transparent 46%),
+    radial-gradient(circle at 100% 0%, rgba(10, 116, 217, 0.12), transparent 38%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(250, 252, 255, 0.78)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.94),
+    0 30px 80px rgba(44, 67, 106, 0.13),
+    0 4px 16px rgba(44, 67, 106, 0.06) !important;
+  backdrop-filter: var(--mag-material-raised) !important;
+  -webkit-backdrop-filter: var(--mag-material-raised) !important;
+  text-align: center !important;
+  animation: maTaskCompletionArrive 480ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"][data-ma-glass-task-state="complete"] [data-ma-task-completion="frame"] {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  background:
+    radial-gradient(circle at 10% 19%, rgba(255, 201, 40, 0.82) 0 2px, transparent 3px),
+    radial-gradient(circle at 89% 22%, rgba(116, 199, 255, 0.72) 0 2px, transparent 3px),
+    radial-gradient(circle at 17% 74%, rgba(114, 214, 164, 0.62) 0 2px, transparent 3px),
+    radial-gradient(circle at 84% 78%, rgba(255, 201, 40, 0.66) 0 2px, transparent 3px),
+    radial-gradient(circle at 50% -16%, rgba(255, 196, 28, 0.16), transparent 46%),
+    radial-gradient(circle at 100% 0%, rgba(101, 187, 255, 0.16), transparent 38%),
+    linear-gradient(145deg, rgba(38, 46, 63, 0.82), rgba(18, 24, 37, 0.7)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.11),
+    0 34px 90px rgba(0, 0, 0, 0.4),
+    0 4px 18px rgba(0, 0, 0, 0.28),
+    0 0 54px rgba(255, 196, 28, 0.045) !important;
+}
+
+/* Scored results use a quieter blue material so the transient fireworks and
+   small XP accent provide the celebration without competing color blocks. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion][data-ma-task-result="score"] {
+  background:
+    radial-gradient(circle at 50% -8%, rgba(52, 147, 255, 0.2), transparent 46%),
+    radial-gradient(circle at 100% 12%, rgba(47, 149, 255, 0.1), transparent 36%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(244, 249, 255, 0.78)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.92),
+    0 30px 80px rgba(43, 70, 112, 0.14),
+    0 4px 16px rgba(43, 70, 112, 0.06) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"][data-ma-glass-task-state="complete"] [data-ma-task-completion][data-ma-task-result="score"] {
+  background:
+    radial-gradient(circle at 50% -8%, rgba(70, 158, 255, 0.2), transparent 46%),
+    radial-gradient(circle at 100% 12%, rgba(38, 125, 230, 0.12), transparent 36%),
+    linear-gradient(145deg, rgba(35, 44, 62, 0.8), rgba(16, 22, 35, 0.7)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.11),
+    0 34px 90px rgba(0, 0, 0, 0.4),
+    0 4px 18px rgba(0, 0, 0, 0.26),
+    0 0 48px rgba(101, 187, 255, 0.055) !important;
+}
+
+/* One-shot fireworks sit behind the content and never capture interaction. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] #ma-task-completion-fireworks:not([hidden]) {
+  position: absolute !important;
+  z-index: 0 !important;
+  inset: 0 !important;
+  display: block !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  contain: layout paint;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] .ma-task-firework {
+  --mag-firework-distance: -70px;
+  position: absolute;
+  display: block;
+  width: 8px;
+  height: 8px;
+  color: var(--mag-firework-gold);
+  pointer-events: none;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] .ma-task-firework-1 {
+  top: 27%;
+  left: 16%;
+  --mag-firework-distance: -72px;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] .ma-task-firework-2 {
+  top: 19%;
+  right: 14%;
+  --mag-firework-distance: -64px;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] .ma-task-firework-3 {
+  right: 18%;
+  bottom: 22%;
+  --mag-firework-distance: -58px;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] .ma-task-firework::after {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  content: "";
+  background: currentColor;
+  box-shadow: 0 0 16px currentColor;
+  opacity: 0;
+  animation: maTaskFireworkFlash 620ms var(--mag-firework-delay) ease-out both;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] .ma-task-firework i {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  display: block !important;
+  width: 4px !important;
+  height: 13px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  color: var(--mag-firework-gold) !important;
+  background: currentColor !important;
+  box-shadow: 0 0 9px currentColor !important;
+  opacity: 0;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--mag-firework-angle))
+    translateY(0)
+    scaleY(0.3);
+  transform-origin: 50% 50%;
+  animation:
+    maTaskFireworkParticle 980ms var(--mag-firework-particle-delay)
+    cubic-bezier(0.15, 0.72, 0.25, 1) both;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] .ma-task-firework i:nth-child(4n + 2) {
+  color: var(--mag-firework-blue) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] .ma-task-firework i:nth-child(4n + 3) {
+  color: var(--mag-firework-green) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] .ma-task-firework i:nth-child(4n + 4) {
+  color: var(--mag-firework-pink) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"] {
+  position: relative !important;
+  z-index: 1;
+  display: block !important;
+  box-sizing: border-box !important;
+  max-width: 650px !important;
+  margin: 0 auto 28px !important;
+  padding: 0 !important;
+  color: var(--mag-text) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif !important;
+  font-size: clamp(34px, 4.2vw, 48px) !important;
+  font-weight: 760 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.045em !important;
+  text-align: center !important;
+  text-wrap: balance;
+}
+
+/* A scored test carries substantially more copy than the short lesson and
+   review completion titles. Keep it in the same hierarchy without letting it
+   dominate the result card. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"][data-ma-task-result="score"] {
+  font-size: clamp(28px, 3.2vw, 36px) !important;
+  line-height: 1.14 !important;
+  letter-spacing: -0.035em !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"]::before {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 28px;
+  color: #fff;
+  border: 7px solid rgba(255, 255, 255, 0.76);
+  border-radius: 50%;
+  content: "✓";
+  background:
+    radial-gradient(circle at 36% 28%, #8be3b8, #28a66d 58%, #18794e 100%);
+  background-clip: border-box !important;
+  background-origin: border-box !important;
+  box-shadow:
+    0 0 0 1px rgba(217, 157, 0, 0.4),
+    0 0 0 8px var(--mag-xp-soft),
+    0 16px 34px var(--mag-xp-glow),
+    inset 0 1px 4px rgba(255, 255, 255, 0.6);
+  -webkit-text-fill-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 43px;
+  font-weight: 780;
+  line-height: 1;
+  letter-spacing: 0;
+  text-shadow: 0 2px 5px rgba(11, 89, 55, 0.22);
+  animation: maTaskCompletionMedal 560ms 110ms cubic-bezier(0.2, 1.25, 0.3, 1) both;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"][data-ma-task-result="score"]::before {
+  content: attr(data-ma-task-score) "%";
+  font-size: 25px;
+  letter-spacing: -0.045em;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"]::before {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(255, 201, 40, 0.42),
+    0 0 0 8px var(--mag-xp-soft),
+    0 18px 38px rgba(0, 0, 0, 0.34),
+    0 0 34px var(--mag-xp-glow),
+    inset 0 1px 4px rgba(255, 255, 255, 0.42);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"][data-ma-task-result="score"]::before {
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.62), transparent 28%),
+    linear-gradient(145deg, rgba(79, 177, 255, 0.94), rgba(24, 111, 211, 0.94));
+  box-shadow:
+    0 0 0 8px rgba(10, 116, 217, 0.075),
+    0 16px 34px rgba(8, 113, 221, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.56);
+  text-shadow: 0 2px 5px rgba(5, 67, 139, 0.24);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"][data-ma-task-result="score"]::before {
+  border-color: rgba(174, 216, 255, 0.46);
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.34), transparent 28%),
+    linear-gradient(145deg, rgba(76, 168, 255, 0.84), rgba(26, 94, 183, 0.78));
+  box-shadow:
+    0 0 0 8px rgba(101, 187, 255, 0.09),
+    0 18px 38px rgba(0, 0, 0, 0.3),
+    0 0 28px rgba(101, 187, 255, 0.13),
+    inset 0 1px 2px rgba(255, 255, 255, 0.34);
+}
+
+/* A perfect score is a completion state, so it uses the same semantic green
+   family as completed tasks while non-perfect scores retain the blue result
+   treatment above. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"][data-ma-task-result="score"][data-ma-task-score="100"]::before {
+  border-color: rgba(7, 122, 94, 0.32);
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.58), transparent 28%),
+    linear-gradient(145deg, #3bc48c, #18794e);
+  box-shadow:
+    0 0 0 8px var(--mag-success-soft),
+    0 16px 34px rgba(7, 122, 94, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.54);
+  text-shadow: 0 2px 5px rgba(11, 89, 55, 0.24);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"][data-ma-task-result="score"][data-ma-task-score="100"]::before {
+  border-color: var(--mag-success-line);
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.34), transparent 28%),
+    linear-gradient(145deg, #54d6a4, #18795a);
+  box-shadow:
+    0 0 0 8px var(--mag-success-soft),
+    0 18px 38px rgba(0, 0, 0, 0.3),
+    0 0 28px rgba(70, 211, 161, 0.13),
+    inset 0 1px 2px rgba(255, 255, 255, 0.34);
+  text-shadow: 0 2px 5px rgba(3, 52, 37, 0.34);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="reward"] {
+  position: relative !important;
+  z-index: 1;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: min(100%, 340px) !important;
+  min-height: 168px !important;
+  margin: 0 auto !important;
+  padding: 23px 24px 30px !important;
+  overflow: hidden !important;
+  color: transparent !important;
+  border: 1px solid rgba(217, 157, 0, 0.28) !important;
+  border-radius: 20px !important;
+  background:
+    linear-gradient(90deg, var(--mag-xp), var(--mag-xp-bright)) left bottom / var(--mag-task-xp-progress) 7px no-repeat,
+    linear-gradient(var(--mag-xp-track), var(--mag-xp-track)) left bottom / 100% 7px no-repeat,
+    radial-gradient(circle at 50% 0%, rgba(255, 212, 59, 0.22), transparent 72%),
+    linear-gradient(145deg, rgba(255, 251, 235, 0.9), rgba(255, 255, 255, 0.76)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.8),
+    0 12px 30px rgba(190, 137, 0, 0.12) !important;
+  -webkit-text-fill-color: transparent !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  animation: maTaskCompletionReward 440ms 210ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="reward"]::before {
+  display: block;
+  color: var(--mag-warning);
+  content: "+" attr(data-ma-task-xp-earned) " XP";
+  -webkit-text-fill-color: var(--mag-warning);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+  font-size: 42px;
+  font-weight: 780;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-shadow: 0 5px 18px var(--mag-xp-glow);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="reward"]::after {
+  display: block;
+  margin-top: 8px;
+  color: var(--mag-text-muted);
+  content: attr(data-ma-task-xp-earned) " of " attr(data-ma-task-xp-total) " available XP";
+  -webkit-text-fill-color: var(--mag-text-muted);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+/* The timer is quiet result metadata inside the existing XP surface. It is
+   deliberately not another glass card, so XP remains the semantic focus. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] #ma-task-elapsed-time:not([hidden]) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  min-height: 20px !important;
+  margin: 12px auto 0 !important;
+  padding: 0 !important;
+  color: var(--mag-text-muted) !important;
+  -webkit-text-fill-color: var(--mag-text-muted) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 13px !important;
+  font-weight: 610 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.01em !important;
+  white-space: nowrap !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] #ma-task-elapsed-time .ma-task-duration-icon {
+  position: relative !important;
+  display: inline-block !important;
+  box-sizing: border-box !important;
+  width: 14px !important;
+  height: 14px !important;
+  border: 1.5px solid currentColor !important;
+  border-radius: 50% !important;
+  opacity: 0.82;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] #ma-task-elapsed-time .ma-task-duration-icon::before,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] #ma-task-elapsed-time .ma-task-duration-icon::after {
+  position: absolute;
+  left: 50%;
+  display: block;
+  border-radius: 999px;
+  content: "";
+  background: currentColor;
+  transform-origin: 0 50%;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] #ma-task-elapsed-time .ma-task-duration-icon::before {
+  top: 2.5px;
+  width: 1.5px;
+  height: 4px;
+  transform: translateX(-0.75px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] #ma-task-elapsed-time .ma-task-duration-icon::after {
+  top: 6px;
+  width: 3.5px;
+  height: 1.5px;
+  transform: translateY(-0.75px) rotate(28deg);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] #ma-task-elapsed-time .ma-task-duration-value {
+  color: var(--mag-text) !important;
+  -webkit-text-fill-color: var(--mag-text) !important;
+  font: inherit !important;
+  font-variant-numeric: tabular-nums;
+  font-weight: 720 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="reward"][data-ma-task-reward-kind="bonus"]::after {
+  content: attr(data-ma-task-xp-total) " XP + " attr(data-ma-task-xp-bonus) " accuracy bonus";
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="reward"] {
+  border-color: rgba(255, 201, 40, 0.24) !important;
+  background:
+    linear-gradient(90deg, var(--mag-xp), var(--mag-xp-bright)) left bottom / var(--mag-task-xp-progress) 7px no-repeat,
+    linear-gradient(var(--mag-xp-track), var(--mag-xp-track)) left bottom / 100% 7px no-repeat,
+    radial-gradient(circle at 50% 0%, rgba(255, 201, 40, 0.13), transparent 72%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.09),
+    0 14px 34px rgba(0, 0, 0, 0.22),
+    0 0 28px rgba(255, 196, 28, 0.045) !important;
+}
+
+/* Avoid a heavy card-inside-card composition on scored results. The reward
+   remains distinct, but reads as a compact glass capsule. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion][data-ma-task-result="score"] [data-ma-task-completion-role="reward"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  padding: 14px 22px 16px !important;
+  border-color: rgba(10, 116, 217, 0.16) !important;
+  border-radius: 999px !important;
+  background:
+    linear-gradient(90deg, var(--mag-xp), var(--mag-xp-bright)) left bottom / var(--mag-task-xp-progress) 3px no-repeat,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(236, 245, 255, 0.7)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.78),
+    0 9px 24px rgba(44, 74, 119, 0.09) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion][data-ma-task-result="score"] #ma-task-elapsed-time:not([hidden]) {
+  margin: 0 !important;
+  padding-left: 12px !important;
+  border-left: 1px solid var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion][data-ma-task-result="score"] [data-ma-task-completion-role="reward"]::before {
+  display: inline-block;
+  font-size: 28px;
+  text-shadow: none;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion][data-ma-task-result="score"] [data-ma-task-completion-role="reward"]::after {
+  display: inline-block;
+  margin-top: 0;
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"][data-ma-glass-task-state="complete"] [data-ma-task-completion][data-ma-task-result="score"] [data-ma-task-completion-role="reward"] {
+  border-color: rgba(155, 220, 255, 0.18) !important;
+  background:
+    linear-gradient(90deg, var(--mag-xp), var(--mag-xp-bright)) left bottom / var(--mag-task-xp-progress) 3px no-repeat,
+    linear-gradient(135deg, rgba(94, 166, 255, 0.11), rgba(255, 255, 255, 0.045)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.1),
+    0 10px 26px rgba(0, 0, 0, 0.18) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"][data-ma-glass-task-state="complete"] [data-ma-task-completion][data-ma-task-result="score"] [data-ma-task-completion-role="reward"]::before {
+  color: #ffd681;
+  -webkit-text-fill-color: #ffd681;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="divider"] {
+  display: none !important;
+}
+
+/* Some score-summary screens retain the same final-screen controls without
+   using the completion copy that activates the celebration annotation. Keep
+   their known action control readable as well. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] #finalScreen-buttonBar[data-ma-task-completion-role="buttonbar"],
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #finalScreen #finalScreen-buttonBar {
+  position: relative !important;
+  z-index: 1;
+  display: flex !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="action"],
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] a[data-ma-task-completion-role="action"]:visited,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #finalScreen #finalScreen-doneButton,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #finalScreen #finalScreen-doneButton:visited {
+  position: relative !important;
+  inset: auto !important;
+  z-index: 1;
+  float: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  width: 220px !important;
+  min-width: 220px !important;
+  min-height: 54px !important;
+  margin: 30px auto 0 !important;
+  padding: 0 28px !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 16px !important;
+  background: var(--mag-primary-gradient) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.28),
+    0 12px 28px var(--mag-primary-shadow) !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.015em !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  text-shadow: none !important;
+  cursor: pointer;
+  transition:
+    border-color 140ms ease,
+    background 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="action"]:hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #finalScreen #finalScreen-doneButton:hover {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.44) !important;
+  background: var(--mag-primary-gradient-hover) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.34),
+    0 15px 32px var(--mag-primary-shadow-hover) !important;
+  -webkit-text-fill-color: #fff !important;
+  text-decoration: none !important;
+  transform: translateY(-2px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="action"],
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #finalScreen #finalScreen-doneButton {
+  border-color: rgba(157, 204, 255, 0.42) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.035)),
+    rgba(20, 116, 224, 0.58) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.28),
+    0 14px 34px rgba(0, 0, 0, 0.3),
+    0 0 24px rgba(101, 187, 255, 0.13) !important;
+  backdrop-filter: var(--mag-material-control) !important;
+  -webkit-backdrop-filter: var(--mag-material-control) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="action"]:hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #finalScreen #finalScreen-doneButton:hover {
+  border-color: rgba(181, 217, 255, 0.58) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.055)),
+    rgba(27, 132, 241, 0.68) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.34),
+    0 17px 38px rgba(0, 0, 0, 0.34),
+    0 0 30px rgba(101, 187, 255, 0.18) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="action"]:active,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #finalScreen #finalScreen-doneButton:active {
+  box-shadow:
+    inset 0 2px 4px rgba(4, 59, 123, 0.18),
+    0 7px 16px var(--mag-primary-shadow) !important;
+  transform: translateY(0) scale(0.985);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="action"]:focus-visible,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #finalScreen #finalScreen-doneButton:focus-visible {
+  outline: 3px solid var(--mag-focus-ring) !important;
+  outline-offset: 4px !important;
+}
+
+/* Fallback when the legacy page places the three completion elements directly
+   under body. The milestone stays centered without turning body into a card. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] body[data-ma-task-completion="page"] [data-ma-task-completion-role="title"] {
+  margin-top: clamp(44px, 10vh, 96px) !important;
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+}
+
+@keyframes maTaskCompletionArrive {
+  from { transform: translateY(16px) scale(0.985); }
+  to { transform: translateY(0) scale(1); }
+}
+
+@keyframes maTaskCompletionMedal {
+  from { opacity: 0; transform: translateY(10px) scale(0.62) rotate(-9deg); }
+  to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+}
+
+@keyframes maTaskCompletionReward {
+  from { transform: translateY(10px) scale(0.96); }
+  to { transform: translateY(0) scale(1); }
+}
+
+@keyframes maTaskFireworkFlash {
+  0%, 8% { opacity: 0; transform: scale(0.2); }
+  28% { opacity: 0.92; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2.5); }
+}
+
+@keyframes maTaskFireworkParticle {
+  0%, 8% {
+    opacity: 0;
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--mag-firework-angle))
+      translateY(0)
+      scaleY(0.3);
+  }
+  22% { opacity: 1; }
+  72% {
+    opacity: 0.96;
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--mag-firework-angle))
+      translateY(var(--mag-firework-distance))
+      scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--mag-firework-angle))
+      translateY(var(--mag-firework-distance))
+      scaleY(0.25);
+  }
+}
+
+@media (max-width: 700px) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion="frame"] {
+    width: calc(100% - 24px) !important;
+    margin: 20px auto 24px !important;
+    padding: 34px 20px 30px !important;
+    border-radius: 24px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"] {
+    margin-bottom: 22px !important;
+    font-size: clamp(30px, 9vw, 38px) !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"][data-ma-task-result="score"] {
+    font-size: clamp(26px, 7.5vw, 32px) !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="title"]::before {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 23px;
+    border-width: 6px;
+    font-size: 37px;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="reward"] {
+    width: 100% !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion][data-ma-task-result="score"] [data-ma-task-completion-role="reward"] {
+    width: 100% !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion][data-ma-task-result="score"] #ma-task-elapsed-time:not([hidden]) {
+    flex-basis: 100%;
+    margin-top: 2px !important;
+    padding-top: 10px !important;
+    padding-left: 0 !important;
+    border-top: 1px solid var(--mag-line) !important;
+    border-left: 0 !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] [data-ma-task-completion-role="action"],
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #finalScreen #finalScreen-doneButton {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 340px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-task-state="complete"] .ma-task-firework {
+    --mag-firework-distance: -48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #ma-task-completion-fireworks {
+    display: none !important;
+  }
+}

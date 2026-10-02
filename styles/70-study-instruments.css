@@ -1,0 +1,1243 @@
+/* Study tools ------------------------------------------------------------
+   This is the shared entry point for drawing and future geometry tools.
+   Exact IDs intentionally outrank the site's legacy button/canvas rules. */
+html[data-ma-glass-enabled="true"] #ma-glass-drawing-layer {
+  all: initial !important;
+  position: fixed !important;
+  z-index: 2147483000 !important;
+  display: block !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  width: 100dvw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  touch-action: none !important;
+  contain: strict !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-drawing-grid {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 0 !important;
+  display: block !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  background-color: transparent !important;
+  background-image:
+    radial-gradient(
+      circle,
+      var(--mag-line) 0 1px,
+      transparent 1.25px
+    ) !important;
+  background-position: 12px 12px !important;
+  background-size: 24px 24px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"] #ma-glass-drawing-grid {
+  opacity: 1 !important;
+}
+
+/* Freehand input surface. It sits under the geometry tools so a ruler or
+   protractor gesture always wins, while the ink canvas paints above them. */
+html[data-ma-glass-enabled="true"] #ma-glass-drawing-surface {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  display: block !important;
+  inset: 0 !important;
+  background: transparent !important;
+  cursor: crosshair !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: none !important;
+  touch-action: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"] #ma-glass-drawing-surface {
+  pointer-events: auto !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-drawing-canvas {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 5 !important;
+  display: block !important;
+  inset: 0 !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  cursor: default !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: none !important;
+  touch-action: none !important;
+  opacity: 1 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler {
+  all: initial !important;
+  --ma-ruler-length: 20cm;
+  position: absolute !important;
+  z-index: 2 !important;
+  left: var(--ma-ruler-x, 50%) !important;
+  top: var(--ma-ruler-y, 58%) !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: var(--ma-ruler-length) !important;
+  height: 68px !important;
+  color: var(--mag-text-soft) !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  background:
+    linear-gradient(
+      176deg,
+      var(--mag-glass-clear-sheen) 0%,
+      transparent 42%,
+      transparent 100%
+    ),
+    var(--mag-glass-clear) !important;
+  box-shadow:
+    inset 0 0 0 1px var(--mag-line-bright),
+    var(--mag-shadow-small) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-kerning: normal !important;
+  font-optical-sizing: auto !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: auto !important;
+  touch-action: none !important;
+  isolation: isolate !important;
+  backdrop-filter: saturate(104%) !important;
+  -webkit-backdrop-filter: saturate(104%) !important;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--ma-ruler-angle, 0rad)) !important;
+  transform-origin: center !important;
+  will-change: transform !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler::before,
+html[data-ma-glass-enabled="true"] #ma-glass-ruler::after {
+  position: absolute !important;
+  z-index: 1 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  display: block !important;
+  width: 1px !important;
+  background:
+    linear-gradient(
+      to bottom,
+      currentColor 0 18px,
+      transparent 18px calc(100% - 18px),
+      currentColor calc(100% - 18px) 100%
+    ) !important;
+  content: "" !important;
+  pointer-events: none !important;
+  opacity: 0.72 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler::before {
+  left: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler::after {
+  right: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler[hidden] {
+  display: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-scale {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 0 !important;
+  display: block !important;
+  inset: 0 !important;
+  overflow: hidden !important;
+  color: var(--mag-text-soft) !important;
+  border-radius: 13px !important;
+  pointer-events: none !important;
+  opacity: 0.8 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-scale::before,
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-scale::after {
+  position: absolute !important;
+  right: 0 !important;
+  left: 0 !important;
+  display: block !important;
+  height: 18px !important;
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent calc(100% - 1px),
+      currentColor 0
+    ),
+    linear-gradient(
+      90deg,
+      currentColor 0 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      currentColor 0 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      currentColor 0 1px,
+      transparent 1px
+    ) !important;
+  background-position: left top !important;
+  background-size:
+    100% 18px,
+    1cm 18px,
+    5mm 12px,
+    1mm 7px !important;
+  background-repeat:
+    no-repeat,
+    repeat-x,
+    repeat-x,
+    repeat-x !important;
+  content: "" !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-scale::before {
+  top: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-scale::after {
+  bottom: 0 !important;
+  transform: scaleY(-1) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-labels {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  top: 18px !important;
+  right: 0 !important;
+  left: 0 !important;
+  display: block !important;
+  height: 12px !important;
+  color: var(--mag-text-soft) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 10px !important;
+  font-variant-numeric: tabular-nums !important;
+  font-weight: 550 !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  text-shadow:
+    0 0 2px var(--mag-bg),
+    0 0 4px var(--mag-bg),
+    0 0 7px var(--mag-bg) !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-labels > span {
+  all: initial !important;
+  text-shadow: inherit !important;
+  display: block !important;
+  position: absolute !important;
+  left: var(--ma-ruler-label-position, 0%) !important;
+  color: inherit !important;
+  font: inherit !important;
+  white-space: nowrap !important;
+  transform: translateX(-50%) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-unit {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 2 !important;
+  bottom: 20px !important;
+  left: 12px !important;
+  display: block !important;
+  color: var(--mag-text-soft) !important;
+  text-shadow:
+    0 0 2px var(--mag-bg),
+    0 0 4px var(--mag-bg),
+    0 0 7px var(--mag-bg) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1 !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-move {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 2 !important;
+  inset: 0 !important;
+  display: block !important;
+  padding: 0 !important;
+  color: var(--mag-text-muted) !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  cursor: grab !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: auto !important;
+  touch-action: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-move:hover {
+  color: var(--mag-text-soft) !important;
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-move:active,
+html[data-ma-glass-enabled="true"] #ma-glass-ruler[data-interaction="ruler-move"] #ma-glass-ruler-move {
+  color: var(--mag-accent-ink) !important;
+  cursor: grabbing !important;
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-move:focus-visible,
+html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-rotate:focus-visible {
+  outline: 3px solid var(--mag-focus-ring) !important;
+  outline-offset: 3px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-edge {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 3 !important;
+  right: 0 !important;
+  left: 0 !important;
+  display: block !important;
+  height: 24px !important;
+  cursor: default !important;
+  pointer-events: none !important;
+  touch-action: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-ruler .ma-glass-ruler-edge {
+  cursor: crosshair !important;
+  pointer-events: auto !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-edge::after {
+  position: absolute !important;
+  right: 0 !important;
+  left: 0 !important;
+  display: block !important;
+  height: 2px !important;
+  border-radius: 999px !important;
+  background: var(--ma-drawing-color, var(--mag-accent)) !important;
+  content: "" !important;
+  opacity: 0 !important;
+  transition: opacity 120ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-ruler .ma-glass-ruler-edge::after {
+  opacity: 0.09 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-ruler .ma-glass-ruler-edge:hover::after {
+  opacity: 0.18 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-ruler[data-interaction="ruler-line"] .ma-glass-ruler-edge:hover::after,
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-ruler .ma-glass-ruler-edge:active::after {
+  opacity: 0.26 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-edge-top {
+  top: -10px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-edge-top::after {
+  top: var(--ma-tool-guide-inset, 1.625px) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-edge-bottom {
+  bottom: -10px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-edge-bottom::after {
+  bottom: var(--ma-tool-guide-inset, 1.625px) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-rotate-connector {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  top: 50% !important;
+  left: 100% !important;
+  display: block !important;
+  width: 25px !important;
+  height: 1px !important;
+  background: var(--mag-line) !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-rotate {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 4 !important;
+  top: 50% !important;
+  left: calc(100% + 24px) !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  place-items: center !important;
+  color: var(--mag-text-muted) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 50% !important;
+  outline: 0 !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.38),
+    var(--mag-shadow-small) !important;
+  cursor: grab !important;
+  pointer-events: auto !important;
+  touch-action: none !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-rotate:hover {
+  color: var(--mag-text) !important;
+  background: var(--mag-glass-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-rotate:active,
+html[data-ma-glass-enabled="true"] #ma-glass-ruler[data-interaction="ruler-rotate"] #ma-glass-ruler-rotate {
+  color: var(--mag-accent-ink) !important;
+  border-color: var(--mag-menu-item-hover-edge) !important;
+  background: var(--mag-accent-soft) !important;
+  cursor: grabbing !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-rotate svg {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  overflow: visible !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.75 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-angle {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 2 !important;
+  right: 12px !important;
+  bottom: 20px !important;
+  display: block !important;
+  min-width: 28px !important;
+  color: var(--mag-text-soft) !important;
+  text-shadow:
+    0 0 2px var(--mag-bg),
+    0 0 4px var(--mag-bg),
+    0 0 7px var(--mag-bg) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 10px !important;
+  font-variant-numeric: tabular-nums !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  text-align: right !important;
+  pointer-events: none !important;
+}
+
+/* Protractor -------------------------------------------------------------
+   Modelled on a real instrument: clear in the middle, with material only in
+   the scale band, so the work underneath stays visible and — while the tool is
+   only measuring — clickable. The element is positioned by its vertex, so
+   rotation, rays, and arcs all share one origin. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor {
+  all: initial !important;
+  --ma-protractor-radius: 6cm;
+  --ma-protractor-hole: 60%;
+  position: absolute !important;
+  z-index: 2 !important;
+  left: var(--ma-protractor-x, 50%) !important;
+  top: var(--ma-protractor-y, 72%) !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: calc(var(--ma-protractor-radius) * 2) !important;
+  height: var(--ma-protractor-radius) !important;
+  color: var(--mag-text-soft) !important;
+  border: 0 !important;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-family: var(--mag-ui-font) !important;
+  font-kerning: normal !important;
+  font-optical-sizing: auto !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: none !important;
+  touch-action: none !important;
+  isolation: isolate !important;
+  transform:
+    translate(-50%, -100%)
+    rotate(var(--ma-protractor-angle, 0rad)) !important;
+  transform-origin: 50% 100% !important;
+  will-change: transform !important;
+}
+
+/* Full-circle scale: the same element, anchored on its centre. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-sweep="360"] {
+  height: calc(var(--ma-protractor-radius) * 2) !important;
+  border-radius: 50% !important;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--ma-protractor-angle, 0rad)) !important;
+  transform-origin: 50% 50% !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor[hidden] {
+  display: none !important;
+}
+
+/* The only material in the tool: a clear glass ring under the printed scale.
+   It must stay see-through — no frosted fill and no backdrop blur, or the work
+   underneath disappears. Legibility comes from the halo on the markings. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-band {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 0 !important;
+  inset: 0 !important;
+  display: block !important;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0 !important;
+  background:
+    linear-gradient(
+      170deg,
+      var(--mag-glass-clear-sheen) 0%,
+      transparent 38%,
+      transparent 100%
+    ),
+    var(--mag-glass-clear) !important;
+  box-shadow: inset 0 0 0 1px var(--mag-line-bright) !important;
+  pointer-events: none !important;
+  backdrop-filter: saturate(104%) !important;
+  -webkit-backdrop-filter: saturate(104%) !important;
+  -webkit-mask:
+    radial-gradient(
+      circle var(--ma-protractor-radius) at 50% 100%,
+      transparent 0 calc(var(--ma-protractor-hole) - 1px),
+      #000 var(--ma-protractor-hole)
+    ) !important;
+  mask:
+    radial-gradient(
+      circle var(--ma-protractor-radius) at 50% 100%,
+      transparent 0 calc(var(--ma-protractor-hole) - 1px),
+      #000 var(--ma-protractor-hole)
+    ) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-sweep="360"] .ma-glass-protractor-band {
+  border-radius: 50% !important;
+  -webkit-mask:
+    radial-gradient(
+      circle var(--ma-protractor-radius) at 50% 50%,
+      transparent 0 calc(var(--ma-protractor-hole) - 1px),
+      #000 var(--ma-protractor-hole)
+    ) !important;
+  mask:
+    radial-gradient(
+      circle var(--ma-protractor-radius) at 50% 50%,
+      transparent 0 calc(var(--ma-protractor-hole) - 1px),
+      #000 var(--ma-protractor-hole)
+    ) !important;
+}
+
+/* A 360° ring has no straight baseline: only the vertex and rotate arm sit at
+   its centre. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-sweep="360"] .ma-glass-protractor-edge {
+  display: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-sweep="360"] #ma-glass-protractor-vertex {
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-sweep="360"] .ma-glass-protractor-rotate-connector,
+html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-sweep="360"] #ma-glass-protractor-rotate {
+  top: 50% !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-scale {
+  position: absolute !important;
+  z-index: 1 !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: visible !important;
+  color: var(--mag-text-soft) !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1 !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-tick-minor {
+  opacity: 0.5 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-tick-medium {
+  opacity: 0.64 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-tick-major {
+  stroke-width: 1.25 !important;
+  opacity: 0.82 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-arc {
+  opacity: 0.6 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-baseline {
+  stroke-width: 1.25 !important;
+  opacity: 0.66 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-plumb {
+  opacity: 0.5 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-vertex {
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.25 !important;
+  opacity: 0.78 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-labels {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  inset: 0 !important;
+  display: block !important;
+  color: var(--mag-text-soft) !important;
+  text-shadow:
+    0 0 2px var(--mag-bg),
+    0 0 4px var(--mag-bg),
+    0 0 7px var(--mag-bg) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 9.5px !important;
+  font-variant-numeric: tabular-nums !important;
+  font-weight: 550 !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-labels > span {
+  all: initial !important;
+  text-shadow: inherit !important;
+  position: absolute !important;
+  left: var(--ma-protractor-label-x, 50%) !important;
+  top: var(--ma-protractor-label-y, 50%) !important;
+  display: block !important;
+  color: inherit !important;
+  font: inherit !important;
+  font-variant-numeric: tabular-nums !important;
+  white-space: nowrap !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Both rows are authoritative readings, so the inner row stays clearly
+   legible and is separated by position rather than by fading it out. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-label-inner {
+  font-weight: 500 !important;
+  opacity: 0.86 !important;
+}
+
+/* Hit surfaces. Arcs are drawn only along the band's two edges, mirroring the
+   ruler's edges; every other part of the face moves the tool. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-surfaces {
+  position: absolute !important;
+  z-index: 2 !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: visible !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor :is(
+  .ma-glass-protractor-move-hit,
+  .ma-glass-protractor-arc-edge
+) {
+  fill: transparent !important;
+  stroke: transparent !important;
+  stroke-linecap: butt !important;
+  cursor: grab !important;
+  touch-action: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-move-hit {
+  pointer-events: fill !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-arc-edge {
+  fill: none !important;
+  stroke-linecap: round !important;
+  pointer-events: stroke !important;
+}
+
+/* The baseline owns straight-line gestures except at the four places where it
+   meets an arc edge. Invisible face-side half-caps restore those exact
+   0°/180° targets without stealing hover from the guide below the baseline. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-arc-endpoints {
+  position: absolute !important;
+  z-index: 4 !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-arc-endpoint {
+  fill: transparent !important;
+  stroke: none !important;
+  cursor: grab !important;
+  pointer-events: fill !important;
+  touch-action: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-interaction="protractor-move"] :is(
+  .ma-glass-protractor-move-hit,
+  .ma-glass-protractor-arc-edge,
+  .ma-glass-protractor-arc-endpoint
+) {
+  cursor: grabbing !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor :is(
+  .ma-glass-protractor-arc-edge,
+  .ma-glass-protractor-arc-endpoint
+) {
+  cursor: crosshair !important;
+}
+
+/* The guide shows exactly where the arc will land, at the same offset the
+   ruler leaves outside its edges. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-arc-guide {
+  fill: none !important;
+  stroke: var(--ma-drawing-color, var(--mag-accent)) !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  transition: opacity 120ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor .ma-glass-protractor-arc-guide {
+  opacity: 0.1 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor .ma-glass-protractor-arc-edge-outer:hover ~ .ma-glass-protractor-arc-guide-outer,
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor .ma-glass-protractor-arc-edge-inner:hover ~ .ma-glass-protractor-arc-guide-inner,
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor:has(.ma-glass-protractor-arc-endpoint-outer:hover) .ma-glass-protractor-arc-guide-outer,
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor:has(.ma-glass-protractor-arc-endpoint-inner:hover) .ma-glass-protractor-arc-guide-inner {
+  opacity: 0.28 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor[data-arc-edge="outer"] .ma-glass-protractor-arc-guide-outer,
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor[data-arc-edge="inner"] .ma-glass-protractor-arc-guide-inner {
+  opacity: 0.38 !important;
+}
+
+/* Vertex: the visible anchor, and the place a ray is drawn from. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-vertex {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 4 !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--mag-text-soft) !important;
+  font: inherit !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  cursor: grab !important;
+  pointer-events: auto !important;
+  touch-action: none !important;
+  transition:
+    border-color 120ms ease,
+    background 120ms ease !important;
+  transform: translate(-50%, 50%) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-vertex:hover {
+  border-color: var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor #ma-glass-protractor-vertex {
+  border-color: color-mix(
+    in srgb,
+    var(--ma-drawing-color, var(--mag-accent)) 34%,
+    transparent
+  ) !important;
+  cursor: crosshair !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor #ma-glass-protractor-vertex:hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor[data-interaction="protractor-ray"] #ma-glass-protractor-vertex {
+  border-color: color-mix(
+    in srgb,
+    var(--ma-drawing-color, var(--mag-accent)) 62%,
+    transparent
+  ) !important;
+  background: color-mix(
+    in srgb,
+    var(--ma-drawing-color, var(--mag-accent)) 10%,
+    transparent
+  ) !important;
+}
+
+/* Straight-edge guide along the flat baseline. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-edge {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 3 !important;
+  right: 0 !important;
+  bottom: -10px !important;
+  left: 0 !important;
+  display: block !important;
+  height: 14px !important;
+  cursor: default !important;
+  pointer-events: none !important;
+  touch-action: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor .ma-glass-protractor-edge {
+  cursor: crosshair !important;
+  pointer-events: auto !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-edge::after {
+  position: absolute !important;
+  right: 0 !important;
+  bottom: var(--ma-tool-guide-inset, 1.625px) !important;
+  left: 0 !important;
+  display: block !important;
+  height: 2px !important;
+  border-radius: 999px !important;
+  background: var(--ma-drawing-color, var(--mag-accent)) !important;
+  content: "" !important;
+  opacity: 0 !important;
+  transition: opacity 120ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor .ma-glass-protractor-edge::after {
+  opacity: 0.09 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor .ma-glass-protractor-edge:hover::after {
+  opacity: 0.18 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor[data-interaction="protractor-baseline"] .ma-glass-protractor-edge::after,
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-protractor .ma-glass-protractor-edge:active::after {
+  opacity: 0.26 !important;
+}
+
+/* Controls and readouts stay outside the working face. */
+html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-vertex:focus-visible,
+html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-rotate:focus-visible {
+  outline: 3px solid var(--mag-focus-ring) !important;
+  outline-offset: 3px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-rotate-connector {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  top: 100% !important;
+  left: 100% !important;
+  display: block !important;
+  width: 25px !important;
+  height: 1px !important;
+  background: var(--mag-line) !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-rotate {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 6 !important;
+  top: 100% !important;
+  left: calc(100% + 24px) !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  place-items: center !important;
+  color: var(--mag-text-muted) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 50% !important;
+  outline: 0 !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.38),
+    var(--mag-shadow-small) !important;
+  cursor: grab !important;
+  pointer-events: auto !important;
+  touch-action: none !important;
+  backdrop-filter: blur(6px) saturate(112%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(112%) !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-rotate:hover {
+  color: var(--mag-text) !important;
+  background: var(--mag-glass-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-rotate:active,
+html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-interaction="protractor-rotate"] #ma-glass-protractor-rotate {
+  color: var(--mag-accent-ink) !important;
+  border-color: var(--mag-menu-item-hover-edge) !important;
+  background: var(--mag-accent-soft) !important;
+  cursor: grabbing !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-rotate svg {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  overflow: visible !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.75 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor :is(
+  #ma-glass-protractor-angle,
+  #ma-glass-protractor-reading
+) {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 5 !important;
+  top: calc(100% + 24px) !important;
+  display: block !important;
+  min-width: 30px !important;
+  color: var(--mag-text-muted) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 10px !important;
+  font-variant-numeric: tabular-nums !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-angle {
+  right: calc(50% + 9px) !important;
+  text-align: right !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-reading {
+  left: calc(50% + 9px) !important;
+  color: var(--mag-accent-ink) !important;
+  text-align: left !important;
+  opacity: 0 !important;
+  transition: opacity 120ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-reading] #ma-glass-protractor-reading {
+  opacity: 1 !important;
+}
+
+/* Compass ----------------------------------------------------------------
+   Pivot plus locus: no body at all, so nothing covers the work. The radius is
+   kept when the pivot moves, which is what copying a length needs. */
+html[data-ma-glass-enabled="true"] #ma-glass-compass {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 2 !important;
+  left: var(--ma-compass-x, 50%) !important;
+  top: var(--ma-compass-y, 52%) !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 0 !important;
+  height: 0 !important;
+  color: var(--mag-text-soft) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-kerning: normal !important;
+  font-optical-sizing: auto !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: none !important;
+  touch-action: none !important;
+  isolation: isolate !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass[hidden] {
+  display: none !important;
+}
+
+/* The locus circle: a guide while measuring, the drawable edge while drawing. */
+html[data-ma-glass-enabled="true"] #ma-glass-compass .ma-glass-compass-locus {
+  position: absolute !important;
+  z-index: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  display: block !important;
+  width: calc(var(--ma-compass-radius, 132px) * 2) !important;
+  height: calc(var(--ma-compass-radius, 132px) * 2) !important;
+  overflow: visible !important;
+  fill: none !important;
+  pointer-events: none !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass .ma-glass-compass-locus-guide {
+  fill: none !important;
+  stroke: var(--mag-text-soft) !important;
+  stroke-width: 1 !important;
+  stroke-dasharray: 5 5 !important;
+  pointer-events: none !important;
+  opacity: 0.38 !important;
+  transition: opacity 120ms ease, stroke 120ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-compass .ma-glass-compass-locus-guide {
+  stroke: var(--ma-drawing-color, var(--mag-accent)) !important;
+  stroke-dasharray: none !important;
+  stroke-width: 2 !important;
+  opacity: 0.14 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass .ma-glass-compass-locus-hit {
+  fill: none !important;
+  stroke: transparent !important;
+  cursor: grab !important;
+  pointer-events: stroke !important;
+  touch-action: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass[data-interaction="compass-move"] .ma-glass-compass-locus-hit {
+  cursor: grabbing !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-compass .ma-glass-compass-locus-hit {
+  cursor: crosshair !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-compass .ma-glass-compass-locus-hit:hover ~ .ma-glass-compass-locus-guide,
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-compass .ma-glass-compass-locus-guide:hover {
+  opacity: 0.3 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"][data-ma-glass-draw-mode="pen"] #ma-glass-compass[data-interaction="compass-arc"] .ma-glass-compass-locus-guide {
+  opacity: 0.4 !important;
+}
+
+/* Pivot: the needle, and the accessible move control. */
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-pivot {
+  position: absolute !important;
+  z-index: 3 !important;
+  top: 0 !important;
+  left: 0 !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  place-items: center !important;
+  color: var(--mag-text-soft) !important;
+  font: inherit !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 50% !important;
+  outline: 0 !important;
+  background: var(--mag-glass-clear) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  cursor: grab !important;
+  pointer-events: auto !important;
+  touch-action: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  transition: border-color 120ms ease, background 120ms ease !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-pivot::after {
+  display: block !important;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+  background: currentColor !important;
+  content: "" !important;
+  opacity: 0.82 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-pivot:hover {
+  border-color: var(--mag-line-bright) !important;
+  background: var(--mag-glass-clear-sheen) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-pivot:active,
+html[data-ma-glass-enabled="true"] #ma-glass-compass[data-interaction="compass-move"] #ma-glass-compass-pivot {
+  color: var(--mag-accent-ink) !important;
+  cursor: grabbing !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-pivot:focus-visible,
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-radius:focus-visible {
+  outline: 3px solid var(--mag-focus-ring) !important;
+  outline-offset: 3px !important;
+}
+
+/* Radius knob: the pencil leg, always resizing, never drawing. */
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-radius {
+  position: absolute !important;
+  z-index: 4 !important;
+  top: 0 !important;
+  left: 0 !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  place-items: center !important;
+  color: var(--mag-text-muted) !important;
+  font: inherit !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 50% !important;
+  outline: 0 !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow: var(--mag-shadow-small) !important;
+  filter: none !important;
+  cursor: ew-resize !important;
+  pointer-events: auto !important;
+  touch-action: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  backdrop-filter: blur(6px) saturate(112%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(112%) !important;
+  transform:
+    rotate(var(--ma-compass-angle, -0.785rad))
+    translateX(var(--ma-compass-radius, 132px))
+    rotate(calc(var(--ma-compass-angle, -0.785rad) * -1))
+    translate(-50%, -50%) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-radius::after {
+  display: block !important;
+  width: 12px !important;
+  height: 2px !important;
+  border-radius: 999px !important;
+  background: currentColor !important;
+  content: "" !important;
+  opacity: 0.6 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-radius:hover {
+  color: var(--mag-text) !important;
+  background: var(--mag-glass-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-radius:active,
+html[data-ma-glass-enabled="true"] #ma-glass-compass[data-interaction="compass-radius"] #ma-glass-compass-radius {
+  color: var(--mag-accent-ink) !important;
+  border-color: var(--mag-menu-item-hover-edge) !important;
+  background: var(--mag-accent-soft) !important;
+}
+
+/* Readouts sit below the pivot, clear of the circle's interior. */
+html[data-ma-glass-enabled="true"] #ma-glass-compass :is(
+  #ma-glass-compass-reading,
+  #ma-glass-compass-sweep
+) {
+  all: initial !important;
+  position: absolute !important;
+  z-index: 3 !important;
+  top: 18px !important;
+  display: block !important;
+  color: var(--mag-text-soft) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 10px !important;
+  font-variant-numeric: tabular-nums !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  text-shadow:
+    0 0 2px var(--mag-bg),
+    0 0 4px var(--mag-bg),
+    0 0 7px var(--mag-bg) !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-reading {
+  right: 5px !important;
+  text-align: right !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-sweep {
+  left: 5px !important;
+  color: var(--mag-accent-ink) !important;
+  text-align: left !important;
+  opacity: 0 !important;
+  transition: opacity 120ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-compass[data-sweeping] #ma-glass-compass-sweep {
+  opacity: 1 !important;
+}
+

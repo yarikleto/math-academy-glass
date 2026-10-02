@@ -1,0 +1,1079 @@
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools {
+  all: initial !important;
+  position: fixed !important;
+  z-index: 2147483646 !important;
+  right: max(18px, env(safe-area-inset-right, 0px)) !important;
+  bottom: max(18px, env(safe-area-inset-bottom, 0px)) !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 50px !important;
+  height: 50px !important;
+  color: var(--mag-text-soft) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-kerning: normal !important;
+  font-optical-sizing: auto !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+  pointer-events: none !important;
+  isolation: isolate !important;
+  transform:
+    translate(
+      var(--ma-tools-viewport-x, 0px),
+      var(--ma-tools-viewport-y, 0px)
+    )
+    scale(var(--ma-tools-viewport-scale, 1)) !important;
+  transform-origin: right bottom !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(
+  #ma-glass-drawing-layer,
+  #ma-glass-ruler,
+  #ma-glass-ruler *,
+  #ma-glass-protractor,
+  #ma-glass-protractor *,
+  #ma-glass-compass,
+  #ma-glass-compass *,
+  #ma-glass-study-tools,
+  #ma-glass-study-tools *
+) {
+  box-sizing: border-box !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(
+  #ma-glass-drawing-layer,
+  #ma-glass-study-tools,
+  #ma-glass-study-tools-menu
+)[hidden] {
+  display: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher {
+  all: initial !important;
+  position: relative !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  width: 50px !important;
+  height: 50px !important;
+  padding: 0 !important;
+  place-items: center !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 999px !important;
+  outline: 0 !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.42),
+    var(--mag-shadow-small) !important;
+  font-family: var(--mag-ui-font) !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  backdrop-filter: var(--mag-material-control) !important;
+  -webkit-backdrop-filter: var(--mag-material-control) !important;
+  transform: none !important;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher:hover {
+  color: var(--mag-text) !important;
+  border-color: var(--mag-menu-item-hover-edge) !important;
+  background: var(--mag-glass-hover) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.48),
+    var(--mag-shadow-small) !important;
+  filter: none !important;
+  transform: translateY(-1px) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher:active {
+  filter: none !important;
+  transform: scale(0.985) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher:is(
+  [aria-expanded="true"],
+  [data-active]
+) {
+  color: var(--mag-accent-ink) !important;
+  border-color: var(--mag-menu-item-hover-edge) !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow:
+    0 0 0 3px var(--mag-accent-soft),
+    inset 0 1px rgba(255, 255, 255, 0.42),
+    var(--mag-shadow-small) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher:focus-visible {
+  outline: 3px solid var(--mag-focus-ring) !important;
+  outline-offset: 3px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher svg {
+  display: block !important;
+  width: 21px !important;
+  height: 21px !important;
+  overflow: visible !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.7 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher .ma-glass-tool-active-badge {
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+  display: block !important;
+  width: 8px !important;
+  height: 8px !important;
+  border: 2px solid var(--mag-glass-solid) !important;
+  border-radius: 50% !important;
+  background: var(--mag-accent) !important;
+  box-shadow: 0 1px 4px var(--mag-primary-shadow) !important;
+  opacity: 0 !important;
+  transform: scale(0.7) !important;
+  transition: opacity 150ms ease, transform 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher[data-active] .ma-glass-tool-active-badge {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu {
+  --ma-tools-row-hover: rgba(45, 63, 83, 0.055);
+  --ma-tools-row-hover-edge: rgba(45, 63, 83, 0.09);
+  --ma-tools-row-active: rgba(10, 116, 217, 0.07);
+  --ma-tools-row-active-edge: rgba(10, 116, 217, 0.15);
+  --ma-tools-icon-active: rgba(10, 116, 217, 0.1);
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 60px !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: min(306px, calc(100vw - 28px)) !important;
+  max-height: min(calc(100dvh - 78px), 460px) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 8px !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 16px !important;
+  outline: 0 !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.32),
+    var(--mag-shadow) !important;
+  font-family: var(--mag-ui-font) !important;
+  pointer-events: auto !important;
+  backdrop-filter: var(--mag-material-raised) !important;
+  -webkit-backdrop-filter: var(--mag-material-raised) !important;
+  transform-origin: right bottom !important;
+  scrollbar-color: rgba(100, 115, 143, 0.38) transparent !important;
+  scrollbar-width: thin !important;
+  animation: maGlassToolsMenuIn 150ms ease-out both !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu::-webkit-scrollbar-thumb {
+  border: 2px solid transparent !important;
+  border-radius: 999px !important;
+  background: rgba(100, 115, 143, 0.38) !important;
+  background-clip: padding-box !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-study-tools-header {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  min-height: 34px !important;
+  padding: 2px 9px 7px !important;
+  color: var(--mag-text-muted) !important;
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-study-tools-header h2 {
+  all: initial !important;
+  display: block !important;
+  margin: 0 !important;
+  color: var(--mag-text) !important;
+  font-family: var(--mag-display-font) !important;
+  font-size: 13px !important;
+  font-weight: 680 !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.25 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-study-tools-header span {
+  display: none !important;
+  color: var(--mag-text-muted) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 10.5px !important;
+  font-weight: 550 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.25 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-draw-toggle,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-ruler-toggle,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-protractor-toggle,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-compass-toggle,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-drawing-clear {
+  all: initial !important;
+  position: relative !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  grid-template-columns: 28px minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 44px !important;
+  padding: 6px 9px !important;
+  column-gap: 9px !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-family: var(--mag-ui-font) !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  filter: none !important;
+  transform: none !important;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-draw-toggle:hover,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-ruler-toggle:hover,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-protractor-toggle:hover,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-compass-toggle:hover,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-drawing-clear:hover {
+  color: var(--mag-text) !important;
+  border-color: transparent !important;
+  background: var(--ma-tools-row-hover) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-draw-toggle:active,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-ruler-toggle:active,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-protractor-toggle:active,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-compass-toggle:active,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-drawing-clear:active {
+  filter: none !important;
+  transform: scale(0.99) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-draw-toggle:focus-visible,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-ruler-toggle:focus-visible,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-protractor-toggle:focus-visible,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-compass-toggle:focus-visible,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-drawing-clear:focus-visible {
+  outline: 2px solid var(--mag-accent) !important;
+  outline-offset: -2px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-draw-toggle[aria-pressed="true"],
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-ruler-toggle[aria-pressed="true"],
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-protractor-toggle[aria-pressed="true"],
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-compass-toggle[aria-pressed="true"] {
+  color: var(--mag-text) !important;
+  border-color: transparent !important;
+  outline: 0 !important;
+  outline-offset: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-draw-toggle[aria-pressed="true"] .ma-glass-tool-icon,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-ruler-toggle[aria-pressed="true"] .ma-glass-tool-icon,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-protractor-toggle[aria-pressed="true"] .ma-glass-tool-icon,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-compass-toggle[aria-pressed="true"] .ma-glass-tool-icon {
+  color: var(--mag-accent-ink) !important;
+  background: var(--ma-tools-icon-active) !important;
+}
+
+/* Per-tool settings: a compact row that belongs to the switch above it and
+   only appears while that tool is on. */
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu :is(
+  .ma-glass-drawing-options,
+  .ma-glass-tool-settings
+) {
+  display: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"] #ma-glass-study-tools-menu .ma-glass-drawing-options {
+  display: block !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-protractor="true"] #ma-glass-study-tools-menu .ma-glass-tool-settings {
+  display: flex !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-drawing-options .ma-glass-tool-settings {
+  display: flex !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-draw-mode="eraser"] #ma-glass-study-tools-menu .ma-glass-pen-options {
+  display: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-settings {
+  all: initial !important;
+  box-sizing: border-box !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  min-height: 30px !important;
+  margin: 0 0 2px !important;
+  padding: 0 9px 0 45px !important;
+  color: var(--mag-text-muted) !important;
+  column-gap: 8px !important;
+  font-family: var(--mag-ui-font) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-settings-label {
+  all: initial !important;
+  color: var(--mag-text-muted) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 10.5px !important;
+  font-weight: 560 !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.25 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-segment {
+  all: initial !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  grid-auto-flow: column !important;
+  grid-auto-columns: minmax(46px, 1fr) !important;
+  padding: 2px !important;
+  gap: 2px !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 9px !important;
+  background: var(--mag-segment-track) !important;
+  font-family: var(--mag-ui-font) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-study-tools-title ~ * .ma-glass-tool-segment-option,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-segment .ma-glass-tool-segment-option {
+  all: initial !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  min-height: 26px !important;
+  padding: 0 7px !important;
+  place-items: center !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid transparent !important;
+  border-radius: 7px !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 12px !important;
+  font-variant-numeric: tabular-nums !important;
+  font-weight: 580 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  transition:
+    color 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-segment .ma-glass-tool-segment-option:hover {
+  color: var(--mag-text) !important;
+  background: var(--mag-segment-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-segment .ma-glass-tool-segment-option:focus-visible {
+  outline: 2px solid var(--mag-accent) !important;
+  outline-offset: -2px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-segment .ma-glass-tool-segment-option[aria-pressed="true"] {
+  color: var(--mag-accent-ink) !important;
+  border-color: var(--mag-menu-item-hover-edge) !important;
+  background: var(--mag-segment-selected) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-segment .ma-glass-tool-segment-option-icon {
+  min-height: 26px !important;
+  padding: 0 7px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-segment .ma-glass-tool-segment-icon {
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+  overflow: visible !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.7 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-drawing-options {
+  all: initial !important;
+  box-sizing: border-box !important;
+  margin: 0 0 4px !important;
+  padding: 0 !important;
+  color: var(--mag-text-soft) !important;
+  background: transparent !important;
+  font-family: var(--mag-ui-font) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-options {
+  all: initial !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  margin: 0 9px 6px 45px !important;
+  padding: 0 !important;
+  color: var(--mag-text-soft) !important;
+  font-family: var(--mag-ui-font) !important;
+  gap: 6px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-fieldset {
+  all: initial !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: inherit !important;
+  border: 0 !important;
+  font-family: inherit !important;
+  grid-template-columns: 52px minmax(0, 1fr) !important;
+  align-items: center !important;
+  column-gap: 8px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-fieldset + .ma-glass-pen-fieldset {
+  margin-top: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-heading {
+  all: initial !important;
+  display: block !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  min-height: 0 !important;
+  color: var(--mag-text-muted) !important;
+  font-family: var(--mag-ui-font) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-heading > span,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-heading > output {
+  all: initial !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: 10.5px !important;
+  font-weight: 550 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.3 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-heading > output {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-colors {
+  all: initial !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  grid-template-columns: repeat(5, 28px) !important;
+  justify-content: start !important;
+  width: auto !important;
+  margin: 0 !important;
+  gap: 2px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-color-option,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-width-option {
+  all: initial !important;
+  position: relative !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  place-items: center !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid transparent !important;
+  outline: 0 !important;
+  background: transparent !important;
+  font-family: var(--mag-ui-font) !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  transition:
+    border-color 140ms ease,
+    background 140ms ease,
+    transform 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-color-option {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 8px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-radio {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-swatch {
+  all: initial !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 20px !important;
+  height: 20px !important;
+  border: 1px solid rgba(18, 26, 50, 0.18) !important;
+  border-radius: 50% !important;
+  background: var(--ma-pen-swatch, var(--mag-accent)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.34),
+    0 2px 5px rgba(45, 63, 83, 0.1) !important;
+  pointer-events: none !important;
+  transform: scale(1) !important;
+  transition: transform 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu :is(
+  .ma-glass-pen-color-option,
+  .ma-glass-pen-width-option
+):hover {
+  border-color: var(--mag-menu-item-hover-edge) !important;
+  background: var(--mag-menu-item-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-color-option:hover .ma-glass-pen-swatch {
+  transform: scale(1.04) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu :is(
+  .ma-glass-pen-color-option,
+  .ma-glass-pen-width-option
+):has(.ma-glass-pen-radio:checked) {
+  border-color: var(--mag-menu-item-hover-edge) !important;
+  background: var(--mag-accent-soft) !important;
+  box-shadow: inset 0 0 0 1px var(--mag-line-bright) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-color-option:has(.ma-glass-pen-radio:checked) .ma-glass-pen-swatch {
+  box-shadow:
+    0 0 0 2px var(--mag-accent),
+    inset 0 1px rgba(255, 255, 255, 0.34) !important;
+  transform: scale(0.9) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-color-option:has(.ma-glass-pen-radio:checked) {
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu :is(
+  .ma-glass-pen-color-option,
+  .ma-glass-pen-width-option
+):has(.ma-glass-pen-radio:focus-visible) {
+  outline: 2px solid var(--mag-accent) !important;
+  outline-offset: -2px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu :is(
+  .ma-glass-pen-color-option,
+  .ma-glass-pen-width-option
+):active {
+  transform: scale(0.97) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-widths {
+  all: initial !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  width: 100% !important;
+  min-height: 28px !important;
+  margin: 0 !important;
+  padding: 2px !important;
+  gap: 2px !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 10px !important;
+  background: var(--mag-segment-track) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-width-option {
+  min-width: 0 !important;
+  min-height: 24px !important;
+  border-radius: 7px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-width-sample {
+  all: initial !important;
+  display: block !important;
+  width: 22px !important;
+  height: var(--ma-pen-width, 2.75px) !important;
+  border-radius: 999px !important;
+  background: var(--ma-drawing-color, var(--mag-accent)) !important;
+  pointer-events: none !important;
+}
+
+/* The resets above isolate extension controls from host-page CSS. Reassert
+   the state contract afterwards because `all: initial` also resets display. */
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu > .ma-glass-tool-settings,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-drawing-options {
+  display: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"] #ma-glass-study-tools-menu .ma-glass-drawing-options {
+  display: block !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-drawing="true"] #ma-glass-study-tools-menu .ma-glass-drawing-options .ma-glass-tool-settings,
+html[data-ma-glass-enabled="true"][data-ma-glass-protractor="true"] #ma-glass-study-tools-menu > .ma-glass-tool-settings {
+  display: flex !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-drawing-clear {
+  grid-template-columns: 28px minmax(0, 1fr) !important;
+  min-height: 44px !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-drawing-clear:disabled {
+  color: var(--mag-text-muted) !important;
+  cursor: default !important;
+  opacity: 0.48 !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  transform: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-icon {
+  display: grid !important;
+  width: 28px !important;
+  height: 28px !important;
+  place-items: center !important;
+  color: currentColor !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-icon-quiet {
+  color: var(--mag-text-muted) !important;
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-icon svg {
+  display: block !important;
+  width: 17px !important;
+  height: 17px !important;
+  overflow: visible !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.7 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  pointer-events: none !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-copy {
+  display: flex !important;
+  min-width: 0 !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  color: inherit !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-copy strong {
+  color: inherit !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 13px !important;
+  font-weight: 620 !important;
+  letter-spacing: -0.008em !important;
+  line-height: 1.2 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-copy small {
+  position: absolute !important;
+  display: block !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  color: var(--mag-text-muted) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 10.5px !important;
+  font-weight: 450 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.32 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-drawing-undo-hint {
+  all: initial !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  margin: 1px 9px 5px 45px !important;
+  color: var(--mag-text-muted) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 10.5px !important;
+  font-weight: 520 !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-switch {
+  position: relative !important;
+  display: block !important;
+  width: 34px !important;
+  height: 20px !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 999px !important;
+  background: var(--mag-segment-track) !important;
+  box-shadow: inset 0 1px 2px rgba(25, 36, 57, 0.1) !important;
+  transition: border-color 150ms ease, background 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-switch > span {
+  position: absolute !important;
+  top: 2px !important;
+  left: 2px !important;
+  display: block !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow: 0 2px 5px rgba(22, 30, 50, 0.24) !important;
+  transform: translateX(0) !important;
+  transition: transform 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-draw-toggle[aria-pressed="true"] .ma-glass-tool-switch,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-ruler-toggle[aria-pressed="true"] .ma-glass-tool-switch,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-protractor-toggle[aria-pressed="true"] .ma-glass-tool-switch,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-compass-toggle[aria-pressed="true"] .ma-glass-tool-switch {
+  border-color: var(--mag-menu-item-hover-edge) !important;
+  background: var(--mag-primary-gradient) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-draw-toggle[aria-pressed="true"] .ma-glass-tool-switch > span,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-ruler-toggle[aria-pressed="true"] .ma-glass-tool-switch > span,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-protractor-toggle[aria-pressed="true"] .ma-glass-tool-switch > span,
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-compass-toggle[aria-pressed="true"] .ma-glass-tool-switch > span {
+  background: #fff !important;
+  transform: translateX(14px) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-study-tools-divider {
+  height: 1px !important;
+  margin: 5px 9px !important;
+  background: var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"] #ma-glass-study-tools-status {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-study-tools-menu {
+  --ma-tools-row-hover: rgba(255, 255, 255, 0.05);
+  --ma-tools-row-hover-edge: rgba(201, 224, 255, 0.1);
+  --ma-tools-row-active: rgba(111, 200, 255, 0.075);
+  --ma-tools-row-active-edge: rgba(111, 200, 255, 0.18);
+  --ma-tools-icon-active: rgba(111, 200, 255, 0.11);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-study-tools #ma-glass-study-tools-launcher {
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.1),
+    var(--mag-shadow-small) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-study-tools #ma-glass-study-tools-launcher:is(
+  [aria-expanded="true"],
+  [data-active]
+) {
+  box-shadow:
+    0 0 0 3px var(--mag-accent-soft),
+    inset 0 1px rgba(255, 255, 255, 0.1),
+    var(--mag-shadow-small) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-study-tools-menu {
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.1),
+    var(--mag-shadow) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-study-tools-menu .ma-glass-pen-swatch {
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.12),
+    0 2px 5px rgba(0, 0, 0, 0.32) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-study-tools-menu .ma-glass-pen-color-option:has(.ma-glass-pen-radio:checked) .ma-glass-pen-swatch {
+  box-shadow:
+    0 0 0 2px var(--mag-accent),
+    inset 0 1px rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-study-tools-menu .ma-glass-tool-switch > span {
+  background: #f7f9ff !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.34) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-ruler {
+  box-shadow:
+    inset 0 0 0 1px var(--mag-line-bright),
+    var(--mag-shadow-small) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-ruler .ma-glass-ruler-scale {
+  opacity: 0.56 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-ruler::before,
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-ruler::after {
+  opacity: 0.56 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] #ma-glass-ruler #ma-glass-ruler-rotate {
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.1),
+    var(--mag-shadow-small) !important;
+}
+
+@keyframes maGlassToolsMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 760px) {
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools {
+    right: max(14px, env(safe-area-inset-right, 0px)) !important;
+    bottom: max(14px, env(safe-area-inset-bottom, 0px)) !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu {
+    bottom: 58px !important;
+    width: min(306px, calc(100vw - 28px)) !important;
+    max-height: min(calc(100dvh - 72px), 460px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-ruler {
+    height: 60px !important;
+    border-radius: 13px !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-scale {
+    border-radius: 12px !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-angle {
+    bottom: 17px !important;
+    right: auto !important;
+    left: calc(50% + 40px) !important;
+    text-align: left !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-unit {
+    bottom: 17px !important;
+    left: calc(50% - 48px) !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor {
+    --ma-protractor-radius: min(6cm, 46vw) !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor :is(
+    #ma-glass-protractor-angle,
+    #ma-glass-protractor-reading
+  ) {
+    top: calc(100% + 62px) !important;
+  }
+
+  /* The 360° rotate handle remains beside the full ring, so its readouts do
+     not need the extra clearance reserved for the 180° handle below the
+     baseline. */
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-sweep="360"] :is(
+    #ma-glass-protractor-angle,
+    #ma-glass-protractor-reading
+  ) {
+    top: calc(100% + 24px) !important;
+  }
+
+}
+
+@media (max-height: 520px) {
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu {
+    max-height: calc(100dvh - 72px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+}
+
+@media (max-width: 900px) {
+  html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-rotate-connector {
+    top: 100% !important;
+    left: calc(50% + min(32vw, 132px)) !important;
+    width: 1px !important;
+    height: 40px !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-ruler #ma-glass-ruler-rotate {
+    top: calc(100% + 40px) !important;
+    left: calc(50% + min(32vw, 132px)) !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-rotate-connector {
+    top: 100% !important;
+    left: calc(50% + min(30vw, 120px)) !important;
+    width: 1px !important;
+    height: 34px !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-rotate {
+    top: calc(100% + 34px) !important;
+    left: calc(50% + min(30vw, 120px)) !important;
+  }
+
+  /* Do not inherit the half-circle's below-baseline mobile handle layout.
+     Keeping the 360° handle on its 0° axis also matches the extents used by
+     clampProtractorToVisiblePage(). */
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-sweep="360"] .ma-glass-protractor-rotate-connector {
+    top: 50% !important;
+    left: 100% !important;
+    width: 25px !important;
+    height: 1px !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor[data-sweep="360"] #ma-glass-protractor-rotate {
+    top: 50% !important;
+    left: calc(100% + 24px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu {
+    animation: none !important;
+  }
+
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools #ma-glass-study-tools-launcher .ma-glass-tool-active-badge,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-draw-toggle,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-ruler-toggle,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-protractor-toggle,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-compass-toggle,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu #ma-glass-drawing-clear,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-color-option,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-width-option,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-pen-swatch,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-switch,
+  html[data-ma-glass-enabled="true"] #ma-glass-study-tools-menu .ma-glass-tool-switch > span,
+  html[data-ma-glass-enabled="true"] #ma-glass-ruler .ma-glass-ruler-edge::after,
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-edge::after,
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor .ma-glass-protractor-arc-guide,
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-vertex,
+  html[data-ma-glass-enabled="true"] #ma-glass-protractor #ma-glass-protractor-reading,
+  html[data-ma-glass-enabled="true"] #ma-glass-compass .ma-glass-compass-locus-guide,
+  html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-pivot,
+  html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-radius,
+  html[data-ma-glass-enabled="true"] #ma-glass-compass #ma-glass-compass-sweep {
+    transition: none !important;
+  }
+}
+
+@media print {
+  html[data-ma-glass-enabled="true"] :is(
+    #ma-glass-drawing-layer,
+    #ma-glass-study-tools
+  ) {
+    display: none !important;
+  }
+}

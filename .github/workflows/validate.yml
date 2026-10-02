@@ -1,0 +1,28 @@
+name: Validate extension
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Check JavaScript syntax
+        run: find content background popup -name '*.js' -print0 | xargs -0 -n1 node --check
+      - name: Package release
+        run: python3 scripts/package-release.py
+      - name: Verify source and generated archive
+        run: node --test tests/*.test.js
+      - uses: actions/upload-artifact@v4
+        with:
+          name: math-academy-glass
+          path: |
+            math-academy-glass-extension.zip
+            release-metadata.json
+          if-no-files-found: error

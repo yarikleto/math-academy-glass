@@ -1,0 +1,42 @@
+.DS_Store
+.codex-*
+node_modules/
+__pycache__/
+test-results/
+playwright-report/
+release-metadata.json
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+
+# Local agent configuration and working notes
+/.agents/
+/.claude/
+/.codex/
+/AGENTS.md
+/CLAUDE.md
+/.vscode/
+/.idea/
+
+# Publisher-only materials and generated release packages
+/STORE_SUBMISSION.md
+/RELEASE_REVIEW.md
+/store/
+/scripts/package-store-kit.py
+/scripts/prepare-store-assets.cjs
+/math-academy-glass-store-kit/
+/*.zip
+
+# Browser sessions, authentication, and local artifacts
+playwright/.auth/
+*.har
+*.log
+*.crx
+*.p12
+*.pfx
+credentials*.json
+storage-state*.json
+auth-state*.json
+browser-profile*/

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="demotion-glass" x1="9" y1="3" x2="23" y2="29" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF" stop-opacity=".28"/>
+      <stop offset=".48" stop-color="#FFF" stop-opacity=".09"/>
+      <stop offset="1" stop-color="#FFF" stop-opacity=".15"/>
+    </linearGradient>
+    <radialGradient id="demotion-tint" cx="0" cy="0" r="1" gradientTransform="translate(11 8) rotate(55) scale(25)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD2D9" stop-opacity=".22"/>
+      <stop offset=".58" stop-color="#FF526A" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#A91F3B" stop-opacity=".22"/>
+    </radialGradient>
+    <filter id="demotion-shadow" x="-30%" y="-25%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.7" flood-color="#28040D" flood-opacity=".3"/>
+    </filter>
+  </defs>
+  <circle cx="16" cy="16" r="13" fill="url(#demotion-glass)" stroke="#FFF" stroke-opacity=".34" filter="url(#demotion-shadow)"/>
+  <circle cx="16" cy="16" r="11.75" fill="url(#demotion-tint)" stroke="#FF94A5" stroke-opacity=".28"/>
+  <path d="M7.6 12.2a9.7 9.7 0 0 1 8.15-5.85" fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="1.15" opacity=".46"/>
+  <path d="M16 10v12.5m-5.25-5.25L16 22.5l5.25-5.25" fill="none" stroke="#FF7D91" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.55"/>
+</svg>

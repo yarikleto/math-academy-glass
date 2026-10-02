@@ -1,0 +1,136 @@
+/* Reading comfort ---------------------------------------------------------
+   Math Academy's legacy styles frequently reduce instructional copy to 15px
+   and replace the inherited UI font. Restore a consistent text face and a
+   relaxed reading rhythm without touching MathJax, KaTeX, or MathQuill. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  .taskNameUnlocked,
+  .taskNameLocked,
+  a.taskTopicLink,
+  a.taskTopicLinkExpanded
+) {
+  font-family: var(--mag-ui-font) !important;
+  font-size: 17px !important;
+  font-weight: 470 !important;
+  letter-spacing: -0.008em !important;
+  line-height: 1.48 !important;
+  text-wrap: pretty;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  .taskTypeLocked,
+  .taskTypeLocked2,
+  .taskTypeUnlocked,
+  .sidebarHeader,
+  .completedTasksDate
+) {
+  font-family: var(--mag-ui-font) !important;
+  font-size: 15px !important;
+  font-weight: 680 !important;
+  letter-spacing: -0.012em !important;
+  line-height: 1.4 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  .taskCourseNameUnlocked,
+  .taskCourseNameLocked,
+  .taskPointsLocked,
+  .taskPointsUnlocked,
+  .completedTaskPoints,
+  .taskTimeCompleted
+) {
+  font-family: var(--mag-ui-font) !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="topic"] #lessonContent .step :is(p, li),
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #steps > .step :is(
+  .tutorialContent,
+  .exampleQuestion,
+  .exampleExplanation
+),
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget :is(
+  .questionWidget-body,
+  .questionWidget-text,
+  .questionWidget-calculatorInstructions,
+  .questionWidget-feedback,
+  .questionWidget-explanation,
+  .questionWidget-proof
+),
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer :is(
+  .calculatorInstructions,
+  .questionText
+),
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #steps > .step > .question .questionText,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionBody .questionText {
+  font-family: var(--mag-ui-font) !important;
+  font-size: var(--mag-reading-size) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: var(--mag-reading-leading) !important;
+  text-wrap: pretty;
+}
+
+/* Calculator requirements are supporting metadata, not part of the question
+   itself. Keep the note readable without giving it the size or visual weight
+   of the primary prompt. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget .questionWidget-calculatorInstructions {
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin: 0 0 22px !important;
+  padding: 2px 0 2px 10px !important;
+  color: var(--mag-text-muted) !important;
+  border: 0 !important;
+  border-left: 2px solid var(--mag-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.45 !important;
+  text-wrap: pretty;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="topic"] #lessonContent .questionWidget-choiceText,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-choiceText,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer .choicesTable .choiceText,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #steps > .step > .question .choicesTable .choiceText {
+  font-family: var(--mag-ui-font) !important;
+  font-size: 16.5px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.58 !important;
+  text-wrap: pretty;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="topic"] #lessonContent :is(.stepName, .questionWidget-title),
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #steps > .step .stepName,
+  .questionWidget-title,
+  #questionAnswerContainer .questionNumber
+) {
+  font-family: var(--mag-display-font) !important;
+  font-size: 19px !important;
+  font-weight: 680 !important;
+  letter-spacing: -0.018em !important;
+  line-height: 1.4 !important;
+  text-wrap: balance;
+}
+
+@media (max-width: 760px) {
+  html[data-ma-glass-enabled="true"] {
+    --mag-reading-size: 16px;
+    --mag-reading-leading: 1.64;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+    .taskNameUnlocked,
+    .taskNameLocked,
+    a.taskTopicLink,
+    a.taskTopicLinkExpanded
+  ) {
+    font-size: 16px !important;
+  }
+}

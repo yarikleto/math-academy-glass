@@ -1,0 +1,336 @@
+/* App panels, cards, dialogs, menus, and common component-library surfaces. */
+html[data-ma-glass-enabled="true"] :is(
+  [role="dialog"],
+  dialog,
+  .modal,
+  .modal-content,
+  .card,
+  [class~="card"],
+  [class$="Card"],
+  [class*="-card"],
+  [class*="_card"],
+  .panel,
+  [class~="panel"],
+  .MuiPaper-root
+) {
+  color: var(--mag-text-soft) !important;
+  border-color: var(--mag-line-bright) !important;
+  background: var(--mag-glass) !important;
+  box-shadow: var(--mag-shadow-small) !important;
+  backdrop-filter: var(--mag-material-surface);
+  -webkit-backdrop-filter: var(--mag-material-surface);
+}
+
+html[data-ma-glass-enabled="true"] :is([role="dialog"], dialog, .modal-content) {
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: var(--mag-radius) !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow: var(--mag-shadow) !important;
+  backdrop-filter: var(--mag-material-raised) !important;
+  -webkit-backdrop-filter: var(--mag-material-raised) !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(#userMenu-info, .headerMenuItem) {
+  border-color: var(--mag-line) !important;
+}
+
+/* Buttons and controls */
+html[data-ma-glass-enabled="true"] :is(
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  #getStartedButton,
+  #signUpButton
+):not(mark.ws-word-mark) {
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-radius: 11px !important;
+  background: var(--mag-primary-gradient) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px var(--mag-primary-shadow), inset 0 1px rgba(255, 255, 255, 0.28) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif !important;
+  font-weight: 650 !important;
+  transition: transform 140ms ease, filter 140ms ease, box-shadow 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(button, [role="button"], input[type="button"], input[type="submit"], #getStartedButton, #signUpButton):not(mark.ws-word-mark):hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px var(--mag-primary-shadow-hover), inset 0 1px rgba(255, 255, 255, 0.32) !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(button, [role="button"], input[type="button"], input[type="submit"], #getStartedButton, #signUpButton):not(mark.ws-word-mark):active {
+  transform: translateY(0) scale(0.985);
+}
+
+html[data-ma-glass-enabled="true"] :is(input:not([type="button"]):not([type="submit"]), textarea, select, .mq-editable-field) {
+  color: var(--mag-text) !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: var(--mag-radius-small) !important;
+  outline: none !important;
+  background: var(--mag-input) !important;
+  box-shadow: inset 0 1px 2px rgba(25, 36, 57, 0.05), 0 1px rgba(255, 255, 255, 0.42) !important;
+  caret-color: var(--mag-accent);
+  transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+html[data-ma-glass-enabled="true"] :is(input, textarea, select, .mq-editable-field):focus {
+  border-color: var(--mag-accent) !important;
+  box-shadow: 0 0 0 3px var(--mag-accent-soft), inset 0 1px 2px rgba(25, 36, 57, 0.04) !important;
+}
+
+html[data-ma-glass-enabled="true"] ::placeholder {
+  color: var(--mag-text-muted) !important;
+  opacity: 0.82;
+}
+
+/* Math Academy's answer dropdown is a custom div-based select. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList {
+  color: var(--mag-text) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+) {
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  min-height: 1.8em !important;
+  padding: 0.2em 36px 0.2em 12px !important;
+  color: var(--mag-text) !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 10px !important;
+  outline: none !important;
+  background: var(--mag-input) !important;
+  box-shadow: inset 0 1px 2px rgba(25, 36, 57, 0.05), 0 1px rgba(255, 255, 255, 0.3) !important;
+  line-height: 1.2 !important;
+  transition: color 150ms ease, border-color 150ms ease, background 150ms ease, box-shadow 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList .selectListFrame {
+  cursor: pointer !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList .selectListFrameDisabled {
+  cursor: default !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+):hover {
+  color: var(--mag-text) !important;
+  background: var(--mag-input-hover) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 4px 12px rgba(18, 28, 48, 0.09) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList:focus-within > :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+) {
+  border-color: var(--mag-accent) !important;
+  box-shadow: 0 0 0 3px var(--mag-accent-soft), inset 0 1px 2px rgba(25, 36, 57, 0.04) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+)::after {
+  top: 50% !important;
+  right: 12px !important;
+  border-color: var(--mag-text-muted) transparent transparent transparent !important;
+  transform: translateY(-25%) !important;
+  pointer-events: none;
+  transition: border-color 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+):hover::after {
+  border-top-color: var(--mag-accent-strong) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+).correctSelection {
+  border-color: var(--mag-success-line) !important;
+  background: linear-gradient(var(--mag-success-tint), var(--mag-success-tint)), var(--mag-input) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+).correctSelectionMultipleAttempts {
+  border-color: var(--mag-warning-line) !important;
+  background: linear-gradient(var(--mag-warning-tint), var(--mag-warning-tint)), var(--mag-input) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+).incorrectSelection {
+  border-color: var(--mag-danger-line) !important;
+  background: linear-gradient(var(--mag-danger-tint), var(--mag-danger-tint)), var(--mag-input) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+).correctSelection:hover {
+  background: linear-gradient(var(--mag-success-tint), var(--mag-success-tint)), var(--mag-input-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+).correctSelectionMultipleAttempts:hover {
+  background: linear-gradient(var(--mag-warning-tint), var(--mag-warning-tint)), var(--mag-input-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList :is(
+  .selectListFrame,
+  .selectListFrameDisabled
+).incorrectSelection:hover {
+  background: linear-gradient(var(--mag-danger-tint), var(--mag-danger-tint)), var(--mag-input-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectListOptions {
+  z-index: 40 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  color: var(--mag-text) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 10px !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow: var(--mag-shadow-small) !important;
+  backdrop-filter: var(--mag-material-surface) !important;
+  -webkit-backdrop-filter: var(--mag-material-surface) !important;
+}
+
+/* Some task questions move the options element and assign viewport-relative
+   inline coordinates. Only add field-relative sizing while it remains nested. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectList > div.selectListOptions {
+  top: calc(100% + 6px);
+  min-width: 100%;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectListOption {
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  min-height: 2.35em !important;
+  padding: 8px 30px 8px 12px !important;
+  color: var(--mag-text-soft) !important;
+  background: transparent !important;
+  line-height: 1.25 !important;
+  transition: color 120ms ease, background 120ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] div.selectListOption:is(.selected, :hover) {
+  color: var(--mag-accent-strong) !important;
+  background: var(--mag-accent-soft) !important;
+}
+
+/* Tables and progress elements */
+html[data-ma-glass-enabled="true"] table {
+  overflow: hidden;
+  border-color: var(--mag-line) !important;
+  border-radius: var(--mag-radius-small);
+  background: var(--mag-glass) !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(td, th, tr) {
+  border-color: var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"] th {
+  color: var(--mag-text) !important;
+  background: var(--mag-accent-soft) !important;
+  font-weight: 650 !important;
+}
+
+html[data-ma-glass-enabled="true"] progress {
+  accent-color: var(--mag-accent);
+}
+
+/* Preserve mathematical notation while adapting its surrounding editor. */
+html[data-ma-glass-enabled="true"] :is(.MathJax, mjx-container, .mq-math-mode, .katex) {
+  color: var(--mag-text) !important;
+}
+
+/* MathJax SVG output stores semantic highlights as presentation attributes,
+   so the inherited text color above cannot adapt them for a dark surface. */
+html[data-ma-glass-enabled="true"] :is(.MathJax, .MathJax_SVG, .mjpage, mjx-container) [fill="blue" i] {
+  fill: var(--mag-math-blue) !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(.MathJax, .MathJax_SVG, .mjpage, mjx-container) [stroke="blue" i] {
+  stroke: var(--mag-math-blue) !important;
+}
+
+/* MathJax CHTML carries \"color: blue\" as an inline style on mjx-mstyle.
+   The browser's pure blue is too dark against the dark glass surfaces, so
+   replace that semantic highlight with the contrast-safe math-blue token. */
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] mjx-container
+  mjx-mstyle[style*="color"][style*="blue" i] {
+  color: var(--mag-math-blue) !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(.MathJax, .MathJax_SVG, .mjpage, mjx-container) [fill="purple" i] {
+  fill: var(--mag-math-purple) !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(.MathJax, .MathJax_SVG, .mjpage, mjx-container) [stroke="purple" i] {
+  stroke: var(--mag-math-purple) !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(.MathJax, .MathJax_SVG, .mjpage, mjx-container) :is(
+  [fill="red" i],
+  [fill="darkred" i]
+) {
+  fill: var(--mag-math-red) !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(.MathJax, .MathJax_SVG, .mjpage, mjx-container) :is(
+  [stroke="red" i],
+  [stroke="darkred" i]
+) {
+  stroke: var(--mag-math-red) !important;
+}
+
+html[data-ma-glass-enabled="true"] :is(code, pre) {
+  color: var(--mag-text) !important;
+  border-color: var(--mag-line) !important;
+  background: rgba(70, 91, 128, 0.09) !important;
+}
+
+html[data-ma-glass-enabled="true"] img.logo {
+  width: 48px !important;
+  height: 42px !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  content: var(--mag-site-logo-icon) !important;
+  filter: none !important;
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"] #topBarContainer img.logo {
+  margin-top: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] :is(#logo:not(.logo), #logoFrame img:not(.logo), #mobileMenuHeader img:not(.logo)) {
+  filter: brightness(0) invert(1) opacity(0.92);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] :is(#coursesMenu, #userMenu, #adminMenu, [style*="background: white"], [style*="background-color: white"]) {
+  background: var(--mag-glass-solid) !important;
+}
+
+html[data-ma-glass-enabled="true"] :focus-visible {
+  outline: 3px solid var(--mag-focus-ring) !important;
+  outline-offset: 2px !important;
+}
+

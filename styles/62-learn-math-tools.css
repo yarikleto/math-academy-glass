@@ -1,0 +1,534 @@
+/* Replace every Math Academy math-toolbox sprite or font glyph with a
+   standalone SVG mask. The masks remain crisp at any scale and inherit the
+   toolbox color in light, dark, and hover states. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] body:has(:is(
+  #questionAnswerContainer,
+  .questionWidget,
+  :where(#steps > .step > .question)
+) .matheditor-wrapper-answer) #mathEditorToolbox .mathIcon:is(
+  .fracIcon,
+  .sqrIcon,
+  .expIcon,
+  .subIcon,
+  .sqrtIcon,
+  .cbrtIcon,
+  .nrtIcon,
+  .absIcon,
+  .inftyIcon,
+  .piIcon,
+  .gtIcon,
+  .ltIcon,
+  .gteIcon,
+  .lteIcon,
+  .neIcon,
+  .pmIcon,
+  .timesIcon,
+  .cdotIcon,
+  .divIcon,
+  .cupIcon,
+  .capIcon,
+  .nullIcon,
+  .andIcon,
+  .orIcon,
+  .eIcon,
+  .sinIcon,
+  .cosIcon,
+  .tanIcon,
+  .cscIcon,
+  .secIcon,
+  .cotIcon,
+  .asinIcon,
+  .acosIcon,
+  .atanIcon,
+  .acscIcon,
+  .asecIcon,
+  .acotIcon,
+  .lnIcon,
+  .logIcon,
+  .logbIcon,
+  .alphaIcon,
+  .betaIcon,
+  .gammaIcon,
+  .thetaIcon,
+  .phiIcon,
+  .lambdaIcon,
+  .sinhIcon,
+  .coshIcon,
+  .tanhIcon,
+  .cschIcon,
+  .sechIcon,
+  .cothIcon
+) {
+  position: relative !important;
+  background-color: var(--mag-input) !important;
+  background-image: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] body:has(:is(
+  #questionAnswerContainer,
+  .questionWidget,
+  :where(#steps > .step > .question)
+) .matheditor-wrapper-answer) #mathEditorToolbox .mathIcon:is(
+  .fracIcon,
+  .sqrIcon,
+  .expIcon,
+  .subIcon,
+  .sqrtIcon,
+  .cbrtIcon,
+  .nrtIcon,
+  .absIcon,
+  .inftyIcon,
+  .piIcon,
+  .gtIcon,
+  .ltIcon,
+  .gteIcon,
+  .lteIcon,
+  .neIcon,
+  .pmIcon,
+  .timesIcon,
+  .cdotIcon,
+  .divIcon,
+  .cupIcon,
+  .capIcon,
+  .nullIcon,
+  .andIcon,
+  .orIcon,
+  .eIcon,
+  .sinIcon,
+  .cosIcon,
+  .tanIcon,
+  .cscIcon,
+  .secIcon,
+  .cotIcon,
+  .asinIcon,
+  .acosIcon,
+  .atanIcon,
+  .acscIcon,
+  .asecIcon,
+  .acotIcon,
+  .lnIcon,
+  .logIcon,
+  .logbIcon,
+  .alphaIcon,
+  .betaIcon,
+  .gammaIcon,
+  .thetaIcon,
+  .phiIcon,
+  .lambdaIcon,
+  .sinhIcon,
+  .coshIcon,
+  .tanhIcon,
+  .cschIcon,
+  .sechIcon,
+  .cothIcon
+)::before {
+  display: block;
+  width: 25px;
+  height: 21px;
+  background-color: currentColor;
+  content: "";
+  -webkit-mask: var(--mag-math-tool-icon) center / contain no-repeat;
+  mask: var(--mag-math-tool-icon) center / contain no-repeat;
+}
+
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .fracIcon { --mag-math-tool-icon: var(--mag-math-frac-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .sqrIcon { --mag-math-tool-icon: var(--mag-math-sqr-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .expIcon { --mag-math-tool-icon: var(--mag-math-exp-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .subIcon { --mag-math-tool-icon: var(--mag-math-sub-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .sqrtIcon { --mag-math-tool-icon: var(--mag-math-sqrt-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .cbrtIcon { --mag-math-tool-icon: var(--mag-math-cbrt-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .nrtIcon { --mag-math-tool-icon: var(--mag-math-nrt-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .absIcon { --mag-math-tool-icon: var(--mag-math-abs-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .gtIcon { --mag-math-tool-icon: var(--mag-math-gt-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .ltIcon { --mag-math-tool-icon: var(--mag-math-lt-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .gteIcon { --mag-math-tool-icon: var(--mag-math-gte-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .lteIcon { --mag-math-tool-icon: var(--mag-math-lte-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .neIcon { --mag-math-tool-icon: var(--mag-math-ne-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .pmIcon { --mag-math-tool-icon: var(--mag-math-pm-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .timesIcon { --mag-math-tool-icon: var(--mag-math-times-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .cdotIcon { --mag-math-tool-icon: var(--mag-math-cdot-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .divIcon { --mag-math-tool-icon: var(--mag-math-div-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .cupIcon { --mag-math-tool-icon: var(--mag-math-cup-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .capIcon { --mag-math-tool-icon: var(--mag-math-cap-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .nullIcon { --mag-math-tool-icon: var(--mag-math-null-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .inftyIcon { --mag-math-tool-icon: var(--mag-math-infty-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .andIcon { --mag-math-tool-icon: var(--mag-math-and-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .orIcon { --mag-math-tool-icon: var(--mag-math-or-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .eIcon { --mag-math-tool-icon: var(--mag-math-e-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .piIcon { --mag-math-tool-icon: var(--mag-math-pi-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .sinIcon { --mag-math-tool-icon: var(--mag-math-sin-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .cosIcon { --mag-math-tool-icon: var(--mag-math-cos-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .tanIcon { --mag-math-tool-icon: var(--mag-math-tan-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .cscIcon { --mag-math-tool-icon: var(--mag-math-csc-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .secIcon { --mag-math-tool-icon: var(--mag-math-sec-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .cotIcon { --mag-math-tool-icon: var(--mag-math-cot-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .asinIcon { --mag-math-tool-icon: var(--mag-math-asin-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .acosIcon { --mag-math-tool-icon: var(--mag-math-acos-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .atanIcon { --mag-math-tool-icon: var(--mag-math-atan-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .acscIcon { --mag-math-tool-icon: var(--mag-math-acsc-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .asecIcon { --mag-math-tool-icon: var(--mag-math-asec-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .acotIcon { --mag-math-tool-icon: var(--mag-math-acot-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .lnIcon { --mag-math-tool-icon: var(--mag-math-ln-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .logIcon { --mag-math-tool-icon: var(--mag-math-log-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .logbIcon { --mag-math-tool-icon: var(--mag-math-logb-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .alphaIcon { --mag-math-tool-icon: var(--mag-math-alpha-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .betaIcon { --mag-math-tool-icon: var(--mag-math-beta-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .gammaIcon { --mag-math-tool-icon: var(--mag-math-gamma-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .thetaIcon { --mag-math-tool-icon: var(--mag-math-theta-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .phiIcon { --mag-math-tool-icon: var(--mag-math-phi-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .lambdaIcon { --mag-math-tool-icon: var(--mag-math-lambda-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .sinhIcon { --mag-math-tool-icon: var(--mag-math-sinh-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .coshIcon { --mag-math-tool-icon: var(--mag-math-cosh-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .tanhIcon { --mag-math-tool-icon: var(--mag-math-tanh-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .cschIcon { --mag-math-tool-icon: var(--mag-math-csch-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .sechIcon { --mag-math-tool-icon: var(--mag-math-sech-icon); }
+html[data-ma-glass-enabled="true"] #mathEditorToolbox .cothIcon { --mag-math-tool-icon: var(--mag-math-coth-icon); }
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] body:has(:is(
+  #questionAnswerContainer,
+  .questionWidget,
+  :where(#steps > .step > .question)
+) .matheditor-wrapper-answer) #mathEditorToolbox .mathIcon:is(
+  .fracIcon,
+  .sqrIcon,
+  .expIcon,
+  .subIcon,
+  .sqrtIcon,
+  .cbrtIcon,
+  .nrtIcon,
+  .absIcon,
+  .inftyIcon,
+  .piIcon,
+  .gtIcon,
+  .ltIcon,
+  .gteIcon,
+  .lteIcon,
+  .neIcon,
+  .pmIcon,
+  .timesIcon,
+  .cdotIcon,
+  .divIcon,
+  .cupIcon,
+  .capIcon,
+  .nullIcon,
+  .andIcon,
+  .orIcon,
+  .eIcon,
+  .sinIcon,
+  .cosIcon,
+  .tanIcon,
+  .cscIcon,
+  .secIcon,
+  .cotIcon,
+  .asinIcon,
+  .acosIcon,
+  .atanIcon,
+  .acscIcon,
+  .asecIcon,
+  .acotIcon,
+  .lnIcon,
+  .logIcon,
+  .logbIcon,
+  .alphaIcon,
+  .betaIcon,
+  .gammaIcon,
+  .thetaIcon,
+  .phiIcon,
+  .lambdaIcon,
+  .sinhIcon,
+  .coshIcon,
+  .tanhIcon,
+  .cschIcon,
+  .sechIcon,
+  .cothIcon
+):hover {
+  background-color: var(--mag-accent-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar {
+  display: block !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 11px 12px !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 16px !important;
+  background: var(--mag-glass) !important;
+  box-shadow: var(--mag-shadow-small) !important;
+  backdrop-filter: var(--mag-material-surface) !important;
+  -webkit-backdrop-filter: var(--mag-material-surface) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar tbody {
+  display: block !important;
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar tr {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar td {
+  display: block !important;
+  color: var(--mag-text-muted) !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar :is(
+  #questionsAnswered,
+  #timeRemaining
+) {
+  width: auto !important;
+  padding: 0 8px !important;
+  color: var(--mag-text-muted) !important;
+  font-size: 13px !important;
+  line-height: 38px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar :is(
+  #questionsAnswered,
+  #timeRemaining
+) b {
+  color: var(--mag-text-soft) !important;
+  font-weight: 680 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar #timeRemaining {
+  text-align: center !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar #buttons {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  width: auto !important;
+  white-space: nowrap !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar :is(
+  #prevButton,
+  #nextButton,
+  #submitTestButton
+) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  height: 38px !important;
+  margin: 0 !important;
+  padding: 0 16px !important;
+  border-radius: 11px !important;
+  font-size: 12px !important;
+  font-weight: 680 !important;
+  line-height: 1 !important;
+  transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease, transform 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar :is(
+  #prevButton,
+  #nextButton
+) {
+  width: 76px !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line) !important;
+  background: var(--mag-input) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar :is(
+  #prevButton,
+  #nextButton
+):not(.disabledTextButton):hover {
+  color: var(--mag-text) !important;
+  border-color: rgba(32, 142, 235, 0.3) !important;
+  background: var(--mag-input-hover) !important;
+  transform: translateY(-1px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar .disabledTextButton {
+  color: var(--mag-text-muted) !important;
+  cursor: default !important;
+  opacity: 0.42 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #submitTestButton {
+  width: 118px !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #submitTestButton.enabledButton {
+  background: var(--mag-primary-gradient) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.25), 0 6px 16px var(--mag-primary-shadow) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #submitTestButton.enabledButton:hover {
+  background: var(--mag-primary-gradient-hover) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), 0 8px 20px var(--mag-primary-shadow-hover) !important;
+  transform: translateY(-1px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #submitTestButton.disabledButton {
+  color: var(--mag-text-muted) !important;
+  border-color: var(--mag-line) !important;
+  background: rgba(100, 116, 148, 0.12) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.06) !important;
+  -webkit-text-fill-color: var(--mag-text-muted) !important;
+  cursor: default !important;
+}
+
+@media (max-width: 760px) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer {
+    padding: 20px 14px 32px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+    #questionNavigator,
+    #questions,
+    #questionAnswerContainer #buttonBar
+  ) {
+    width: 100% !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionNavigator {
+    margin-bottom: 24px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #questions > .question {
+    padding: 20px 18px 22px !important;
+    border-radius: 16px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar tr {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar #buttons {
+    grid-column: 1 / -1 !important;
+    justify-content: stretch !important;
+    margin-top: 8px !important;
+    padding-top: 10px !important;
+    border-top: 1px solid var(--mag-line) !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #questionAnswerContainer #buttonBar #buttons > * {
+    flex: 1 1 0 !important;
+    width: auto !important;
+  }
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionHeader {
+  min-height: 28px;
+  padding: 17px 20px !important;
+  color: var(--mag-text) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--mag-line) !important;
+  background: rgba(100, 116, 148, 0.055) !important;
+  line-height: 1.45 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionNumber {
+  color: var(--mag-text) !important;
+  font-weight: 720 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] a.questionKP {
+  margin-left: 9px !important;
+  color: var(--mag-accent-strong) !important;
+  font-weight: 540 !important;
+  text-decoration: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] a.questionKP:hover {
+  color: var(--mag-accent) !important;
+  text-decoration: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .helpButton {
+  box-sizing: border-box !important;
+  width: 28px !important;
+  height: 28px !important;
+  margin: -3px 0 -3px 14px !important;
+  color: var(--mag-text-muted) !important;
+  border: 1px solid transparent !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  font-size: 16px !important;
+  line-height: 26px !important;
+  text-align: center !important;
+  transition: color 140ms ease, border-color 140ms ease, background 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .helpButton:hover {
+  color: var(--mag-text) !important;
+  border-color: var(--mag-line-bright) !important;
+  background: var(--mag-segment-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #helpMenu {
+  box-sizing: border-box !important;
+  width: min(280px, calc(100vw - 32px)) !important;
+  padding: 8px !important;
+  overflow: hidden !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 14px !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow: var(--mag-shadow) !important;
+  backdrop-filter: var(--mag-material-raised) !important;
+  -webkit-backdrop-filter: var(--mag-material-raised) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #helpMenu-header {
+  box-sizing: border-box !important;
+  margin: 0 0 6px !important;
+  padding: 10px 12px 12px !important;
+  color: var(--mag-text) !important;
+  border-bottom: 1px solid var(--mag-line) !important;
+  background: transparent !important;
+  font-size: 14px !important;
+  font-weight: 680 !important;
+  letter-spacing: -0.01em;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #helpMenu .helpMenu-item {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  padding: 10px 12px !important;
+  color: var(--mag-text-soft) !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  font-size: 14px !important;
+  transition: color 130ms ease, background 130ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #helpMenu .helpMenu-item:hover {
+  color: var(--mag-accent-strong) !important;
+  background: var(--mag-accent-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionBody {
+  width: auto !important;
+  margin-left: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionText {
+  padding: 28px 30px 24px !important;
+  color: var(--mag-text-soft) !important;
+  line-height: 1.62 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionText blockquote {
+  margin: 0 0 8px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}

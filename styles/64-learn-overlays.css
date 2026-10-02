@@ -1,0 +1,877 @@
+/* The explicit resolved-theme attribute gives this route-specific surface
+   higher specificity than the later :is(#sequenceUnits, ...) compatibility
+   fallback, so each resolved glass material reliably wins. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="light"] #sequenceUnits {
+  border-color: rgba(69, 153, 214, 0.18) !important;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(73, 194, 255, 0.055), transparent 36%),
+    linear-gradient(145deg, rgba(251, 254, 255, 0.94), rgba(245, 251, 255, 0.9)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.94),
+    0 28px 72px rgba(45, 63, 83, 0.1),
+    0 4px 14px rgba(45, 63, 83, 0.045) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #sequenceUnits {
+  border-color: rgba(108, 194, 248, 0.22) !important;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(32, 168, 228, 0.2), transparent 38%),
+    linear-gradient(145deg, rgba(8, 40, 65, 0.88), rgba(4, 25, 44, 0.82)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.1),
+    0 32px 82px rgba(0, 0, 0, 0.46),
+    0 4px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Course sequence popover --------------------------------------------------
+   The legacy dialog paints unit labels with its own violet ink and uses a
+   neutral gray tab strip. Keep this surface neutral enough to match the light
+   glass while retaining a small cool tint for material separation. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceTabs {
+  border-color: rgba(85, 158, 211, 0.15) !important;
+  background:
+    linear-gradient(180deg, rgba(244, 250, 254, 0.92), rgba(238, 247, 253, 0.86)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.76),
+    0 5px 16px rgba(45, 63, 83, 0.04) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceTabs .sequenceCourseTab {
+  color: #294967 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceTabs .sequenceCourseTabSelected {
+  color: var(--mag-text) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(234, 247, 255, 0.91)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.96),
+    0 7px 18px rgba(29, 91, 145, 0.14) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceTabs :is(
+  .sequenceCourseTab,
+  .sequenceCourseTabSelected
+):hover {
+  color: var(--mag-accent-ink) !important;
+  background: rgba(239, 249, 255, 0.82) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceUnits .sequenceCourseUnits {
+  color: var(--mag-text-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceUnits .courseUnit,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceUnits .courseUnit :is(a, a:visited) {
+  color: var(--mag-accent-ink) !important;
+  text-decoration-color: rgba(10, 116, 217, 0.28) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceUnits .courseUnit:hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceUnits .courseUnit :is(a, a:visited):hover {
+  color: var(--mag-accent) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceUnits table.courseUnitProgressBar {
+  overflow: hidden !important;
+  border: 1px solid rgba(62, 130, 185, 0.24) !important;
+  border-radius: 999px !important;
+  border-spacing: 0 !important;
+  background: rgba(211, 235, 251, 0.7) !important;
+  box-shadow:
+    inset 0 1px 3px rgba(26, 83, 132, 0.13),
+    0 1px rgba(255, 255, 255, 0.74) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceUnits table.courseUnitProgressBar :is(
+  tbody,
+  tr
+) {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #sequenceTabs {
+  border-color: rgba(116, 199, 255, 0.16) !important;
+  background:
+    linear-gradient(180deg, rgba(16, 61, 94, 0.78), rgba(7, 39, 65, 0.72)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.08),
+    0 6px 18px rgba(0, 0, 0, 0.2) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #sequenceTabs .sequenceCourseTab {
+  color: var(--mag-text-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #sequenceTabs .sequenceCourseTabSelected {
+  color: var(--mag-text) !important;
+  border-color: rgba(137, 211, 255, 0.18) !important;
+  background:
+    linear-gradient(145deg, rgba(27, 74, 110, 0.9), rgba(12, 48, 77, 0.84)) !important;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.12),
+    0 7px 18px rgba(0, 0, 0, 0.26) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #sequenceTabs :is(
+  .sequenceCourseTab,
+  .sequenceCourseTabSelected
+):hover {
+  color: var(--mag-accent-strong) !important;
+  background: rgba(35, 83, 118, 0.74) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #sequenceUnits .courseUnit,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #sequenceUnits .courseUnit :is(a, a:visited) {
+  color: var(--mag-accent-strong) !important;
+  text-decoration-color: rgba(117, 201, 255, 0.3) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] #sequenceUnits table.courseUnitProgressBar {
+  border-color: rgba(103, 187, 241, 0.2) !important;
+  background: rgba(2, 19, 34, 0.72) !important;
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.4),
+    0 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionDifficulty {
+  display: inline-grid !important;
+  place-items: center !important;
+  box-sizing: border-box !important;
+  width: 28px !important;
+  height: 28px !important;
+  margin: 0 12px 0 0 !important;
+  padding: 0 !important;
+  color: var(--mag-accent-strong) !important;
+  border: 1px solid rgba(74, 164, 255, 0.3) !important;
+  border-radius: 9px !important;
+  background: rgba(74, 164, 255, 0.13) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.12) !important;
+  line-height: 26px !important;
+  vertical-align: middle !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionDifficulty.difficultyModerate {
+  border-color: rgba(5, 119, 199, 0.32) !important;
+  background: rgba(5, 119, 199, 0.15) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionDifficulty.difficultyHard {
+  border-color: rgba(71, 87, 184, 0.34) !important;
+  background: rgba(71, 87, 184, 0.16) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  .answerCreated,
+  .answerContext,
+  .timeElapsed,
+  a.questionId
+) {
+  color: var(--mag-text-muted) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .answerDetailsSeparator {
+  margin-right: 11px !important;
+  margin-left: 11px !important;
+  color: var(--mag-line-bright) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .answerResult {
+  float: right !important;
+  padding: 0 11px !important;
+  color: var(--mag-text) !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .answerResult[data-ma-answer-result="correct"] {
+  color: var(--mag-success) !important;
+  background: var(--mag-success-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .answerResult[data-ma-answer-result="incorrect"] {
+  color: var(--mag-danger) !important;
+  background: var(--mag-danger-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionExplanation {
+  color: var(--mag-text-soft) !important;
+  border-color: var(--mag-line) !important;
+  border-radius: 0 0 18px 18px !important;
+  background: var(--mag-glass) !important;
+}
+
+/* Raster lesson graphics are authored for white paper and often contain
+   semantic line colors. In dark mode, reduce the paper glare without
+   inverting or recoloring the instructional content. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] :is(
+  .question,
+  .questionWidget,
+  .questionText,
+  .questionExplanation
+) img[src*="/graphics/"] {
+  border: 1px solid rgba(219, 229, 255, 0.14) !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(0, 0, 0, 0.08) !important;
+  filter: brightness(0.82) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionExplanation span.proofSegment {
+  padding: 0.02em 0.16em !important;
+  color: var(--mag-accent-strong) !important;
+  border-radius: 0.28em !important;
+  background: var(--mag-accent-soft) !important;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionExplanation span.proofSegment::selection {
+  color: var(--mag-text) !important;
+  background-color: var(--mag-selection) !important;
+}
+
+/* Some task explanations encode answer phrases as styled MathJax mtext. The
+   same markup also appears outside .questionExplanation on review routes. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] mjx-container mjx-mstyle[
+  style*="background-color"
+][style*="gainsboro" i] {
+  color: var(--mag-accent-strong) !important;
+  border-radius: 0.3em !important;
+  background-color: var(--mag-accent-soft) !important;
+  box-shadow: inset 0 0 0 1px var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] mjx-container mjx-mstyle[
+  style*="background-color"
+][style*="gainsboro" i] mjx-mstyle[style*="color"][style*="blue" i] {
+  color: var(--mag-accent-strong) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] mjx-container mjx-mstyle[
+  style*="background-color"
+][style*="gainsboro" i] > mjx-mpadded > mjx-block {
+  margin-top: 0.1em !important;
+  margin-bottom: 0.1em !important;
+}
+
+/* Math Academy also renders some inline answer fields as MathJax boxes rather
+   than native inputs or MathQuill editors. Their authored lightgray border is
+   the stable field marker; replace only that surface so ordinary boxed
+   mathematical notation keeps its semantic styling. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] mjx-container
+  mjx-mstyle[style*="border"][style*="lightgray" i] {
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 0.32em !important;
+  background-color: var(--mag-input) !important;
+  box-shadow:
+    inset 0 1px 2px rgba(20, 31, 50, 0.055),
+    0 1px rgba(255, 255, 255, 0.28) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardTable,
+  #leaderboardTable tbody,
+  #leaderboardTable tr,
+  #leaderboardTable td
+) {
+  background-color: transparent !important;
+}
+
+/* The site's leaderboard card reserves 15px below its table. Once league
+   rows receive semantic tints, that padding reads as a detached white strip.
+   Let populated tables meet the card edge and round the final row itself so
+   the absolutely positioned league popover can remain unclipped. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardFrame:has(#leaderboardTable) {
+  padding-bottom: 0 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable tr:last-child td:first-child {
+  border-radius: 0 0 0 17px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable tr:last-child td:last-child {
+  border-radius: 0 0 17px 0 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td.leaderboardUserCurrent {
+  background: var(--mag-accent-soft) !important;
+}
+
+/* Color league members by direction without replacing their rank cells. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable tr:has(
+  > td.leaderboardTextPromotionZone
+) > td:not(.leaderboardUserCurrent) {
+  background-color: var(--mag-success-tint) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable tr:has(
+  > td.leaderboardTextDemotionZone
+) > td:not(.leaderboardUserCurrent) {
+  background-color: var(--mag-danger-tint) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td.leaderboardTextPromotionZone {
+  color: var(--mag-success) !important;
+  box-shadow: inset 2px 0 var(--mag-success-line);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td.leaderboardTextDemotionZone {
+  color: var(--mag-danger) !important;
+  box-shadow: inset 2px 0 var(--mag-danger-line);
+}
+
+/* The actual boundary row is identified by its label and gets SVG arrows. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td[data-ma-league-boundary] {
+  height: 52px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 13px !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  text-align: center !important;
+  background-position: calc(50% - 92px) center, calc(50% + 92px) center, center !important;
+  background-repeat: no-repeat !important;
+  background-size: 27px 27px, 27px 27px, 100% 100% !important;
+  background-clip: padding-box !important;
+  transition: filter 150ms ease, box-shadow 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td[data-ma-league-boundary] > * {
+  display: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td[data-ma-league-boundary]::before {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 52px;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td[data-ma-league-boundary="promotion"] {
+  color: var(--mag-success) !important;
+  background-image:
+    var(--mag-promotion-arrow-icon),
+    var(--mag-promotion-arrow-icon),
+    linear-gradient(90deg, transparent, var(--mag-success-soft) 16%, var(--mag-success-soft) 84%, transparent) !important;
+  box-shadow: inset 0 1px var(--mag-success-line), inset 0 -1px var(--mag-success-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td[data-ma-league-boundary="promotion"]::before {
+  content: "Promotion zone";
+  color: var(--mag-success);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td[data-ma-league-boundary="demotion"] {
+  color: var(--mag-danger) !important;
+  background-image:
+    var(--mag-demotion-arrow-icon),
+    var(--mag-demotion-arrow-icon),
+    linear-gradient(90deg, transparent, var(--mag-danger-soft) 16%, var(--mag-danger-soft) 84%, transparent) !important;
+  box-shadow: inset 0 1px var(--mag-danger-line), inset 0 -1px var(--mag-danger-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td[data-ma-league-boundary="demotion"]::before {
+  content: "Demotion zone";
+  color: var(--mag-danger);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td[data-ma-league-boundary]:hover {
+  filter: brightness(1.05) saturate(1.06);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  .leaderboardUserRank,
+  .leaderboardUserName,
+  .leaderboardUserPoints
+) {
+  color: var(--mag-text-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardHeaderContentFrame {
+  position: relative !important;
+  padding: 6px 30px 6px 10px !important;
+  border: 1px solid transparent !important;
+  border-radius: 12px !important;
+  cursor: default;
+  transition: color 140ms ease, background 140ms ease, border-color 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardHeaderContentFrame::after {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 6px;
+  height: 6px;
+  border: solid var(--mag-text-muted);
+  border-width: 0 1.5px 1.5px 0;
+  content: "";
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardHeaderContentFrame:hover {
+  border-color: var(--mag-line-bright) !important;
+  background: var(--mag-segment-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardFrame:has(
+  #leagueLevels[style*="visible"]
+) #leaderboardHeaderContentFrame::after {
+  border-color: var(--mag-text-soft);
+  transform: translateY(-30%) rotate(225deg);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardHeaderContent {
+  /* This table only arranges the league icon and title.  It must not clip the
+     icon's drop shadow, unlike data tables with rounded glass surfaces. */
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevels {
+  z-index: 20 !important;
+  width: calc(100% + 2px) !important;
+  padding: 8px !important;
+  box-sizing: border-box !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 16px !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.38), inset 0 1px rgba(255, 255, 255, 0.08) !important;
+  opacity: 0;
+  transform: translateY(-5px) scale(0.985);
+  transform-origin: 50% 0;
+  backdrop-filter: var(--mag-material-raised) !important;
+  -webkit-backdrop-filter: var(--mag-material-raised) !important;
+  transition: opacity 140ms ease, transform 140ms ease, visibility 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevels[style*="visible"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable {
+  width: 100% !important;
+  border: 0 !important;
+  border-spacing: 0 1px !important;
+  border-collapse: separate !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable td {
+  height: 32px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  background: transparent !important;
+  transition: color 120ms ease, background 120ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable td:first-child {
+  padding-left: 8px !important;
+  border-radius: 10px 0 0 10px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable td:last-child {
+  padding-right: 8px !important;
+  border-radius: 0 10px 10px 0 !important;
+  text-align: right;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable :is(
+  .leagueLevelNumber,
+  .leagueLevelName
+) {
+  color: var(--mag-text-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable .leagueLevelPercentile {
+  color: var(--mag-text-muted) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable tr:hover td {
+  color: var(--mag-text) !important;
+  background: var(--mag-segment-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable tr[data-ma-current-league] td {
+  background: var(--mag-accent-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable tr[data-ma-current-league] td:first-child {
+  box-shadow: inset 2px 0 var(--mag-accent);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable tr[data-ma-current-league] .leagueLevelName {
+  color: var(--mag-text) !important;
+  font-weight: 650 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable .leagueLevelColor {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardLeagueColor,
+  #leagueLevelsTable .leagueLevelColor
+) {
+  box-sizing: border-box !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 2px 3px rgba(3, 8, 18, 0.32));
+  transform: translateZ(0);
+  transition: transform 150ms ease, filter 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardLeagueColor {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardLeagueColor,
+  #leagueLevelsTable .leagueLevelColor
+).diamond {
+  background-image: var(--mag-league-diamond-icon) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardLeagueColor,
+  #leagueLevelsTable .leagueLevelColor
+).emerald {
+  background-image: var(--mag-league-emerald-icon) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardLeagueColor,
+  #leagueLevelsTable .leagueLevelColor
+).ruby {
+  background-image: var(--mag-league-ruby-icon) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardLeagueColor,
+  #leagueLevelsTable .leagueLevelColor
+).sapphire {
+  background-image: var(--mag-league-sapphire-icon) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardLeagueColor,
+  #leagueLevelsTable .leagueLevelColor
+).platinum {
+  background-image: var(--mag-league-platinum-icon) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardLeagueColor,
+  #leagueLevelsTable .leagueLevelColor
+).gold {
+  background-image: var(--mag-league-gold-icon) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardLeagueColor,
+  #leagueLevelsTable .leagueLevelColor
+).silver {
+  background-image: var(--mag-league-silver-icon) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardLeagueColor,
+  #leagueLevelsTable .leagueLevelColor
+).bronze {
+  background-image: var(--mag-league-bronze-icon) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #leaderboardLeagueColor,
+  #leagueLevelsTable .leagueLevelColor
+).iron {
+  background-image: var(--mag-league-iron-icon) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leagueLevelsTable tr:hover .leagueLevelColor,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardHeaderContentFrame:hover #leaderboardLeagueColor {
+  filter: drop-shadow(0 3px 5px rgba(3, 8, 18, 0.42)) saturate(1.14) brightness(1.06);
+  transform: scale(1.1) translateZ(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+    #leaderboardLeagueColor,
+    #leagueLevelsTable .leagueLevelColor
+  ) {
+    transition: none !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #leaderboardTable td[data-ma-league-boundary] {
+    transition: none !important;
+  }
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(#sequenceUnits, #progressDetails, #estimatedCompletionDetails) {
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 18px !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow: var(--mag-shadow) !important;
+  backdrop-filter: var(--mag-material-raised) !important;
+  -webkit-backdrop-filter: var(--mag-material-raised) !important;
+}
+
+/* The progress popovers use tables only to align field labels and values.
+   Keep the raised popover as their single material instead of letting the
+   generic table treatment paint a second rounded card around the rows. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #progressDetails,
+  #estimatedCompletionDetails
+) :is(table, tbody, tr, td) {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #progressDetails,
+  #estimatedCompletionDetails
+) table {
+  overflow: visible !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] [data-ma-glass-surface="raised"] {
+  overflow: hidden;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 18px !important;
+  background:
+    linear-gradient(145deg, var(--mag-glass-hover), var(--mag-glass)) !important;
+  box-shadow: var(--mag-shadow-small) !important;
+  backdrop-filter: var(--mag-material-surface) !important;
+  -webkit-backdrop-filter: var(--mag-material-surface) !important;
+}
+
+/* #steps is only a layout host around the current raised .questionWidget. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #steps[data-ma-glass-surface="raised"] {
+  overflow: visible;
+  color: inherit !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* A known question supplies its own complete surface. Flatten any pale wrapper
+   detected around it so task pages do not render nested glass cards. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] [data-ma-glass-surface="raised"]:has(.question) {
+  overflow: visible;
+  color: inherit !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] [data-ma-glass-subtle="true"] {
+  border-color: var(--mag-line) !important;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(63, 164, 255, 0.03), transparent 65%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(252, 253, 255, 0.84)) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] [data-ma-glass-subtle="true"] {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(63, 164, 255, 0.22), transparent 65%),
+    linear-gradient(145deg, rgba(90, 105, 139, 0.24), rgba(28, 111, 152, 0.15)) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] [data-ma-glass-orb="true"] {
+  color: var(--mag-text) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  background: var(--mag-glass-hover) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.22), var(--mag-shadow-small) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] [data-ma-glass-copy="primary"] {
+  color: var(--mag-text) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] [data-ma-glass-copy="muted"] {
+  color: var(--mag-text-muted) !important;
+}
+
+/* Result labels carry semantic status even when the neutral-text detector has
+   annotated them as primary copy. Keep that meaning in both theme modes. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-result .questionWidget-correctText {
+  color: var(--mag-success) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .questionWidget-result .questionWidget-incorrectText {
+  color: var(--mag-danger) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(hr, [class*="separator"], [class*="divider"]) {
+  border-color: var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"] ::-webkit-scrollbar { width: 12px; height: 12px; }
+html[data-ma-glass-enabled="true"] ::-webkit-scrollbar-track { background: transparent; }
+html[data-ma-glass-enabled="true"] ::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: rgba(105, 118, 145, 0.42);
+  background-clip: padding-box;
+}
+
+@media (max-width: 760px) {
+  html[data-ma-glass-enabled="true"] .sectionFrame {
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+  }
+
+  html[data-ma-glass-enabled="true"] :is(.leftBox, .middleBox, .rightBox) {
+    padding: 12px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-ma-glass-enabled="true"] *,
+  html[data-ma-glass-enabled="true"] *::before,
+  html[data-ma-glass-enabled="true"] *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Quiet progress language. Task navigation, dashboard goals, task rows, and
+   course completion now share the same low-chrome treatment: a compact track,
+   flat semantic fill, and no ornamental bevels or glow. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #dailyGoalProgressBarFrame,
+  .taskProgressBarFrame
+) {
+  height: 5px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: var(--mag-xp-track) !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #dailyGoalProgressBar,
+  #dailyGoalProgressBarExceeded,
+  .taskProgressBar
+) {
+  height: 100% !important;
+  border-radius: inherit !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #dailyGoalProgressBar {
+  background: var(--mag-xp) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #dailyGoalProgressBarExceeded,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #dailyGoalFrame[data-ma-daily-goal-stage="goal"] :is(
+  #dailyGoalProgressBar,
+  #dailyGoalProgressBarExceeded
+) {
+  background: var(--mag-success) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] .taskProgressBar {
+  background: var(--mag-accent) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #dailyGoalFrame :is(
+  #dailyGoalProgressBar,
+  #dailyGoalProgressBarExceeded
+) {
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #coursePercentComplete {
+  width: 48px !important;
+  height: 48px !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition: color 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #coursePercentComplete::before {
+  inset: 1px !important;
+  padding: 2px !important;
+  background: conic-gradient(
+    from 0deg,
+    var(--mag-accent) 0deg var(--mag-course-progress-angle, 0deg),
+    var(--mag-xp-track) var(--mag-course-progress-angle, 0deg) 360deg
+  ) !important;
+  filter: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #coursePercentComplete::after {
+  content: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #coursePercentComplete:hover,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #coursePercentComplete:active {
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #sequenceTabs .sequenceCoursePercentComplete {
+  flex: 0 0 34px !important;
+  width: 34px !important;
+  height: 28px !important;
+  margin: 0 6px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--mag-text-muted) !important;
+  font-size: 11px !important;
+  font-variant-numeric: tabular-nums;
+  line-height: 28px !important;
+}

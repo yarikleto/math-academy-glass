@@ -1,0 +1,348 @@
+/* Authenticated help hub ---------------------------------------------------
+   The host page uses a fixed-width layout table and absolutely positioned
+   card copy. Treat those elements as layout only, then let each help option
+   become the page's single glass surface so longer labels and narrow
+   viewports can flow without clipping. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #wrap {
+  box-sizing: border-box !important;
+  width: min(100%, 1120px) !important;
+  padding-right: clamp(16px, 2vw, 20px) !important;
+  padding-left: clamp(16px, 2vw, 20px) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #topBarContainer {
+  left: 50% !important;
+  box-sizing: border-box !important;
+  width: min(calc(100vw - 32px), 1080px) !important;
+  transform: translateX(-50%);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #topBar {
+  width: min(100%, 1000px) !important;
+}
+
+/* The authenticated header is assembled with a table. It belongs to the
+   top-ribbon surface and must not inherit the generic content-table glass. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #topBarContainer :is(
+  table,
+  tbody,
+  tr,
+  td
+) {
+  overflow: visible !important;
+  color: inherit !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #content {
+  position: relative !important;
+  top: 0 !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  padding: clamp(102px, 10vw, 126px) 0 clamp(58px, 8vw, 92px) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #content > #header {
+  box-sizing: border-box;
+  width: min(100%, 780px);
+  margin: 0 auto clamp(42px, 6vw, 58px) !important;
+  text-align: center;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #content > #header h1 {
+  margin: 0 !important;
+  color: var(--mag-text) !important;
+  font-family: var(--mag-display-font) !important;
+  font-size: clamp(2.75rem, 5.5vw, 3.75rem) !important;
+  font-weight: 720 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.05em !important;
+  text-wrap: balance;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #content > #header h2 {
+  max-width: 680px;
+  margin: 18px auto 0 !important;
+  color: var(--mag-text-soft) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: clamp(1.12rem, 2.2vw, 1.4rem) !important;
+  font-weight: 470 !important;
+  line-height: 1.45 !important;
+  letter-spacing: -0.015em !important;
+  text-wrap: balance;
+}
+
+/* `.sectionFrame` and `#help-table` are both layout wrappers here. The broad
+   marketing and table rules otherwise render them as two nested surfaces. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #content > .sectionFrame {
+  box-sizing: border-box !important;
+  width: min(100%, 1040px) !important;
+  max-width: 1040px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-spacing: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr:has(> td:not(.help-td)) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr + tr {
+  margin-top: 14px;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr:has(> td:not(.help-td)):not(:first-child) {
+  margin-top: clamp(30px, 5vw, 42px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr > td:not(.help-td) {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Grid layout does not honor the table `colspan` algorithm. Preserve any
+   author-declared full-row help option explicitly while ordinary one-cell
+   rows retain the host page's single-column card width. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr > td.help-td[colspan]:not([colspan="1"]) {
+  grid-column: 1 / -1;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table h2 {
+  margin: 0 !important;
+  color: var(--mag-text) !important;
+  font-family: var(--mag-display-font) !important;
+  font-size: clamp(1.35rem, 2.4vw, 1.65rem) !important;
+  font-weight: 680 !important;
+  line-height: 1.25 !important;
+  text-align: left !important;
+  letter-spacing: -0.025em !important;
+  text-wrap: balance;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table td.help-td {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 176px !important;
+  height: auto !important;
+  padding: 22px !important;
+  overflow: hidden !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 16px !important;
+  background: linear-gradient(145deg, var(--mag-glass-hover), var(--mag-glass)) !important;
+  box-shadow: var(--mag-shadow-small) !important;
+  cursor: pointer;
+  backdrop-filter: var(--mag-material-surface);
+  -webkit-backdrop-filter: var(--mag-material-surface);
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table td.help-td:hover {
+  border-color: color-mix(in srgb, var(--mag-accent) 24%, var(--mag-line-bright)) !important;
+  background: var(--mag-glass-hover) !important;
+  box-shadow: 0 14px 34px rgba(45, 63, 83, 0.09), 0 3px 8px rgba(45, 63, 83, 0.04) !important;
+  transform: translateY(-2px);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table td.help-td:focus-within {
+  border-color: var(--mag-accent) !important;
+  box-shadow: 0 0 0 3px var(--mag-accent-soft), var(--mag-shadow-small) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table td.help-td:active {
+  transform: translateY(0) scale(0.995);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table .help-td-title,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table .help-td-description,
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table .help-td-explore {
+  position: static !important;
+  inset: auto !important;
+  box-sizing: border-box !important;
+  width: auto !important;
+  max-width: 100%;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table .help-td-title {
+  margin: 0 !important;
+  color: var(--mag-text) !important;
+  font-family: var(--mag-display-font) !important;
+  font-size: 18px !important;
+  font-weight: 680 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.018em !important;
+  text-wrap: balance;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table .help-td-description {
+  flex: 1 1 auto;
+  margin: 8px 0 0 !important;
+  color: var(--mag-text-muted) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  letter-spacing: 0 !important;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table .help-td-explore {
+  display: flex !important;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 28px;
+  margin: auto 0 0 !important;
+  padding: 16px 0 0 !important;
+  color: var(--mag-accent-strong) !important;
+}
+
+/* The inline icon ID is repeated by the host page, so keep this class-scoped. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table .help-td-explore > svg {
+  display: block;
+  flex: 0 0 auto;
+  width: 28px !important;
+  height: 28px !important;
+  overflow: visible;
+  color: inherit !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table .help-td-explore > svg [stroke]:not([stroke="none"]) {
+  stroke: currentColor !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table .help-td-explore > svg [fill]:not([fill="none"]) {
+  fill: currentColor !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"][data-ma-glass-theme="dark"] #help-table td.help-td {
+  border-color: rgba(155, 216, 255, 0.16) !important;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(8, 24, 42, 0.04)),
+    var(--mag-glass) !important;
+  box-shadow: var(--mag-shadow-small) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="help"][data-ma-glass-theme="dark"] #help-table td.help-td:hover {
+  border-color: rgba(117, 200, 255, 0.3) !important;
+  background: var(--mag-glass-hover) !important;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.36), 0 3px 10px rgba(0, 0, 0, 0.24) !important;
+}
+
+@media (max-width: 900px) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr:has(> td:not(.help-td)) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #topBarContainer {
+    width: calc(100vw - 24px) !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #headerLinks {
+    left: 0 !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #headerLinks a.headerLink {
+    margin-right: 4px !important;
+    padding-right: 6px !important;
+    padding-left: 6px !important;
+    font-size: 12px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #userHeader {
+    margin-right: 0 !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #content {
+    padding-top: 90px !important;
+    padding-bottom: 52px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #content > #header {
+    margin-bottom: 36px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #content > #header h1 {
+    font-size: clamp(2.55rem, 13vw, 3.1rem) !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #content > .sectionFrame {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr + tr {
+    margin-top: 12px;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table > tbody > tr:has(> td:not(.help-td)):not(:first-child) {
+    margin-top: 30px;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="help"] #help-table td.help-td {
+    min-height: 158px !important;
+    padding: 19px !important;
+    border-radius: 14px !important;
+  }
+}

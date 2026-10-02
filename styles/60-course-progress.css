@@ -1,0 +1,313 @@
+/* Course progress ---------------------------------------------------------
+   The authenticated progress route uses a separate legacy layout from both
+   the dashboard and the public course pages. Treat each unit as the one glass
+   surface, then flatten its progress and topic tables so expanded units do not
+   turn into a stack of unrelated inset cards. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] :is(
+  #progressContent,
+  #progressContent #units
+) {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units > .unit {
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+  color: var(--mag-text-soft) !important;
+  border: 1px solid var(--mag-line-bright) !important;
+  border-radius: 16px !important;
+  background:
+    linear-gradient(145deg, var(--mag-glass-hover), var(--mag-glass)) !important;
+  box-shadow: var(--mag-shadow-small) !important;
+  backdrop-filter: var(--mag-material-surface) !important;
+  -webkit-backdrop-filter: var(--mag-material-surface) !important;
+  transition: border-color 150ms ease, box-shadow 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units > .unit:has(
+  > .unitHeader .unitArrowExpanded
+) {
+  border-color: color-mix(in srgb, var(--mag-accent) 25%, var(--mag-line-bright)) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitHeader {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-height: 52px !important;
+  margin: 0 !important;
+  padding: 14px 16px 8px !important;
+  color: var(--mag-text-soft) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  transition: background 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units > .unit:has(
+  > .unitHeader:hover
+) > :is(
+  .unitHeader,
+  .unitProgressBarFrame
+) {
+  background: var(--mag-segment-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitNumber {
+  flex: 0 0 28px !important;
+  width: 28px !important;
+  color: var(--mag-text-muted) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitName {
+  min-width: 0 !important;
+  color: var(--mag-text) !important;
+  font-weight: 600 !important;
+  text-wrap: pretty;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitArrow {
+  position: relative;
+  display: grid !important;
+  flex: 0 0 16px !important;
+  place-items: center;
+  box-sizing: border-box !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 2px 0 4px !important;
+  overflow: visible !important;
+  color: var(--mag-text-muted) !important;
+  border: 0 !important;
+  background: none !important;
+  transition: color 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitArrow::before {
+  box-sizing: border-box;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  border-radius: 1px;
+  content: "";
+  transform: translateX(-2px) rotate(-45deg);
+  transition: transform 170ms ease;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitHeader:hover .unitArrow {
+  color: var(--mag-text-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitArrow.unitArrowExpanded::before {
+  transform: translateY(-2px) rotate(45deg);
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitNumTopics {
+  float: none !important;
+  flex: 0 0 auto !important;
+  margin-left: auto !important;
+  color: var(--mag-text-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  white-space: nowrap;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitProgressBarFrame {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-height: 20px !important;
+  padding: 0 16px 14px 52px !important;
+  transition: background 150ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units table.unitProgressBar {
+  overflow: hidden !important;
+  height: 6px !important;
+  margin: 0 !important;
+  border: 1px solid var(--mag-line) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 999px !important;
+  background: var(--mag-segment-track) !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units table.unitProgressBar :is(
+  tbody,
+  tr,
+  td
+) {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units table.unitProgressBar td[style*="background-color: white" i] {
+  background-color: var(--mag-segment-track) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitModules {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 4px 18px 20px 52px !important;
+  color: var(--mag-text-soft) !important;
+  border-top: 1px solid var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .module {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 18px 0 0 !important;
+  color: var(--mag-text-soft) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .module + .module {
+  border-top: 1px solid var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .module > div:first-child:not(.moduleTopics) {
+  color: var(--mag-text) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  text-wrap: pretty;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .moduleTopics {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin: 10px 0 0 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .moduleTopics table {
+  width: 100% !important;
+  table-layout: auto !important;
+  overflow: visible !important;
+  color: inherit !important;
+  border: 0 !important;
+  border-collapse: separate !important;
+  border-spacing: 0 2px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .moduleTopics :is(
+  tbody,
+  tr,
+  td
+) {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .moduleTopics td:first-child {
+  width: 14px !important;
+  padding: 4px 0 !important;
+  vertical-align: middle !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .topicCircle[style*="background: white" i] {
+  background: var(--mag-input) !important;
+  border-color: var(--mag-line) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units td.topicNumber {
+  width: 44px !important;
+  padding: 4px 10px 4px 8px !important;
+  color: var(--mag-text-muted) !important;
+  font-size: 13px !important;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.45 !important;
+  white-space: nowrap;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units td.topicName {
+  width: auto !important;
+  padding: 4px 0 !important;
+  color: var(--mag-text-soft) !important;
+  font-size: 14.5px !important;
+  line-height: 1.45 !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units a:is(.topicLink, .topicNameLink) {
+  color: var(--mag-accent-strong) !important;
+  font: inherit !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  text-wrap: pretty;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units a:is(.topicLink, .topicNameLink):hover {
+  color: var(--mag-accent-ink) !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units a:is(.topicLink, .topicNameLink):focus-visible {
+  border-radius: 4px;
+  outline: 3px solid var(--mag-focus-ring) !important;
+  outline-offset: 2px !important;
+}
+
+@media (max-width: 760px) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #content:has(#sidebarTitle) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units {
+    margin-top: 0 !important;
+    padding-bottom: 24px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitHeader {
+    padding: 12px 14px 7px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitProgressBarFrame {
+    padding: 0 14px 13px 50px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitModules {
+    padding: 4px 14px 16px !important;
+  }
+
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units :is(
+    .unitName,
+    td.topicName
+  ) {
+    overflow-wrap: anywhere;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units > .unit,
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitHeader,
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitArrow,
+  html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"] #progressContent #units .unitArrow::before {
+    transition: none !important;
+  }
+}
