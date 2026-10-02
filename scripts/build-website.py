@@ -62,7 +62,7 @@ def page(title, description, filename, body):
 <main id="main" class="wrap">{body}</main>
 <footer class="site-footer wrap">
  <div><strong>Math Academy Glass</strong><p>An independent, unofficial study companion.<br>Not affiliated with, endorsed by, or sponsored by Math Academy.</p></div>
- <div class="footer-links"><a href="{REPO}/blob/main/LICENSE">MIT licensed</a><a href="support.html">Get help</a><a href="privacy.html">Privacy policy</a><span>© 2026 Yarik Leto</span></div>
+ <div class="footer-links"><a href="{REPO}/blob/main/LICENSE">MIT licensed</a><a href="support.html">Get help</a><a href="privacy.html">Privacy policy</a><span>© 2026 <a href="https://www.linkedin.com/in/yarik-leto">Yarik Leto</a></span></div>
 </footer>
 </body></html>
 '''
@@ -88,7 +88,14 @@ HOME = f'''
  </div></fieldset>
  <p class="preview-note">The extension in action on an original sample lesson. Select a preview above.</p>
 </section>
-<nav class="feature-nav" aria-label="Explore features"><a href="#appearance">Appearance</a><a href="#drawing">Drawing</a><a href="#geometry">Geometry</a><a href="#printing">PDF export</a><a href="#local-title">Privacy</a></nav>
+<section id="before-after" class="comparison section" aria-labelledby="comparison-title">
+ <div class="section-heading"><p class="eyebrow">Before &amp; after</p><h2 id="comparison-title">Same Math Academy.<br>A clearer view.</h2><p>The league menu, before and after switching on Math Academy Glass.</p></div>
+ <div class="comparison-grid">
+  <figure class="comparison-shot"><figcaption><strong>Before</strong><span>Original Math Academy</span></figcaption><div class="comparison-image"><img src="assets/league-before.png" width="840" height="1004" loading="lazy" decoding="async" alt="Original Math Academy league menu with flat color dots, square borders, and no highlighted current league."></div></figure>
+  <figure class="comparison-shot"><figcaption><strong>After</strong><span>Math Academy Glass · Light</span></figcaption><div class="comparison-image"><img src="assets/league-after.png" width="786" height="856" loading="lazy" decoding="async" alt="The same league menu with rounded glass surfaces, gemstone icons, and a blue highlight on the current Ruby League."></div></figure>
+ </div>
+</section>
+<nav class="feature-nav" aria-label="Explore features"><a href="#before-after">Before &amp; after</a><a href="#appearance">Appearance</a><a href="#drawing">Drawing</a><a href="#geometry">Geometry</a><a href="#printing">PDF export</a><a href="#local-title">Privacy</a></nav>
 <section class="features section" aria-labelledby="features-title">
  <div class="section-heading"><p class="eyebrow">A little more clarity. A lot more possibility.</p><h2 id="features-title">Everything you need.<br>Right on the page.</h2></div>
  <div class="product-grid">

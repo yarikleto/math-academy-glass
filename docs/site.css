@@ -99,6 +99,15 @@ html[data-ma-glass-enabled="true"] .window-dots i:nth-child(3) {background:#59ad
 html[data-ma-glass-enabled="true"] .preview-image {display:none;width:100%}
 html[data-ma-glass-enabled="true"] #preview-tools:checked~.preview-window .tools-image,html[data-ma-glass-enabled="true"] #preview-light:checked~.preview-window .light-image,html[data-ma-glass-enabled="true"] #preview-dark:checked~.preview-window .dark-image {display:block}
 html[data-ma-glass-enabled="true"] .preview-note {text-align:center;font-size:12px;color:var(--muted);margin:18px 0 0}
+html[data-ma-glass-enabled="true"] .comparison {max-width:1000px;margin-inline:auto;scroll-margin-top:110px}
+html[data-ma-glass-enabled="true"] .comparison .section-heading {text-align:center;max-width:680px;margin:0 auto 36px}
+html[data-ma-glass-enabled="true"] .comparison-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+html[data-ma-glass-enabled="true"] .comparison-shot {margin:0;min-width:0}
+html[data-ma-glass-enabled="true"] .comparison-shot figcaption {display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;margin:0 0 14px;text-align:left}
+html[data-ma-glass-enabled="true"] .comparison-shot figcaption strong {font-size:17px;color:var(--text);font-weight:650}
+html[data-ma-glass-enabled="true"] .comparison-shot figcaption span {font-size:13px;color:var(--muted)}
+html[data-ma-glass-enabled="true"] .comparison-image {aspect-ratio:840/1004;display:flex;align-items:center;overflow:hidden;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)}
+html[data-ma-glass-enabled="true"] .comparison-image img {width:100%;height:100%;object-fit:contain}
 html[data-ma-glass-enabled="true"] .feature-nav {display:flex;justify-content:center;flex-wrap:wrap;gap:12px 32px;padding:38px 0;border-bottom:1px solid var(--line)}
 html[data-ma-glass-enabled="true"] .feature-nav a {text-decoration:none;font-size:14px;color:var(--soft)}
 html[data-ma-glass-enabled="true"] .feature-nav a:hover {color:var(--accent)}
@@ -168,6 +177,7 @@ html[data-ma-glass-enabled="true"] #local-title,html[data-ma-glass-enabled="true
  html[data-ma-glass-enabled="true"] .site-header nav {gap:20px;font-size:12px}
  html[data-ma-glass-enabled="true"] .product-hero {padding:48px 0 24px}
  html[data-ma-glass-enabled="true"] .product-grid {grid-template-columns:1fr;gap:18px}
+ html[data-ma-glass-enabled="true"] .comparison-grid {grid-template-columns:1fr;gap:28px}
  html[data-ma-glass-enabled="true"] .tile-copy {padding:28px 26px 14px}
  html[data-ma-glass-enabled="true"] .feature-tile h3 {font-size:28px}
  html[data-ma-glass-enabled="true"] .theme-pair {padding:12px 20px 20px;gap:10px}
