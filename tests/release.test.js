@@ -11,7 +11,7 @@ const ROOT = path.resolve(__dirname, "..");
 const MANIFEST_PATH = path.join(ROOT, "manifest.json");
 const MATH_ACADEMY_MATCH = "https://*.mathacademy.com/*";
 const STORAGE_BROKER_PATH = "background/storage-controller.js";
-const RELEASE_ARCHIVE_PATH = path.join(ROOT, "math-academy-glass-extension.zip");
+const RELEASE_ARCHIVE_PATH = path.join(ROOT, `math-academy-glass-extension-${readManifest().version}.zip`);
 const RELEASE_FILES = Object.freeze([
   "manifest.json",
   "README.md",

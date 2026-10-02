@@ -140,11 +140,13 @@ needed. Package before running archive-parity tests after source changes.
 rg --files content background popup -g '*.js' -0 | xargs -0 -n1 node --check
 python3 scripts/package-release.py
 node --test tests/*.test.js
-unzip -t math-academy-glass-extension.zip
+unzip -t "math-academy-glass-extension-$(node -p 'require(\"./manifest.json\").version').zip"
 ```
 
 The packaging script uses sorted entries, fixed timestamps and file modes, and
-an explicit directory allowlist. It writes `release-metadata.json` with the
+an explicit directory allowlist. The ZIP filename includes the manifest version,
+for example `math-academy-glass-extension-2.0.22.zip`.
+It writes `release-metadata.json` with the
 version, size, and SHA-256 checksum. CI generates a fresh package, verifies it
 against the source, and attaches the release files as workflow artifacts.
 Generated ZIPs, local test output, browser profiles, agent configuration, and

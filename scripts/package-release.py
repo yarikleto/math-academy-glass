@@ -9,7 +9,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parent.parent
 FILES = ["manifest.json", "README.md", "PRIVACY.md", "ARCHITECTURE.md", "LICENSE"]
 DIRECTORIES = ["background", "content", "styles", "popup", "icons"]
-ARCHIVE = ROOT / "math-academy-glass-extension.zip"
+VERSION = json.loads((ROOT / "manifest.json").read_text())["version"]
+ARCHIVE = ROOT / f"math-academy-glass-extension-{VERSION}.zip"
 
 
 def main():
@@ -37,7 +38,7 @@ def main():
     finally:
         temporary.unlink(missing_ok=True)
     metadata = {
-        "version": json.loads((ROOT / "manifest.json").read_text())["version"],
+        "version": VERSION,
         "file": ARCHIVE.name,
         "bytes": ARCHIVE.stat().st_size,
         "sha256": hashlib.sha256(ARCHIVE.read_bytes()).hexdigest(),

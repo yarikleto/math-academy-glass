@@ -27,6 +27,6 @@ jobs:
         with:
           name: math-academy-glass
           path: |
-            math-academy-glass-extension.zip
+            math-academy-glass-extension-*.zip
             release-metadata.json
           if-no-files-found: error
