@@ -10,6 +10,7 @@ separate account.
 Math Academy Glass is an independent, unofficial project. It is not affiliated
 with, endorsed by, or sponsored by Math Academy.
 
+[Chrome Web Store](https://chromewebstore.google.com/detail/math-academy-glass/lmejjnljjohlghejbclappoijncmbomi) ·
 [Source code](https://github.com/yarikleto/math-academy-glass) ·
 [Website](https://yarikleto.github.io/math-academy-glass/) ·
 [Report an issue](https://github.com/yarikleto/math-academy-glass/issues) ·
@@ -50,6 +51,19 @@ service, or require another Chrome permission for this feature.
 Requires Chrome 111 or newer. Learning features require your own Math Academy
 account and access to its lessons; this extension does not provide a subscription.
 
+1. Open [Math Academy Glass in the Chrome Web Store](https://chromewebstore.google.com/detail/math-academy-glass/lmejjnljjohlghejbclappoijncmbomi).
+2. Click **Add to Chrome**, then confirm with **Add extension**.
+3. Open or refresh [Math Academy](https://www.mathacademy.com/).
+4. Use the extension popup to choose an appearance, then open the in-page
+   study-tools menu to start drawing or measuring.
+
+The Chrome Web Store is the recommended way to install the extension and
+receive automatic updates.
+
+### Install from source (advanced)
+
+For development or testing, you can load the source locally:
+
 1. Clone this repository, or select **Code → Download ZIP** on GitHub and
    extract it. Keep the folder in a permanent location.
 2. Open `chrome://extensions`.
@@ -58,6 +72,9 @@ account and access to its lessons; this extension does not provide a subscriptio
 5. Select the folder containing `manifest.json`.
 6. Open or refresh [Math Academy](https://www.mathacademy.com/).
 7. Use the extension popup to choose an appearance or pause the extension.
+
+Source installations must be updated manually by downloading or pulling the
+latest source, reloading the extension, and refreshing Math Academy.
 
 The page-restyling and study-tool features run only on `mathacademy.com` and
 its subdomains. The extension does not require a remote backend and makes no

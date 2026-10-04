@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 BASE = "https://yarikleto.github.io/math-academy-glass/"
 REPO = "https://github.com/yarikleto/math-academy-glass"
+STORE = "https://chromewebstore.google.com/detail/math-academy-glass/lmejjnljjohlghejbclappoijncmbomi"
 
 
 def inline(value):
@@ -73,7 +74,7 @@ HOME = f'''
  <p class="eyebrow"><span class="status-dot"></span> Free &amp; open source · Chrome extension</p>
  <h1 id="hero-title">Clear your space.<br><span>Explore your ideas.</span></h1>
  <p class="hero-copy">A calmer Math Academy, with drawing, geometry, and study tools right where you need them.</p>
- <div class="actions"><a class="button primary" href="#install">Get the extension <span aria-hidden="true">↗</span></a><a class="button secondary" href="{REPO}">Explore the source</a></div>
+ <div class="actions"><a class="button primary" href="{STORE}">Add to Chrome <span aria-hidden="true">↗</span></a><a class="button secondary" href="{REPO}">Explore the source</a></div>
  <p class="small">Free to use. Open source. Made for Chrome.</p>
 </section>
 <section class="showcase" aria-label="Explore extension previews">
@@ -107,8 +108,9 @@ HOME = f'''
  </div>
 </section>
 <section class="privacy-callout section" aria-labelledby="local-title"><div><p class="eyebrow">Your work stays yours</p><h2 id="local-title">Local by design.</h2></div><div><p>Lesson content, drawings, and study counters stay in your browser. Only your two appearance preferences use Chrome sync. No ads, analytics, or extension-operated servers.</p><a class="text-link" href="privacy.html">Read the privacy policy <span aria-hidden="true">→</span></a></div></section>
-<section id="install" class="install section" aria-labelledby="install-title"><div class="section-heading"><p class="eyebrow">Start your next study session</p><h2 id="install-title">Make yourself<br>at home.</h2><p>Install from the public source while the Chrome Web Store listing is being prepared.</p><a class="button primary" href="{REPO}/archive/refs/heads/main.zip">Download source ZIP <span aria-hidden="true">↓</span></a></div>
-<div class="card"><ol class="steps"><li><strong>Download and unzip</strong><p>Keep the extracted folder somewhere permanent.</p></li><li><strong>Load in Chrome</strong><p>Open <code>chrome://extensions</code>, turn on Developer mode, select <strong>Load unpacked</strong>, and choose the folder containing <code>manifest.json</code>.</p></li><li><strong>Make it yours</strong><p>Refresh Math Academy. Open the extension popup to choose a theme, then use the study-tools button on the page.</p></li></ol></div></section>
+<section id="install" class="install section" aria-labelledby="install-title"><div class="section-heading"><p class="eyebrow">Start your next study session</p><h2 id="install-title">Make yourself<br>at home.</h2><p>Now available in the Chrome Web Store. Install in a few clicks and receive automatic updates.</p><a class="button primary" href="{STORE}">Add to Chrome <span aria-hidden="true">↗</span></a></div>
+<div class="card"><ol class="steps"><li><strong>Open the Chrome Web Store</strong><p>Visit the <a href="{STORE}">Math Academy Glass listing</a>.</p></li><li><strong>Add to Chrome</strong><p>Select <strong>Add to Chrome</strong>, then confirm with <strong>Add extension</strong>.</p></li><li><strong>Make it yours</strong><p>Open or refresh Math Academy. Open the extension popup to choose a theme, then use the study-tools button on the page.</p></li></ol></div></section>
+<details><summary>Install from source (advanced)</summary><p>For development or testing, <a href="{REPO}/archive/refs/heads/main.zip">download the source ZIP</a>, unzip it, and keep the folder somewhere permanent.</p><p>Open <code>chrome://extensions</code>, turn on Developer mode, select <strong>Load unpacked</strong>, and choose the folder containing <code>manifest.json</code>. Refresh Math Academy to get started.</p><p>Source installations require manual updates: download or pull the latest source, reload the extension, and refresh Math Academy.</p></details>
 <p class="requirements">Requires Chrome 111 or newer. Learning features require your own Math Academy account and access to its content. This extension does not include a Math Academy subscription.</p>
 '''
 
