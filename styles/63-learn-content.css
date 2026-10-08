@@ -1,3 +1,16 @@
+/* Instructional tables use authored bgcolor highlights, including the divisor
+   and remainder in synthetic division. Adapt only these known light fills in
+   dark mode; preserve the table's compact math geometry and hidden edges. */
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] :is(.tutorial, .example) table[rules="all"][cellpadding] td[bgcolor="#D6EAF8" i] {
+  background-color: var(--mag-accent-soft) !important;
+  color: var(--mag-math-blue) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-page="learn"][data-ma-glass-theme="dark"] :is(.tutorial, .example) table[rules="all"][cellpadding] td:is([bgcolor="Moccasin" i], [bgcolor="#FFE4B5" i]) {
+  background-color: var(--mag-xp-soft) !important;
+  color: var(--mag-warning) !important;
+}
+
 /* Lesson content still includes HTML data tables built with rules, cellpadding,
    inline black borders, and bgcolor cells. Keep these semantic tables inside
    the question and replace the legacy presentation attributes as one unit.
