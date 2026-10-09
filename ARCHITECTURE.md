@@ -80,6 +80,13 @@ the module removes every print marker and restores any temporarily changed page
 state. The workflow adds no storage, network activity, backend, or Chrome
 permission.
 
+The print stylesheet removes layout boxes from marked ancestors with
+`display: contents`, while retaining the body box for the named page size.
+Ancestor pseudo-elements are suppressed separately because they are not DOM
+siblings and cannot be excluded by the branch markers. This prevents screen
+layout and generated decorations from reserving blank PDF pages without
+changing the selected card's mathematical renderers or graphics.
+
 ## Study-tools subsystem
 
 `content/tools/runtime.js` creates the private tools context. It contains three

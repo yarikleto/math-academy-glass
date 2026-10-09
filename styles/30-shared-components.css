@@ -42,7 +42,7 @@ html[data-ma-glass-enabled="true"] :is(
   input[type="submit"],
   #getStartedButton,
   #signUpButton
-):not(mark.ws-word-mark) {
+):not(mark.ws-word-mark):not(:where(.calcw button)) {
   border: 1px solid rgba(255, 255, 255, 0.28) !important;
   border-radius: 11px !important;
   background: var(--mag-primary-gradient) !important;
@@ -53,13 +53,13 @@ html[data-ma-glass-enabled="true"] :is(
   transition: transform 140ms ease, filter 140ms ease, box-shadow 140ms ease !important;
 }
 
-html[data-ma-glass-enabled="true"] :is(button, [role="button"], input[type="button"], input[type="submit"], #getStartedButton, #signUpButton):not(mark.ws-word-mark):hover {
+html[data-ma-glass-enabled="true"] :is(button, [role="button"], input[type="button"], input[type="submit"], #getStartedButton, #signUpButton):not(mark.ws-word-mark):not(:where(.calcw button)):hover {
   filter: brightness(1.06);
   transform: translateY(-1px);
   box-shadow: 0 8px 20px var(--mag-primary-shadow-hover), inset 0 1px rgba(255, 255, 255, 0.32) !important;
 }
 
-html[data-ma-glass-enabled="true"] :is(button, [role="button"], input[type="button"], input[type="submit"], #getStartedButton, #signUpButton):not(mark.ws-word-mark):active {
+html[data-ma-glass-enabled="true"] :is(button, [role="button"], input[type="button"], input[type="submit"], #getStartedButton, #signUpButton):not(mark.ws-word-mark):not(:where(.calcw button)):active {
   transform: translateY(0) scale(0.985);
 }
 
@@ -348,4 +348,3 @@ html[data-ma-glass-enabled="true"] :focus-visible {
   outline: 3px solid var(--mag-focus-ring) !important;
   outline-offset: 2px !important;
 }
-

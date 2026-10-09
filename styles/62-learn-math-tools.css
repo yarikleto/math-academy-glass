@@ -1,3 +1,139 @@
+/* The site's calculator owns its layout, sizing, placement, and mode changes.
+   Reuse our light/dark materials without altering its keypad or graph canvas.
+   Its buttons are excluded from the shared primary-button treatment. */
+html[data-ma-glass-enabled="true"] .calcw {
+  --calc-mode-bg: var(--mag-segment-track) !important;
+  --calc-mode-edge: var(--mag-line) !important;
+  --calc-mode-fg: var(--mag-text-muted) !important;
+  --calc-mode-on-bg: var(--mag-segment-selected) !important;
+  --calc-mode-on-fg: var(--mag-text) !important;
+  --calc-close-bg: transparent !important;
+  --calc-close-fg: var(--mag-text-muted) !important;
+  --calc-close-edge: var(--mag-line) !important;
+  --calc-close-hover-bg: var(--mag-input-hover) !important;
+  --calc-close-hover-fg: var(--mag-text) !important;
+  --calc-entry-fg: var(--mag-text) !important;
+  --calc-caret: var(--mag-accent) !important;
+  --calc-readout: var(--mag-accent) !important;
+  --calc-warn-fg: var(--mag-danger) !important;
+  --calc-focus: var(--mag-focus-ring) !important;
+  color: var(--mag-text) !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: var(--mag-radius) !important;
+  background: var(--mag-glass-solid) !important;
+  box-shadow: var(--mag-shadow) !important;
+  backdrop-filter: var(--mag-material-raised) !important;
+  -webkit-backdrop-filter: var(--mag-material-raised) !important;
+  font-family: var(--mag-ui-font) !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__bar {
+  color: var(--mag-text) !important;
+  border-bottom: 1px solid var(--mag-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__title {
+  color: var(--mag-text) !important;
+  font-family: var(--mag-display-font) !important;
+  font-size: 13px !important;
+  font-weight: 680 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__screen {
+  color: var(--mag-text) !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: var(--mag-radius-small) !important;
+  background: var(--mag-input) !important;
+  box-shadow: none !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__value {
+  color: var(--mag-text) !important;
+  font-family: var(--mag-ui-font) !important;
+  font-weight: 500 !important;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-ma-glass-enabled="true"] .calcw :is(.calcw__expression, .calcw__lamp, .calcw__gstatus) {
+  color: var(--mag-text-muted) !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__value[data-error="true"] {
+  color: var(--mag-danger) !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__pad {
+  background: transparent !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__key {
+  min-width: 0 !important;
+  color: var(--mag-text) !important;
+  border: 1px solid var(--mag-line) !important;
+  border-radius: 9px !important;
+  background: var(--mag-input) !important;
+  box-shadow: none !important;
+  font-family: var(--mag-ui-font) !important;
+  font-weight: 550 !important;
+  text-shadow: none !important;
+  transition: background 140ms ease, border-color 140ms ease !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw :is(.calcw__key--fn, .calcw__key--mem) {
+  color: var(--mag-text-soft) !important;
+  background: var(--mag-segment-track) !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__key--op {
+  color: var(--mag-accent-ink) !important;
+  background: var(--mag-accent-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__key:hover {
+  border-color: var(--mag-accent) !important;
+  background: var(--mag-input-hover) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__key:active {
+  background: var(--mag-segment-selected) !important;
+  transform: none !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__key--eq {
+  color: #fff !important;
+  border-color: transparent !important;
+  background: var(--mag-primary-gradient) !important;
+  font-weight: 650 !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__key--eq:hover,
+html[data-ma-glass-enabled="true"] .calcw .calcw__key--eq:active {
+  background: var(--mag-primary-gradient-hover) !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__key:disabled {
+  color: var(--mag-text-muted) !important;
+  border-color: var(--mag-line) !important;
+  background: var(--mag-segment-track) !important;
+  cursor: default !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw :is(.calcw__lamp, .calcw__key)[data-on="true"] {
+  color: var(--mag-accent-strong) !important;
+}
+
+html[data-ma-glass-enabled="true"] .calcw .calcw__key--warn,
+html[data-ma-glass-enabled="true"] .calcw .calcw__gstatus[data-error="true"] {
+  color: var(--mag-danger) !important;
+}
+
 /* Replace every Math Academy math-toolbox sprite or font glyph with a
    standalone SVG mask. The masks remain crisp at any scale and inherit the
    toolbox color in light, dark, and hover states. */

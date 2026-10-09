@@ -187,18 +187,28 @@ html[data-ma-glass-enabled="true"]:is(
 }
 
 @media print {
-  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]),
-  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) body {
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]):not(#ma-glass-card-print-specificity),
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]):not(#ma-glass-card-print-specificity) body {
+    position: static !important;
+    inset: auto !important;
     box-sizing: border-box !important;
     width: auto !important;
     min-width: 0 !important;
     max-width: none !important;
     min-height: 0 !important;
     height: auto !important;
+    max-height: none !important;
     margin: 0 !important;
     padding: 0 !important;
     color: var(--mag-text-soft) !important;
     background: var(--mag-bg) !important;
+    overflow: visible !important;
+    transform: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    break-before: auto !important;
+    break-after: auto !important;
     print-color-adjust: exact !important;
     -webkit-print-color-adjust: exact !important;
   }
@@ -207,7 +217,6 @@ html[data-ma-glass-enabled="true"]:is(
     page: ma-glass-card-export;
   }
 
-  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) body::before,
   html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(
     #ma-glass-card-print-specificity,
     [data-ma-glass-print-excluded="true"]
@@ -242,6 +251,37 @@ html[data-ma-glass-enabled="true"]:is(
     background: transparent !important;
     box-shadow: none !important;
     transform: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    break-before: auto !important;
+    break-after: auto !important;
+    break-inside: auto !important;
+  }
+
+  /* Ancestors connect the live card to the document, but their screen-layout
+     boxes must not reserve pages. Keep body boxed for the named @page rule. */
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(
+    #ma-glass-card-print-specificity,
+    [data-ma-glass-print-ancestor="true"]
+  ):not(body) {
+    display: contents !important;
+  }
+
+  /* Generated decorations are not sibling elements and cannot be pruned by
+     markPrintBranch. Suppress them only outside the instructional card. */
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]):not(#ma-glass-card-print-specificity)::before,
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]):not(#ma-glass-card-print-specificity)::after,
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(
+    #ma-glass-card-print-specificity,
+    [data-ma-glass-print-ancestor="true"]
+  )::before,
+  html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(
+    #ma-glass-card-print-specificity,
+    [data-ma-glass-print-ancestor="true"]
+  )::after {
+    content: none !important;
+    display: none !important;
   }
 
   html[data-ma-glass-enabled="true"][data-ma-glass-card-printing="true"]:is([data-ma-glass-page="learn"], [data-ma-glass-page="topic"]) :is(#steps, #lessonContent) > .step[data-ma-glass-print-target="true"] {
@@ -267,6 +307,8 @@ html[data-ma-glass-enabled="true"]:is(
     -webkit-backdrop-filter: none !important;
     break-inside: auto !important;
     page-break-inside: auto !important;
+    break-before: auto !important;
+    break-after: auto !important;
     print-color-adjust: exact !important;
     -webkit-print-color-adjust: exact !important;
   }

@@ -162,13 +162,21 @@ unzip -t "math-academy-glass-extension-$(node -p 'require(\"./manifest.json\").v
 
 The packaging script uses sorted entries, fixed timestamps and file modes, and
 an explicit directory allowlist. The ZIP filename includes the manifest version,
-for example `math-academy-glass-extension-2.0.25.zip`.
+for example `math-academy-glass-extension-2.0.30.zip`.
 It writes `release-metadata.json` with the
 version, size, and SHA-256 checksum. CI generates a fresh package, verifies it
 against the source, and attaches the release files as workflow artifacts.
 Generated ZIPs, local test output, browser profiles, agent configuration, and
 publisher-only materials are excluded from Git. The public repository contains
 the source and tools needed to build and test the extension.
+
+Optional PDF regression checks require Playwright and `pdfjs-dist`:
+`node tests/browser-print.cjs`. Set `NODE_PATH` for externally installed packages
+and `CHROME_PATH` for a local Chromium executable if needed. The test prints
+synthetic task and topic cards in both themes, verifies that short cards occupy
+one page and long cards retain every paragraph without blank pages, and checks
+that print cleanup restores the screen layout. It uses a disposable browser
+and writes PDFs and screenshots to ignored `test-results/card-print/`.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development and bug reports and
 [SECURITY.md](SECURITY.md) for private security reports.

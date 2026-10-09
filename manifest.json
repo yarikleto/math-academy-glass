@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Math Academy Glass",
-  "version": "2.0.29",
+  "version": "2.0.30",
   "homepage_url": "https://yarikleto.github.io/math-academy-glass/",
   "minimum_chrome_version": "111",
   "description": "An unofficial glass theme and local study toolkit for Math Academy, with light, dark, and system modes.",
