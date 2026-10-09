@@ -263,6 +263,21 @@ html[data-ma-glass-enabled="true"] :is(.MathJax, mjx-container, .mq-math-mode, .
 
 /* MathJax SVG output stores semantic highlights as presentation attributes,
    so the inherited text color above cannot adapt them for a dark surface. */
+/* Explicit black resets in authored equations bypass inherited math ink.
+   Adapt only neutral black inside math renderers, preserving colored symbols
+   and instructional graphics outside these containers. */
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] :is(.MathJax, .MathJax_SVG, .mjpage, mjx-container) :is([fill="black" i], [fill="#000" i], [fill="#000000" i]) {
+  fill: var(--mag-text-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] :is(.MathJax, .MathJax_SVG, .mjpage, mjx-container) :is([stroke="black" i], [stroke="#000" i], [stroke="#000000" i]) {
+  stroke: var(--mag-text-soft) !important;
+}
+
+html[data-ma-glass-enabled="true"][data-ma-glass-theme="dark"] mjx-container mjx-mstyle[style*="color:"][style*="black" i] {
+  color: var(--mag-text-soft) !important;
+}
+
 html[data-ma-glass-enabled="true"] :is(.MathJax, .MathJax_SVG, .mjpage, mjx-container) [fill="blue" i] {
   fill: var(--mag-math-blue) !important;
 }
